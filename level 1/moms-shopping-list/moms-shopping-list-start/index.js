@@ -11,23 +11,24 @@ form.addEventListener("submit", (event) => {
     const ul = document.getElementById("list")
     const li = document.createElement("li")
     li.setAttribute("id", "item")
-    document.getElementByTagname("ul").append(li)
+    ul.append(li)
 
     //create list item name 
-    const div = document.getElementById("div")
+    const div = document.createElement("div")
     div.textContent = input
     div.classList.add("newItem")
-    document.getElementsByTagName("li").append(div)
+    li.append(div)
 
     //create edit button for new list item
-    const edit = document.getElementById("edit")
-    edit.textContent = "edit"
+    const edit = document.createElement("button")
+    edit.textContent = "Edit"
     li.append(edit)
 
     //create X button to delete a list item
-    const deleteBtn = document.getElementById("button")
+    const deleteBtn = document.createElement("button")
     deleteBtn.textContent = "X"
     deleteBtn.classList.add("delete")
+    deleteBtn.style.marginInline = "20px"
     li.append(deleteBtn)
 
     //add action to our delete button 
@@ -38,6 +39,10 @@ form.addEventListener("submit", (event) => {
         li.remove
     })
 
+    // edit contents of the list 
+    edit.addEventListener("click", function(event){
+        event.preventDefault()
+        div.contentEditable = "true"
+    });
+
 });
-
-
