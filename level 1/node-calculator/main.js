@@ -1,37 +1,24 @@
-const readlineSync = require("readline-sync");
-
-let result;
+const readlineSync = require('readline-sync');
 
 const num1 = readlineSync.question('Please enter your fist number: ');
+const num2 = readlineSync.question('Please enter your second number: ');
+const operation = readlineSync.question('Please enter the operation to perform: add, sub, mul, div: ');
 
-const num2 = readlineSync.queston('Please enter your second number: ');
-
-const operation = readlineSync.question('Please enter the operation to perform: add, sub, mul, div  ');
-
+// switch statement to perfom operation based on user input
 switch (operation){
     case "add":
-        result = num1 + num2;
-        console.log("The result is: " + `${num1} + ${num2} = ${result}`);
+        console.log("The result is: " + Number(num1 + num2));
         break;
 
     case "sub":
-        result = num1 - num2;
-        console.log("The result is: " + `${num1} - ${num2} = ${result}`);
-        break;   
+        console.log("The result is: " + Number(num1 - num2));
+        break; 
 
     case "mul":
-        result = num1 * num2;
-        console.log("The result is: " + `${num1} * ${num2} = ${result}`);
+        console.log("The result is: " + Number(num1 * num2));
         break;
 
     case "div":
-        result = num1 / num2;
-        console.log("The result is: " + `${num1} / ${num2} = ${result}`);
-        break;  
-
-    default:
-        console.log("Invalid input");
+        console.log("The result is: " + Number(num1 / num2));
         break;
-}
-
-
+}       
