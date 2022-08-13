@@ -1,23 +1,27 @@
+* {
+    height: 100px;
+    width: 600px;
+}
 /*first container*/
 div.container1 {
-    border: 4px solid white;
-    box-sizing: border-box;
-    padding: 20px;
     background-color: #F5C6D6;
-    max-width: 615px;
+    border: 2px solid white;
+    box-sizing: border-box;
+    max-width: 570px;
+    padding: 20px;
 }
 
 /*second container inline style*/
 .container2 > div {
     display: inline-block;
-    width: 500px;
+    width: 600px;
 }
 
 .b1 {
     border: 2px solid white;
     box-sizing: border-box;
     background-color: #EE2E84;
-    max-width: 150px;
+    max-width: 146px;
     padding: 20px;
 }
 
@@ -25,7 +29,7 @@ div.container1 {
     border: 2px solid white;
     box-sizing: border-box;
     background-color: #EE2E84;
-    max-width: 150px;
+    max-width: 146px;
     padding: 20px;
 }
 
@@ -33,7 +37,7 @@ div.container1 {
     border: 2px solid white;
     box-sizing: border-box;
     background-color: #EE2E84;
-    max-width: 150px;
+    max-width: 146px;
     padding: 20px;
 }
 
@@ -41,7 +45,7 @@ div.container1 {
     border: 2px solid white;
     box-sizing: border-box;
     background-color: #EE2E84;
-    max-width: 150px;
+    max-width: 146px;
     padding: 20px;
 }
 
@@ -88,3 +92,20 @@ div.container1 {
     max-width: 153px;
     padding: 20px;
 }
+
+
+/*Adding @media query*/
+ @media only screen and (min-width: 768px){
+    div{
+        display: inline-block;
+        max-height: 50px;
+        max-width: fill;
+    }
+
+    div.container1{
+        box-sizing: border-box;
+        max-width: 100%;
+        background-color: #F5C6D6;
+    }
+
+ }

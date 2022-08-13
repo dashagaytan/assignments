@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.navbar > div {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 50px;
+    justify-content: center;
+    justify-items: center;
+    list-style: none;
+    margin: 0;
+}
+
+.navbar {
+    display: grid;
+    background-color: gainsboro;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    justify-items: center;
+    padding-top: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    color: palevioletred;
+}
