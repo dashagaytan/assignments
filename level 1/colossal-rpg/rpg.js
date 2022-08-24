@@ -2,10 +2,10 @@
 const readlineSync = require("readline-sync")
 let isAlive = true;
 
-const user = readlineSync.question("Hello Gamer! What is your name? ")
-//console.log(user)
-const welcome = readlineSync.question(`Welcome ${user} to my RPG game. You are about to set out on a journey through THE DEATH FOREST.`)
-const name = readlineSync.question("Before we go any further...What would you like to name your player? ")
+const user = readlineSync.question("Before we start, what is your name?  ")
+console.log( 'Hi ' + user + '!')
+const welcome = readlineSync.question("Welcome to my RPG game. You are about to set out on a journey through THE DEATH FOREST. ")
+const name = readlineSync.question("Before we go any further...What would you like to name your player?  ")
 //console.log(name)
 
 const random = function(max, min){
@@ -26,7 +26,7 @@ class Player{
         this.inventory = ["crossbow", "dagger", "axe"]   
     }
 }
-console.log(`${name}, as you travel through the forest you must defend your life agains potential enemies. You are supplied with an inventory of weapons and you will have 100hp.`)
+console.log(`${name}, as you travel through the forest you must defend your life agains potential enemies. You are supplied with an inventory of weapons and you will have 100hp.  `)
 
 // enemy information
 class Enemy{
@@ -47,7 +47,7 @@ enemies.push(madara, itachi, orochimaru)
 
 // player gets to choose between walking, printing an inventory or to exit the game.
 while(isAlive){
-    const option = readlineSync.keyIn("Now that you are all set up for your journey please make your selection: 'w' if you want to Walk, 'p' to print your Inventory, or 'q' to Exit the game.")
+    const option = readlineSync.keyIn("You are all set up for your journey, please make your selection: 'w' if you want to Walk, 'p' to print your Inventory, or 'q' to Exit the game.  ")
     if(option === 'w'){
         walk()
     }else if (option === 'p'){
@@ -78,22 +78,24 @@ function inventory(){
     walk()
 }
 
+// walk function, in instance of enemy encounter player can choose to fight or run, else print inventory
 function walk(){
     const attackOrWalk = Math.random() * 100;
     if(attackOrWalk <= 33){
         randomEnemy();
         console.log(enemyEncounter.enemyName, 'has attacked you!');
-        const fightOrRun = readlineSync.keyIn(`${name} your life is in danger! If you choose to defend yourself pick 'F' to fight or 'R' if you want to run like a coward!`);
+        const fightOrRun = readlineSync.keyIn(`${name} your life is in danger! If you choose to defend yourself pick 'F' to fight or 'R' if you want to run like a coward!  `);
         if(fightOrRun === 'f'){
             fight();
         }else if(fightOrRun === 'r'){
             run(); 
         }
     }else {
-        const travelOn =readlineSync.keyIn("You are a lucky bastard! You are yet to see another day of travel. To keep walking press 'w', to see your inventory status press 'p'");
+        const travelOn =readlineSync.keyIn("You are a lucky bastard! You are yet to see another day of travel. To keep walking press 'w', to see your inventory status press 'p'  ");
         if(travelOn === 'p'){
             inventory();
         }
     }
 }
 
+// fight and run functions 
