@@ -99,3 +99,10 @@ function walk(){
 }
 
 // fight and run functions 
+function fight(){
+
+}
+
+function run(){
+    
+}
