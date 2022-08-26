@@ -47,7 +47,7 @@ enemies.push(madara, itachi, orochimaru)
 
 // player gets to choose between walking, printing an inventory or to exit the game.
 while(isAlive){
-    const option = readlineSync.keyIn("You are all set up for your journey, please make your selection: 'w' if you want to Walk, 'p' to print your Inventory, or 'q' to Exit the game.  ")
+    const option = readlineSync.keyIn("You are all set up for your journey, please make your selection: 'W' if you want to Walk, 'P' to print your Inventory, or 'Q' to Exit the game. {limit: ['w','p','q']}")
     if(option === 'w'){
         walk()
     }else if (option === 'p'){
@@ -84,14 +84,17 @@ function walk(){
     if(attackOrWalk <= 33){
         randomEnemy();
         console.log(enemyEncounter.enemyName, 'has attacked you!');
-        const fightOrRun = readlineSync.keyIn(`${name} your life is in danger! If you choose to defend yourself pick 'F' to fight or 'R' if you want to run like a coward!  `);
+        let isFighting = true
+        while(isFighting == true){
+            const fightOrRun = readlineSync.keyIn(`${name} your life is in danger! If you choose to defend yourself pick 'F' to fight or 'R' if you want to run like a coward!  {limit: ['f', 'r']}`);
+        }
         if(fightOrRun === 'f'){
             fight();
         }else if(fightOrRun === 'r'){
             run(); 
         }
     }else {
-        const travelOn =readlineSync.keyIn("You are a lucky bastard! You are yet to see another day of travel. To keep walking press 'w', to see your inventory status press 'p'  ");
+        const travelOn =readlineSync.keyIn("You are a lucky bastard! You are yet to see another day of travel. To keep walking press 'W', to see your inventory status press 'P'  {limit: ['w', 'p']}");
         if(travelOn === 'p'){
             inventory();
         }
@@ -100,9 +103,20 @@ function walk(){
 
 // fight and run functions 
 function fight(){
+    if(enemyEncounter.hp > 0){
+        const mutilation = random(player)
 
+    }
 }
 
 function run(){
-    
+    runOrDie = Math.floor(Math.random() *2 + 1)
+    if(runOrDie === 1){ 
+        console.log("Your luck has run out, they cought up to you! You must fight for your life!")
+        fight();
+    } else {
+        console.log("You ran fast! You're safe for now, but not for long. Travel on if you must!")
+        isFighting = !isFighting
+        walk()
+    }
 }
