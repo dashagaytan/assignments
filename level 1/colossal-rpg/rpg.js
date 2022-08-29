@@ -13,18 +13,19 @@ const random = function(max, min){
 }
 
 // player information
-const player = {
-    name: name,
-    hp: 50,
-    inventory: ["crossbow", "dagger", "axe"]
-}
-
 class Player{
     constructor(name= "name",  hp = 50, inventory = []){
+        this.player = player,
         this.name = name,
         this.hp = 50,
         this.inventory = ["crossbow", "dagger", "axe"]   
     }
+}
+
+const player = {
+    name: name,
+    hp: 50,
+    inventory: ["crossbow", "dagger", "axe"]
 }
 console.log(`${name}, as you travel through the forest you must defend your life agains potential enemies. You are supplied with an inventory of weapons and you will have 100hp.  `)
 
@@ -47,7 +48,7 @@ enemies.push(madara, itachi, orochimaru)
 
 // player gets to choose between walking, printing an inventory or to exit the game.
 while(isAlive){
-    const option = readlineSync.keyIn("You are all set up for your journey, please make your selection: 'W' if you want to Walk, 'P' to print your Inventory, or 'Q' to Exit the game. {limit: ['w','p','q']}")
+    const option = readlineSync.keyIn("Please make your selection: 'W' if you want to Walk, 'P' to print your Inventory, or 'Q' to Exit the game. ", {limit: ['w','p','q']})
     if(option === 'w'){
         walk()
     }else if (option === 'p'){
@@ -72,11 +73,6 @@ function enemyTreasure(){
     return newPrize
 }
 
-// player option functions: walk, print inventory, fight if enemy encountered
-function inventory(){
-    console.log(player);
-    walk()
-}
 
 // walk function, in instance of enemy encounter player can choose to fight or run, else print inventory
 function walk(){
@@ -84,39 +80,44 @@ function walk(){
     if(attackOrWalk <= 33){
         randomEnemy();
         console.log(enemyEncounter.enemyName, 'has attacked you!');
-        let isFighting = true
-        while(isFighting == true){
-            const fightOrRun = readlineSync.keyIn(`${name} your life is in danger! If you choose to defend yourself pick 'F' to fight or 'R' if you want to run like a coward!  {limit: ['f', 'r']}`);
-        }
+        const fightOrRun = readlineSync.keyIn(`${name} your life is in danger! If you choose to defend yourself pick 'F' to fight or 'R' if you want to run like a coward! `,  {limit: ['f', 'r']});
         if(fightOrRun === 'f'){
             fight();
         }else if(fightOrRun === 'r'){
             run(); 
         }
-    }else {
-        const travelOn =readlineSync.keyIn("You are a lucky bastard! You are yet to see another day of travel. To keep walking press 'W', to see your inventory status press 'P'  {limit: ['w', 'p']}");
-        if(travelOn === 'p'){
-            inventory();
+        } else {
+            const travelOn = readlineSync.keyIn("You are a lucky bastard! You are yet to see another day of travel. To keep walking press 'W', to see your inventory status press 'P' ",   {limit: ['w', 'p']});
+            if(travelOn === 'p'){
+                inventory();
+            }
+        }
+    }
+    
+// player option functions: walk, print inventory, fight if enemy encountered
+   function inventory(){
+        console.log(player);
+        walk()
+    }
+
+// fight and run functions 
+    function fight(){
+        if(enemyEncounter.enemyHp > 0){
+            const mutilation = random(player)
+            enemyEncounter.enemyHp = enemyEncounter.hp - mutilation
+            console.log(`${name} you have damaged ` + enemyEncounter.enemyName + 'and they lost their life points. ' + enemyEncounter.enemyHp);
+        if(enemyEncounter.enemyHp > 0){
+
         }
     }
 }
 
-// fight and run functions 
-function fight(){
-    if(enemyEncounter.hp > 0){
-        const mutilation = random(player)
-
-    }
-}
-
 function run(){
-    runOrDie = Math.floor(Math.random() *2 + 1)
-    if(runOrDie === 1){ 
-        console.log("Your luck has run out, they cought up to you! You must fight for your life!")
+    if(Math.floor(Math.random()* 100)< 50){
+        console.log("YOu ran fast and were able to get away!");
+        walk();
+    }else{
+        console.log("Your luck has run out, they cought up to you! You must fight for your life! ")
         fight();
-    } else {
-        console.log("You ran fast! You're safe for now, but not for long. Travel on if you must!")
-        isFighting = !isFighting
-        walk()
     }
 }
