@@ -42,7 +42,7 @@ while(isAlive){
     if(option === 'w'){
         walk()
     }else if (option === 'p'){
-        inventory()
+        console.log(inventory)
     }else if(option === 'q'){
         console.log("You ended your game. Good Bye!")
    break}
@@ -72,13 +72,13 @@ function fightEnemy(){
         console.log("You have fought a great fight and killed your enemies. You are safe at last!!!")
             isAlive = false
     }else{
-        let runAway = Math.random()
+        let run = Math.random()
         let randomEnemy = enemies[Math.floor(Math.random()* enemies.length)]
         const option3 = readlineSync.keyIn(`${name}, ` + randomEnemy.enemyName + " ,is in your path!!! Do you want to fight back [a] or run away [r]?! ", {limit: ['A', 'R']})
         if(option3 === 'a'){
             attack(randomEnemy)
         }else if(option3 === 'r'){
-            runAway(runAway)
+            runaway(run)
         }
     }
 }
@@ -108,8 +108,8 @@ function attack(randomEnemy){
 }
 
 //player has 50% getting away from the enemy
-function runAway(){
-    if(runAway > 0.50){
+function runaway(run){
+    if(run > 0.50){
         console.log(`${name}, you run fast and you were able to get away!`)
     }else{
         console.log("Your fear has failed you, they cought up to you! You did not die fighting like a true warior!")
