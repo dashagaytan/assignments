@@ -8,43 +8,33 @@ const welcome = readlineSync.question("Welcome to my RPG game. You are about to 
 const name = readlineSync.question("Before we go any further...What would you like to name your player?  ")
 //console.log(name)
 
-const random = function(max, min){
-    return Math.floor((Math.random()* max)+min)
-}
-
 // player information
 class Player{
-    constructor(name= "name",  hp = 50, inventory = []){
-        this.player = player,
+    constructor(name, hp, inventory){
         this.name = name,
-        this.hp = 50,
+        this.hp = hp,
         this.inventory = ["crossbow", "dagger", "axe"]   
     }
 }
 
-const player = {
-    name: name,
-    hp: 50,
-    inventory: ["crossbow", "dagger", "axe"]
-}
-console.log(`${name}, as you travel through the forest you must defend your life agains potential enemies. You are supplied with an inventory of weapons and you will have 100hp.  `)
-
 // enemy information
 class Enemy{
     constructor(enemyName, enemyHp, enemyTreasure){
-        this.enemyName = enemyName,
-        this.enemyHp = enemyHp,
+        this.enemyName = enemyName;
+        this.enemyHp = enemyHp;
         this.enemyTreasure = enemyTreasure
     }
 }
 
-// enemy array, push new enemy into it
 const enemies = []
-const madara = new Enemy("Madara", 40, "gold")
-const itachi = new Enemy("Itachi", 30, "food")
-const orochimaru = new Enemy("Orochimaru", 25, "sword")
+const madara = new Enemy("Madara", 100, "gold")
+const itachi = new Enemy("Itachi", 100, "food")
+const orochimaru = new Enemy("Orochimaru", 100, "sword")
+
 enemies.push(madara, itachi, orochimaru)
-//console.log(enemies)
+
+const inventory = ["crossbow", "dagger", "axe"]
+const player = new Player (name, 100, ["crossbow", "dagger", "axe"])
 
 // player gets to choose between walking, printing an inventory or to exit the game.
 while(isAlive){
@@ -54,70 +44,76 @@ while(isAlive){
     }else if (option === 'p'){
         inventory()
     }else if(option === 'q'){
-        isAlive = false
         console.log("You ended your game. Good Bye!")
-    }
+   break}
 }
 
-// random enemy selector function
-function randomEnemy(){
-    const enemyEncounter = enemies[Math.floor(Math.random()* enemies.length)]
-}
-
-// when enemy is defeated player gets a prize
-function enemyTreasure(){
-    const prize = ["gold", "food", "sword"]
-    const randomPrize = randomPrize(0,2) // 1 out of 3 prizes available 
-    const newPrize = prize[randomPrize]
-    playerInfo.inventory.push(newPrize) 
-    return newPrize
-}
-
-
-// walk function, in instance of enemy encounter player can choose to fight or run, else print inventory
 function walk(){
-    const attackOrWalk = Math.random() * 100;
-    if(attackOrWalk <= 33){
-        randomEnemy();
-        console.log(enemyEncounter.enemyName, 'has attacked you!');
-        const fightOrRun = readlineSync.keyIn(`${name} your life is in danger! If you choose to defend yourself pick 'F' to fight or 'R' if you want to run like a coward! `,  {limit: ['f', 'r']});
-        if(fightOrRun === 'f'){
-            fight();
-        }else if(fightOrRun === 'r'){
-            run(); 
-        }
-        } else {
-            const travelOn = readlineSync.keyIn("You are a lucky bastard! You are yet to see another day of travel. To keep walking press 'W', to see your inventory status press 'P' ",   {limit: ['w', 'p']});
-            if(travelOn === 'p'){
-                inventory();
-            }
-        }
+    const random = Math.random();
+    if(random > 0.70){
+        const option2 = readlineSync.keyIn("It's your lucky day. You're safe to keep walking: Press 'W'. ", {limit: 'w'})
+    if(option2 === 'w'){
+        console.log("Keep on with your travel through THE DEATH FOREST")
     }
-    
-// player option functions: walk, print inventory, fight if enemy encountered
-   function inventory(){
-        console.log(player);
-        walk()
-    }
-
-// fight and run functions 
-    function fight(){
-        if(enemyEncounter.enemyHp > 0){
-            const mutilation = random(player)
-            enemyEncounter.enemyHp = enemyEncounter.hp - mutilation
-            console.log(`${name} you have damaged ` + enemyEncounter.enemyName + 'and they lost their life points. ' + enemyEncounter.enemyHp);
-        if(enemyEncounter.enemyHp > 0){
-
+    }else{
+        console.log(enemies.legth)
+        if(enemies.length <=0){
+            console.log("You have fought a great fight and killed your enemies. You are safe at last!!!")
+            isAlive = false
+        }else{
+            fightEnemy()
         }
     }
 }
 
-function run(){
-    if(Math.floor(Math.random()* 100)< 50){
-        console.log("YOu ran fast and were able to get away!");
-        walk();
+// enemy encounter: player get to choose to ether run or attack back
+function fightEnemy(){
+    if(enemies.length <= 0){
+        console.log("You have fought a great fight and killed your enemies. You are safe at last!!!")
+            isAlive = false
     }else{
-        console.log("Your luck has run out, they cought up to you! You must fight for your life! ")
-        fight();
+        let runAway = Math.random()
+        let randomEnemy = enemies[Math.floor(Math.random()* enemies.length)]
+        const option3 = readlineSync.keyIn(`${name}, ` + randomEnemy.enemyName + " ,is in your path!!! Do you want to fight back [a] or run away [r]?! ", {limit: ['A', 'R']})
+        if(option3 === 'a'){
+            attack(randomEnemy)
+        }else if(option3 === 'r'){
+            runAway(runAway)
+        }
+    }
+}
+
+// player attacks the enemy, they ether defeat them or get killed
+function attack(randomEnemy){
+    console.log(randomEnemy.enemyName + randomEnemy.enemyTreasure)
+    const playerLoss = Math.floor(Math.random()* 100)
+    const enemyLoss = Math.floor(Math.random()* 100)
+
+    console.log("Your bravery is not paying off. You have lost " + playerLoss+ " of your health points.")
+    console.log("There is no room for failure, keep fighting!" +randomEnemy.enemyName+ " does not stand a chance againt your will to live! ")
+    console.log(`${name}, you put up a great fight and earned ` +randomEnemy.enemyTreasure+ " which is now added to your inventory!")
+    const randomEnemyTreasure = enemies.indexOf(randomEnemy)
+    enemies.splice(randomEnemyTreasure, 1)
+    inventory.push(randomEnemy.enemyTreasure)
+
+    const option4 = readlineSync.keyIn("You may view your inventory by pressing 'p'. If you want to EXIT the game press 'q' ", {limit: ['P', 'Q']})
+    if(option4 === 'p'){
+        console.log(inventory)
+        console.log("Your will to live is strong, keep walking through THE DEATH FOREST.")
+        walk()
+    }else if(option4 === 'q'){
+        console.log("You have quit the game, GOOD BYE!")
+        isAlive = false
+    }
+}
+
+//player has 50% getting away from the enemy
+function runAway(){
+    if(runAway > 0.50){
+        console.log(`${name}, you run fast and you were able to get away!`)
+    }else{
+        console.log("Your fear has failed you, they cought up to you! You did not die fighting like a true warior!")
+        console.log("GAME OVER! GOOD BYE!")
+        isAlive = false
     }
 }
