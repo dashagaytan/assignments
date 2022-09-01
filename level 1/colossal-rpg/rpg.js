@@ -45,18 +45,18 @@ while(isAlive){
         console.log(inventory)
     }else if(option === 'q'){
         console.log("You ended your game. Good Bye!")
-   break}
+   process.exit()}  // will end the game and not the while loop
 }
 
 function walk(){
     const random = Math.random();
     if(random > 0.70){
-        const option2 = readlineSync.keyIn("It's your lucky day. You're safe to keep walking: Press 'W'. ", {limit: 'w'})
-    if(option2 === 'w'){
+    //     const option2 = readlineSync.keyIn("To keep walking: Press 'W'. ", {limit: 'w'})
+    // if(option2 === 'w'){
         console.log("Keep on with your travel through THE DEATH FOREST")
-    }
+    //}
     }else{
-        console.log(enemies.legth)
+        console.log(enemies.length + " enemies left to fight!")
         if(enemies.length <=0){
             console.log("You have fought a great fight and killed your enemies. You are safe at last!!!")
             isAlive = false
@@ -68,10 +68,6 @@ function walk(){
 
 // enemy encounter: player get to choose to ether run or attack back
 function fightEnemy(){
-    if(enemies.length <= 0){
-        console.log("You have fought a great fight and killed your enemies. You are safe at last!!!")
-            isAlive = false
-    }else{
         let run = Math.random()
         let randomEnemy = enemies[Math.floor(Math.random()* enemies.length)]
         const option3 = readlineSync.keyIn(`${name}, ` + randomEnemy.enemyName + " ,is in your path!!! Do you want to fight back [a] or run away [r]?! ", {limit: ['A', 'R']})
@@ -81,17 +77,17 @@ function fightEnemy(){
             runaway(run)
         }
     }
-}
+
 
 // player attacks the enemy, they ether defeat them or get killed
 function attack(randomEnemy){
-    console.log(randomEnemy.enemyName + randomEnemy.enemyTreasure)
+    console.log(randomEnemy.enemyName + " " + randomEnemy.enemyTreasure)
     const playerLoss = Math.floor(Math.random()* 100)
     const enemyLoss = Math.floor(Math.random()* 100)
 
     console.log("Your bravery is not paying off. You have lost " + playerLoss+ " of your health points.")
-    console.log("There is no room for failure, keep fighting!" +randomEnemy.enemyName+ " does not stand a chance againt your will to live! ")
-    console.log(`${name}, you put up a great fight and earned ` +randomEnemy.enemyTreasure+ " which is now added to your inventory!")
+    console.log("There is no room for failure, keep fighting!" + randomEnemy.enemyName + " does not stand a chance againt your will to live! ")
+    console.log(`${name}, you put up a great fight and earned ${randomEnemy.enemyTreasure} which is now added to your inventory!`)
     const randomEnemyTreasure = enemies.indexOf(randomEnemy)
     enemies.splice(randomEnemyTreasure, 1)
     inventory.push(randomEnemy.enemyTreasure)
