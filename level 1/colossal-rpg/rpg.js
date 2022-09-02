@@ -33,7 +33,7 @@ const orochimaru = new Enemy("Orochimaru", 100, "sword")
 
 enemies.push(madara, itachi, orochimaru)
 
-const inventory = ["crossbow", "dagger", "axe"]
+const inventory = ["crossbow", "dagger", "axe"] 
 const player = new Player (name, 100, ["crossbow", "dagger", "axe"])
 
 // player gets to choose between walking, printing an inventory or to exit the game.
@@ -51,10 +51,7 @@ while(isAlive){
 function walk(){
     const random = Math.random();
     if(random > 0.70){
-    //     const option2 = readlineSync.keyIn("To keep walking: Press 'W'. ", {limit: 'w'})
-    // if(option2 === 'w'){
         console.log("Keep on with your travel through THE DEATH FOREST")
-    //}
     }else{
         console.log(enemies.length + " enemies left to fight!")
         if(enemies.length <=0){
@@ -89,7 +86,7 @@ function attack(randomEnemy){
     console.log("There is no room for failure, keep fighting!" + randomEnemy.enemyName + " does not stand a chance againt your will to live! ")
     console.log(`${name}, you put up a great fight and earned ${randomEnemy.enemyTreasure} which is now added to your inventory!`)
     const randomEnemyTreasure = enemies.indexOf(randomEnemy)
-    enemies.splice(randomEnemyTreasure, 1)
+    enemies.splice(randomEnemyTreasure, 1) // takes away an enemy from an array when player wins the battle
     inventory.push(randomEnemy.enemyTreasure)
 
     const option4 = readlineSync.keyIn("You may view your inventory by pressing 'p'. If you want to EXIT the game press 'q' ", {limit: ['P', 'Q']})
