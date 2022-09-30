@@ -18,7 +18,10 @@ body {
 }
 
 .box1:hover {
-
+    transition: 1s;
+    background-color: pink;
+    border: pink;
+    filter: drop-shadow(2px 2px 5px white);
 }
 
 .box2 {
@@ -28,7 +31,10 @@ body {
 }
 
 .box2:hover {
-
+    transition: 1s;
+    border-radius: 50%;
+    background-color: yellow;
+    border: 2px solid yellow;
 }
 
 .box3 {
@@ -38,7 +44,10 @@ body {
 }
 
 .box3:hover {
-
+    transition: all ease-in 1.5s;
+    filter: drop-shadow(2px 4px 4px black);
+    border: 4px double greenyellow;
+    background-color: greenyellow;
 }
 
 .box4 {
@@ -48,7 +57,9 @@ body {
 }
 
 .box4:hover {
-
+    transition: 1s;
+    height: 150px;
+    width: 150px;
 }
 
 .box5 {
@@ -58,6 +69,9 @@ body {
 }
 
 .box5:hover {
+    transition-delay: all ease-out 1.5s;
+    background-color: aquamarine;
+    border: aquamarine;
 
 }
 
@@ -68,7 +82,9 @@ body {
 }
 
 .box6:hover {
-
+    transition: 2s;
+    background-color: white;
+    border: white;
 }
 
 .box1, .box2, .box3, .box4, .box5, .box6 {
