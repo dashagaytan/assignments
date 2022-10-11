@@ -35,14 +35,14 @@ img{
 
 
 /******************** class styles *****************/
-.btn{
+/* .btn{
     padding: 5px 10px;
     font-size: 15px;
 }
     
 .btn:hover {
     box-shadow: 0 12px 16px 0 rgba(7, 58, 244, 0.474, 0 17px 50px 0 rgba(7, 58, 244, 0.474));
-  }
+  } */
 
 .pestControl{
     display: grid;
