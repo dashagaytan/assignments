@@ -2,8 +2,8 @@
 const form = document.pestControl;
 // const btn = document.getElementsByClassName['btn']
 
-form.addEventListener('click', function(e){
-    e.preventDefault();
+form.addEventListener('click', function(event){
+    event.preventDefault()
 
     const bobOmb = form.bobOmb.value;
     const cheepCheep = form.cheepCheep.value;
@@ -18,4 +18,4 @@ form.addEventListener('click', function(e){
     const totalPrice = document.createElement('p')
     totalPrice.textContent = total + " Coins"
     document.getElementsByClassName('totalPrice').append(totalPrice)
-})
+});
