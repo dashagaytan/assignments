@@ -23,13 +23,56 @@ h1{
     color:  #24527a;
 }
 
+#price{
+    width: 40px;
+}
+
+#description{
+    width: 100px;
+}
+
+#list{
+    text-align: center;
+    margin-top: 15px;
+
+}
+
+.list {
+    margin: 20px 15px;
+}
+
+.todo{
+    text-align: center;
+}
+
+.delete{
+    text-align: right;
+    
+}
+
+.img{
+    width: auto;
+    height: 50px;
+}
 
 .title {
+    text-align: center;
     color: #24527a;
 }
 
-.list{
+ #list{
     text-align: center;
     margin-top: 20px;
 }
-  
+
+.item{
+    text-align: center;
+    margin: 20px 40px ;
+    display: inline-block;
+    
+}
+
+.check{
+    display: inline-block;
+}
+
