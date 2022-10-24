@@ -29,7 +29,7 @@ function makeTodo(data){
         deleteBtn.textContent = "Delete"
         input.type = "checkbox"
         div.className = "item"
-        title.textContent = "todo"
+        title.textContent = "Task"
         input.className = "check"
         deleteBtn.className = "delete"
         img.className = "img"
@@ -84,7 +84,7 @@ function clearList(){
 }
 
 myForm.addEventListener("submit", function(e){
-    e.parentDefault()
+    e.preventDefault()
 
     const newItem = {
         title: myForm.input.value,
@@ -92,7 +92,6 @@ myForm.addEventListener("submit", function(e){
         description: myForm.description.value,
         imgUrl: myForm.img.value
     }
-
     myForm.input.value = ""
     myForm.price.value = ""
     myForm.description.value = ""
