@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Lora', serif;
+}
+
+.navbar{
+    display: flex;
+    
+}
+
+.navbar--start{
+    font-style: bold;
+}
+
+.navbar--start > a{
+    text-decoration: none;
+    text-decoration-line: none;
+    font-weight: 800;
+}
