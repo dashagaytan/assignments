@@ -1,59 +1,143 @@
-* {
-    box-sizing: border-box;
-    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+*{
     margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    position: relative;
+}
+
+/* HEADER & NAVBAR */
+.navbar{
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    padding-right: 3rem;
+    padding-left: 3rem;
+    max-width: 2000px;
+    top: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.navbar > a{
+    text-decoration: none;
+    color: white !important;
+    font-weight: 800;
+    font-size: 1.25em;
+    margin-right: 2rem;
+    white-space: nowrap;
+    padding-top: 0.312rem;
+    padding-bottom: 0.312rem;
+}
+
+.navbar--list {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.navbar--item > a{
+    color: white !important;
+    font-size: 1em;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    padding: 1.5rem 1rem 1.5rem 1rem;
+    text-decoration: none;
+}
+
+a:visited{
+    color: black;
 }
 
 .header{
-    /* display: flex; */
-    /* flex-wrap: nowrap; */
+    position: relative;
+    margin-bottom: 90px;
     background-image: url(images/floral-blog.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 340px;  
-    /* padding-left: 0;
-    margin-bottom: 0;  */
-} 
-
-/* .navbar--brand{
-    display: flex;
-    font-style: bold;
-    font-size: 30px;
-    color: white;
-    text-decoration: none;
-    font-weight: 800;
-    padding-top: 0.32em;
-    padding-left: 80px;
-    
-} */
-
-/* .navbar--list{
-    color:rgb(97, 97, 97);
-    padding-left: 430px;
-    padding-top: 25px;
-    font-size: 0.80em;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    text-decoration: none;
+    background-attachment: scroll;
+    height: 340px; 
+    text-align: center;
+    vertical-align: middle; 
+    padding-top: 140px;
+    filter: brightness(95%);
 
 }
 
-.navbar--item{
-    display: inline-block;
-    list-style: none;
-    gap: 5px;
-} */
+.title{
+    color: white !important;
+    line-height: 1.2;
+    font-weight: 800;
+    font-size: 4rem;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" ;
+}
 
+.subtitle{
+    color: white !important;
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+    display: block;
+}
+
+/* BLOG */
+.blogPost{
+    display: block;
+    width: 100%;
+    max-width: 540px;
+    padding-right: 1.5rem !important;
+    padding-left: 1.5rem !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.list-title{
+    font-size: 1.875rem;
+    margin-top: 1.875rem;
+    margin-bottom: 0.625rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #212529;
+}
+
+.list-subtitle{
+    font-weight: 300;
+    font-size: 1.3rem;
+    margin-bottom: 0.625rem;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" ;
+}
+.list-date{
+    font-size: 1.125rem;
+    font-style: italic;
+    margin-top: 0;
+    color: #6c757d;
+    margin: 2rem 0;
+    display: block;
+    font-family: "Lora", serif;
+    font-weight: 400;
+}
+.list-date > a{
+    font-size: 1.3rem;
+    font-style: italic;
+    color: black;
+}
+
+/* FOOTER */
 .footer{
    margin-top: 30px;
 }
+
 .footer > ul{
     display: flex;
     list-style: none;
     background-color: #fff;
-    font-size: 30px;
+    font-size: 40px;
     justify-content: center;
     height: 50px;
     gap: 25px;
@@ -62,10 +146,9 @@
 .copyright{
     color: #6c757d;
     font-style: italic;
-    font-size: 0.96em;
+    font-size: 0.98em;
     display: block;
     text-align: center;
     font-family: "Lora", serif;
     font-weight: 400;
-    
 }
