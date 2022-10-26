@@ -3,16 +3,13 @@ import React from "react";
 export default function Navbar(){
     return(
         <nav className="navbar">
-            <div className="navbar--start">
-                <a href="">Start Bootstrap</a>
-                </div>
+                <a href="index.html" className="navbar--brand">Start Bootstrap</a>
                 <div>
                     <ul className="navbar--list">
-                    <a className="navbar--item">Home</a>
-                    <a className="navbar--item">About</a>
-                    <a className="navbar--item">Sample Post</a>
-                    <a className="navbar--item">Contact</a>
-
+                        <li className="navbar--item"><a href="index.html">Home</a></li>
+                        <li className="navbar--item"><a href="index.html">About</a></li>
+                        <li className="navbar--item"><a href="index.html">Sample Post</a></li>
+                        <li className="navbar--item"><a href="index.html">Contact</a></li>
                     </ul>
                 </div>
         </nav>

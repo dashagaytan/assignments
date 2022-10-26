@@ -7,19 +7,19 @@ export default
         author: "Start Bootstrap",
         date: "September 24, 2019"
     },{
-        d: 2,
+        id: 2,
         title: "I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.",
         subTitle: "",
         author: "Start Bootstrap",
         date: "September 18, 2019"
     },{
-        d: 3,
+        id: 3,
         title: "Science has not yet mastered prophecy",
         subTitle: "We predict too much for the next year and yet far too little for the next ten.",
         author: "Start Bootstrap",
         date: "August 24, 2019"
     },{
-        d: 4,
+        id: 4,
         title: "Failure is not an option",
         subTitle: "Many say exploration is part of our destiny, but it’s actually our duty to future generations.",
         author: "Start Bootstrap",

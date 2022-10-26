@@ -1,15 +1,14 @@
 import React from "react"
 import Header from "./components/Header"
-import Navbar from "./components/Navbar"
-import BlogList from "./components/BlogList"
 import BlogPost from "./components/BlogPost"
+import Footer from "./components/Footer"
 import data from "./data"
-
+import styles from "./style.css"
 
 export default function App(){
     const list = data.map(item =>{
         return(
-            <BlogList
+            <BlogPost
                 key={item.id}
                 {...item}
             />
@@ -18,11 +17,8 @@ export default function App(){
     return(
         <div className="container">
         <Header />
-        <Navbar />
-        <section className="listData">
             {list}
-            </section>
-        <BlogPost />
+             <Footer />
     </div>
     )
 }
