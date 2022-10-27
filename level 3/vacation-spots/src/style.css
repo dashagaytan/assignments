@@ -1,7 +1,55 @@
 *{
-
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;;
+    
 }
 
 .header{
-    background-image: url(images/cover.jpg);
+    background-image: url("https://images.unsplash.com/photo-1473163928189-364b2c4e1135?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+    height: 340px; 
+    text-align: center;
+    vertical-align: middle; 
+    padding-top: 140px;
+    filter: brightness(95%);
+}
+
+.title{
+    color: #e0ebeb !important;
+    font-size: 4em;
+    font-weight: 700;
+}
+
+.card{
+    font-weight: 400;
+    font-size: 15px;
+    display: inline-block;
+    margin-top: 3rem;
+    margin-left: 5rem;
+
+}
+.card--place{
+    color:  #a7bcb9;
+    margin-bottom: 10px;
+    letter-spacing: 0.65px;
+}
+
+.price{
+    color:#5dacbd;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.timeToGo{
+    color: #24527a;
+}
+
+.places-img{
+    width: auto;
+    height: 240px;
+    border-radius: 15px 15px 15px 15px;
 }
