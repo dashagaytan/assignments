@@ -1,10 +1,9 @@
 import React from "react";
 import Friend from "./Friend";
-import friendsData from "./friendsData"
-import style from "./style.css"
+import data from "./data"
 
 export default function FriendsList(){
-    const data = friendsData.map(friend =>{
+    const friendArr = data.map(friend =>{
         return(
             <Friend
             key = {friend.id}
@@ -14,7 +13,7 @@ export default function FriendsList(){
     })
     return(
         <div>
-            {data}
+            {friendArr}
         </div>
     )
 }

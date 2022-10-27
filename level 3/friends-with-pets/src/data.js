@@ -1,4 +1,4 @@
-const friends =
+export default 
 [
     {
       id: 1,
@@ -6,15 +6,15 @@ const friends =
       age: 29,
       pets: [
         {
-          id: 1,
+          
           name: "spot",
           breed: "tabby"
         },{
-          id: 2,
+          
           name: "John Johnson",
           breed: "husky"
         },{
-          id: 3,
+          
           name: "Bear the bear",
           breed: "Grizzly"
         }
@@ -25,7 +25,7 @@ const friends =
       age: 31,
       pets: [
         {
-          id: 4,
+          
           name: "Sally",
           breed: "Australian Shepard"
         }
@@ -36,11 +36,11 @@ const friends =
       age: 25,
       pets: [
         {
-          id: 5,
+          
           name: "Indy",
           breed: "Akita"
         },{
-          id: 6,
+          
           name: "Anna",
           breed: "persian cat"
         }
@@ -51,24 +51,22 @@ const friends =
       age: 20,
       pets: [
         {
-          id: 7,
+          
           name: "fluffy",
           breed: "sphynx cat"
         },{
-          id: 8,
+          
           name: "patches",
           breed: "sphynx cat"
         },{
-          id: 9,
+          
           name: "tiger",
           breed: "sphynx cat"
         },{
-          id: 10,
+          
           name: "oscar",
           breed: "sphynx cat"
         }
       ]
     }
   ]
-  
-  export default friends
