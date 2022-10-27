@@ -3,7 +3,7 @@ import Pets from "./Pets"
 
 
 export default function Friend(props){
-    const petsArr = props.data.pets.map(pet =>{
+    const petsArr = props.pets.map(pet =>{
         return(
             <Pets
                 {...pet}
@@ -12,12 +12,13 @@ export default function Friend(props){
     })
     return(
         <div className="main-container">
-            <h1 className="name">{props.name}</h1>
-            <h3 className="age">{props.age}</h3>
+            <h2 className="name">Owner {props.name}</h2>
+            <h3 className="age">Age: {props.age}</h3>
             <div className="pets-container">
-                <h4>Pets:</h4>
+                <h4 className="owner">{props.name}'s pets:</h4>
                     {petsArr}
             </div>
+            
         </div>
     )
 }

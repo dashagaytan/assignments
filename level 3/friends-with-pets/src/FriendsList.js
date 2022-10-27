@@ -1,19 +1,18 @@
 import React from "react";
+import friends from "./data"
 import Friend from "./Friend";
-import data from "./data"
 
 export default function FriendsList(){
-    const friendArr = data.map(friend =>{
+    const friendsArr = friends.map(friend =>{
         return(
             <Friend
-            key = {friend.id}
-            {...friend}
+                {...friend}
             />
         )
     })
     return(
         <div>
-            {friendArr}
+            {friendsArr}
         </div>
     )
 }

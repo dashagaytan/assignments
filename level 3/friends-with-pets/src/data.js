@@ -1,4 +1,4 @@
-export default 
+let friends = 
 [
     {
       id: 1,
@@ -70,3 +70,4 @@ export default
       ]
     }
   ]
+  export default friends
