@@ -37,28 +37,49 @@ function App() {
       })
     }
 
+    // big time dj: 4 different btns that handle different effects
+
+    function bigTime1(){
+
+    }
+
+    function bigTime2(){
+
+    }
+
+    function bigTime3(){
+
+    }
+
+    function bigTime4(){
+
+    }
+
+    const squares = colors.map((currentColor) => {
+      return (
+        <Square backgroundColor={currentColor}/>
+      )
+    }) 
 
   return (
     <div>
       <h2 className='title'>DJ REACT</h2>
     <div className="square-container">
-        <Square className="square"/>
-        <Square className="square"/>
-        <Square className="square"/>
-        <Square className="square"/>
+      {squares}
     </div>
 
         <div className='btn-container'>
           <Button handleClick={smallDJ} buttonType="Small DJ"/>
           <Button handleClick={partyDJ} buttonType="Party DJ"/>
-          <Button handleClick={smallDJ} buttonType="Small DJ"/>
 
-          <Button handleClick={smallDJ} buttonType="Small DJ"/>
-          <Button handleClick={smallDJ} buttonType="Small DJ"/>
-          <Button handleClick={smallDJ} buttonType="Small DJ"/>
+          <Button handleClick={firstPro} buttonType="Left Blue"/>
+          <Button handleClick={secondPro} buttonType="Right Blue"/>
+          <Button handleClick={bigTime1} buttonType="Rainbow"/>
 
-          <Button handleClick={smallDJ} buttonType="Small DJ"/>
-          <Button handleClick={smallDJ} buttonType="Small DJ"/>
+          <Button handleClick={bigTime2} buttonType="Rainbow2"/>
+
+          <Button handleClick={bigTime3} buttonType="Gradient"/>
+          <Button handleClick={bigTime4} buttonType="Gradient2"/>
 
           
 
