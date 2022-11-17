@@ -19,7 +19,6 @@ body{
 }
 
 .face{
-   
     color: white;
     font-size: 35px;
     justify-content: center;
@@ -33,6 +32,7 @@ body{
     border: 3px solid white;
     width: 150px;
     height: 150px;
+    border-radius: 15px;
 }
 
 .btn{
