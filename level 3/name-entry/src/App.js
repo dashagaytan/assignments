@@ -1,26 +1,12 @@
 import React from 'react';
+import Form from "./Form"
 
 function App() {
-  const [nameData, setNameData] = React.useState({
-    name: "",
-    orderList: "",
-  })
-
-  function handleClick(){
-
-  }
-
-  function handleSubmit(e){
-    e.preventDefault()
-  }
-
-  return (
-    <div className="from-container">
-      <form onSubmit={handleSubmit}>
-
-      </form>
+  return(
+    <div>
+      <Form />
     </div>
-  );
+  )
 }
 
 export default App;
