@@ -3,44 +3,44 @@ import React from "react"
 function Form() {
 const [nameData, setNameData] = React.useState(
     {
-        firstName: "",
-        orderList: ""
-    }
-    
+        name: "",
+        names: []
+    }  
 )
 
   function handleChange(event){
-    const {name, value, type} = event.target
-    setNameData(prevNameData =>{
-        return{
-            ...prevNameData,
-            [name]: type === value
-        }
-    })
+        const {value, name} = event.target
+        setNameData(prevState => ({
+            ...prevState,
+            [name]: value
+        }))
+    }
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    setNameData(prevState => ({
+        name: "",
+        names: [...prevState, 
+            prevState.name]
+    }))
+    // console.log(nameData)
   }
 
-  function handleSubmit(e){
-    e.preventDefault()
-    console.log(nameData)
-  }
-  
+  const nameArr = nameData.names.map(name => <li>{name}</li>)
+
   return(
     <div className="form-container">
+        <h1>Name Entry: </h1>
         <form className="form" onSubmit={handleSubmit}>
-            <h1>Name Entry</h1>
-
-            <input 
-            type="text"
-            placeholder="Enter name"
-            name="firstName"
-            onChange={handleChange}
+            <input name="name"
+            type="text" onChange={handleChange}
+            placeholder="Enter name" value={nameData.name}
             />
-            <br>
-            </br>
-            <br>
-            </br>
+            <br></br>
+            <br></br>
             <button>Submit</button>
         </form>
+            <ol>{nameArr}</ol>
     </div>
   )
 
