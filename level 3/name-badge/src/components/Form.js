@@ -1,7 +1,7 @@
 import React from "react";
 
 function Form(){
-    const [badge, setBadge] = React.useState({
+    const [uesrBadge, setUserBadge] = React.useState({
         firstName: "",
         lastName: "",
         email: "",
@@ -11,18 +11,28 @@ function Form(){
         about: ""
     })
 
-    function handleChange(){
-
+    function handleChange(event){
+        const {name, value, type} = event.target
+        setUserBadge(prevState => {
+            return {
+                ...prevState, 
+                [name]: type.value
+            }
+        })
     }
 
-    function handleSubmit(){
-
+    function handleSubmit(event){
+        event.preventDefault()
     }
 
     return(
         <div className="form-container">
             <form onSubmit={handleSubmit}>
                 <input 
+                type="text"
+                placeholder="First name"
+                name="firstName"
+                value={uesrBadge.firstName}
                 onChange={handleChange}
                 />
 
