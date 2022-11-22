@@ -1,7 +1,7 @@
 import React from "react";
 import Badge from "./Badge"
 
-function Form(props){
+function Form(){
     const [userBadge, setUserBadge] = React.useState({
         firstName: "",
         lastName: "",
@@ -22,6 +22,7 @@ function Form(props){
         })
     }
 
+    // creating a useState array of badges
     const [badgeArr, setBadgeArr] = React.useState([])
 
     function handleSubmit(event){
@@ -38,6 +39,7 @@ function Form(props){
         })
     }
 
+    // maping throygh an array of badges to display each badge in DOM
     const badges = badgeArr.map((badge, index) => <Badge {...badge} key={index}/>)
 
     return(
