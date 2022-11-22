@@ -1,7 +1,8 @@
 import React from "react";
+import Badge from "./Badge"
 
-function Form(){
-    const [uesrBadge, setUserBadge] = React.useState({
+function Form(props){
+    const [userBadge, setUserBadge] = React.useState({
         firstName: "",
         lastName: "",
         email: "",
@@ -12,56 +13,101 @@ function Form(){
     })
 
     function handleChange(event){
-        const {name, value, type} = event.target
+        const {name, value} = event.target
         setUserBadge(prevState => {
             return {
                 ...prevState, 
-                [name]: type.value
+                [name]: value
             }
         })
     }
 
+    const [badgeArr, setBadgeArr] = React.useState([])
+
     function handleSubmit(event){
-        event.preventDefault()
+        event.preventDefault();
+        setBadgeArr(prevState => [...prevState, userBadge])
+        setUserBadge({
+            firstName: "",
+            lastName: "",
+            email: "",
+            placeOfBirth: "",
+            phone: "",
+            favoriteFood: "",
+            about: ""
+        })
     }
+
+    const badges = badgeArr.map((badge, index) => <Badge {...badge} key={index}/>)
 
     return(
         <div className="form-container">
-            <form onSubmit={handleSubmit}>
+            <form name="form" onSubmit={handleSubmit}>
                 <input 
                 type="text"
-                placeholder="First name"
+                placeholder="First Name"
                 name="firstName"
-                value={uesrBadge.firstName}
+                value={userBadge.firstName}
                 onChange={handleChange}
+                required
                 />
 
                 <input 
+                type="text"
+                placeholder="Last Name"
+                name="lastName"
+                value={userBadge.lastName}
                 onChange={handleChange}
+                required
                 />
 
                 <input 
+                type="email"
+                placeholder="Email"
+                name="email"
+                value={userBadge.email}
                 onChange={handleChange}
+                required
                 />
 
                 <input 
+                type="tel"
+                placeholder="Place of Birth"
+                name="placeOfBirth"
+                value={userBadge.placeOfBirth}
                 onChange={handleChange}
+                required
                 />
 
                 <input 
+                type="number"
+                placeholder="Phone Number"
+                name="phone"
+                minLength="10"
+                value={userBadge.phone}
                 onChange={handleChange}
+                required
                 />
 
                 <input
+                type="text"
+                placeholder="Favorite Food"
+                name="favoriteFood"
+                value={userBadge.favoriteFood}
                 onChange={handleChange}
                 /> 
 
-                <input 
+                <textarea 
+                className="textArea"
+                value={userBadge.about}
+                placeholder="Tell us about yourself"
+                name="about"
                 onChange={handleChange}
-                /> {/*textbox*/}
+                />
                 
+                <button>Submit</button>
             </form>
-            <button>Submit</button>
+            {badges}
         </div>
     )
 }
