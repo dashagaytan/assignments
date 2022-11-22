@@ -105,7 +105,7 @@ function Form(props){
                 onChange={handleChange}
                 />
                 
-                <button>Submit</button>
+                <button className="btn">Submit</button>
             </form>
             {badges}
         </div>
