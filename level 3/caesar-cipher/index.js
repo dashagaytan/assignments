@@ -6,6 +6,7 @@ let alphabet = "abcdefghijklmnopqrstuvwxyz".split('');
 //mapping over input in an array
 const cipher = input.split('').map(char => {
     if(alphabet.includes(char)){
+        //loop back around the aphabet when reaches index of z
         let index = (alphabet.indexOf(char) + shift) %26
         return alphabet[index]
     }else{
@@ -13,4 +14,4 @@ const cipher = input.split('').map(char => {
     }
 })
 
-console.log(`Your cipher text is: ${cipher}`)
+console.log(`Your cipher text is: ${cipher.join('')}`)
