@@ -6,11 +6,11 @@ let alphabet = "abcdefghijklmnopqrstuvwxyz".split('');
 //mapping over input in an array
 const cipher = input.split('').map(char => {
     if(alphabet.includes(char)){
-        let index = (alphabet.indexOf(cahr) + shift) %26
+        let index = (alphabet.indexOf(char) + shift) %26
         return alphabet[index]
     }else{
         return char;
     }
 })
 
-console.log(`Secret message is: ${cipher}`)
+console.log(`Your cipher text is: ${cipher}`)
