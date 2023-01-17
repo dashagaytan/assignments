@@ -1,7 +1,14 @@
 *{
-    background-color:rgb(232, 228, 222);
+    background-color:rgb(255, 255, 255);
 }
 
 .gradient{
     box-sizing: border-box;
+}
+
+.title{
+    color: rgb(221, 199, 244);
+    
+    text-align: center;
+    
 }
