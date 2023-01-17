@@ -1,5 +1,9 @@
-*{
-    background-color:rgb(255, 255, 255);
+.main-container{
+    background: rgb(255, 248, 248);
+    
+    border: 8px ridge rgba(211, 0, 255, 0.6);
+    border-radius: 13px;
+    padding: 40px;
 }
 
 .gradient{
@@ -7,8 +11,7 @@
 }
 
 .title{
-    color: rgb(221, 199, 244);
-    
+    color: rgb(174, 140, 211);
+    shadow: 15px 19px 23px 6px rgba(0, 0, 0, 0.2);
     text-align: center;
-    
 }
