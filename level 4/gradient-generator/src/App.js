@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef} from "react";
 import Generator from "./Generator";
 
 function App() {
@@ -20,16 +20,19 @@ function handleChange(event){
 }
 
 // setting a cross-browser CSS code in a text box that user will be able to generate and copy. 
-let cssColorCode = `linear-gradient(${gradient.angle}deg, ${gradient.color1}, ${gradient.color2});
+const cssColorCode = `linear-gradient(${gradient.angle}deg, ${gradient.color1}, ${gradient.color2});
 -moz-background: linear-gradient(${gradient.angle}deg, ${gradient.color1}, ${gradient.color2});
 -webkit: linear-gradient(${gradient.angle}deg, ${gradient.color1} , ${gradient.color2})`
 
+const newGradient = `linear-gradient(${gradient.angle}deg, ${gradient.color1}, ${gradient.color2})`;
+
   return (
+    <div>
+      <h1 className="title">CSS Gradient Code Generator</h1>
+  
     <div className="main-container">
-        <h1 className="title">CSS Gradient Code Generator</h1>
-        {/* gradient 2 color options, and angle */}
       <Generator>
-        <h2>Gradient Options:</h2>
+        <h2>GRADIENT OPTIONS:</h2>
           <form className="form">
             <h3>Color 1:</h3>
             <h3>{gradient.color1}</h3>
@@ -66,12 +69,11 @@ let cssColorCode = `linear-gradient(${gradient.angle}deg, ${gradient.color1}, ${
       {/* gradient box with css code for user to copy */}
       <Generator>
         <div  className="gradient-box">
-          <div className="code-box" style={{background: `linear-gradient(${gradient.angle}deg, ${gradient.color1}, ${gradient.color2})`}}>
-    
-          </div>
-          <textarea readOnly value={cssColorCode}></textarea>
+          <div className="gradient-color" style={{background: newGradient}}> </div>
+          <textarea readOnly value={cssColorCode} cols="50" rows="6"/>
         </div>
       </Generator>
+    </div>
     </div>
   );
 }
