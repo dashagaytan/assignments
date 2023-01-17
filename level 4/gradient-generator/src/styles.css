@@ -1,17 +1,71 @@
-.main-container{
+*{
+    box-sizing: border-box;
+    padding: 0;
+    font-family: 'Roboto Mono', monospace;
     background: rgb(255, 248, 248);
-    
-    border: 8px ridge rgba(211, 0, 255, 0.6);
+}
+
+.main-container{
+    border: 1px solid black;
     border-radius: 13px;
     padding: 40px;
 }
 
 .gradient{
     box-sizing: border-box;
+    
 }
 
 .title{
-    color: rgb(174, 140, 211);
-    shadow: 15px 19px 23px 6px rgba(0, 0, 0, 0.2);
+    color: rgb(43, 17, 70);
+    text-shadow: 0px 9px 5px rgba(0, 0, 0, 0.2);
+    padding-left: 10px;
+    padding-top: 20px; 
+}
+
+.form{
+    display: grid;
+    grid-auto-flow: column;
+    margin: 20px;
+    gap: 10px;
+}
+
+.color-input{
+    height: 50px;
+    width: 100px;
+    margin: 40 auto;
+    margin-top: 10px;
+    border:  rgb(43, 17, 70);
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.angle-input{
+    height: 35px;
+    width: 50px;
+    border: 1px solid  rgb(43, 17, 70);
+    border-radius: 4px;
+    text-indent: 4px;
+    margin: 0 auto;
+}
+
+.gradient-box{
+    width: 90%;
     text-align: center;
+}
+
+.gradient-color{
+    width: 90%;
+    height: 60%;
+    background-color: white;
+    margin: 5px auto;
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
+textarea{
+    color: gray;
+    width: 90%;
+    background-color: white;
+    padding-left: 5px;
 }
