@@ -10,9 +10,9 @@ function App() {
 
 function handleChange(event){
   const {name, value}= event.target
-  setGradient(prevGradient => {
+  setGradient(prevState => {
     return{
-      ...prevGradient,
+      ...prevState,
       [name]: value
     }
   })
@@ -20,10 +20,12 @@ function handleChange(event){
 }
 
 // setting a cross-browser CSS code in a text box that user will be able to generate and copy. 
-let cssColorCode = ``
+let cssColorCode = `linear-gradient(${gradient.angle}deg, ${gradient.color1}, ${gradient.color2});
+-moz-background: linear-gradient(${gradient.angle}deg, ${gradient.color1}, ${gradient.color2});
+-webkit: linear-gradient(${gradient.angle}deg, ${gradient.color1} , ${gradient.color2})`
 
   return (
-    <div>
+    <div className="main-container">
         <h1 className="title">CSS Gradient Code Generator</h1>
         {/* gradient 2 color options, and angle */}
       <Generator>
@@ -53,6 +55,8 @@ let cssColorCode = ``
               type="number"
               name="angle"
               value={gradient.angle}
+              min="0"
+              max="180"
               className="angle-input"
               onChange={handleChange}
               />
@@ -62,7 +66,7 @@ let cssColorCode = ``
       {/* gradient box with css code for user to copy */}
       <Generator>
         <div  className="gradient-box">
-          <div className="code-box" style={{}}>
+          <div className="code-box" style={{background: `linear-gradient(${gradient.angle}deg, ${gradient.color1}, ${gradient.color2})`}}>
     
           </div>
           <textarea readOnly value={cssColorCode}></textarea>
