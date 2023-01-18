@@ -7,9 +7,15 @@
 
 .form-container{
     border-radius: 4px;
-    background-color: rgb(218, 216, 216);
+    background: linear-gradient(106.7deg, rgb(245, 167, 191) -6.2%, rgb(201, 218, 238) 46.4%, rgb(164, 240, 229) 86.4%);
     padding: 15px;
     /* justify-content: center; */
+}
+
+.title{
+    text-align: center;
+    color: black;
+    margin-bottom: 20px;
 }
 
 input{
@@ -33,7 +39,7 @@ textarea{
 }
 .btn{
     width: 625px;
-    background-color: rgb(49, 213, 49);
+    background-color: rgb(129, 129, 129);
     color: white;
     padding: 14px 20px;
     margin: 10px 0;
@@ -41,16 +47,18 @@ textarea{
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    text-shadow: 1px 3px rgba(10, 10, 10, 0.3);
 }
 
 .btn:hover{
+    box-shadow: 14px 13px 20px rgba(0, 0, 0, 0.4);
     font-weight: 400;
-    background-color: rgb(39, 181, 39) ;
+    background-color: rgb(151, 151, 151) ;
 }
 
 .badge-container{
     width: 645px;
-    background-color: white;
+    background: transparent;
     border-radius: 4px;
     margin: 20px 0;
     box-sizing: border-box;
@@ -58,7 +66,7 @@ textarea{
 }
 
 .badge{
-    background-color: gray;
+    background-color: rgb(75, 75, 75);
     color: white;
     font-weight: 400;
     border-radius: 4px;
@@ -83,4 +91,6 @@ textarea{
     padding: 12px 20px;
     margin: 8px 10px;
     box-sizing: border-box;
+    box-shadow: 14px 10px 20px rgba(0, 0, 0, 0.15);
+    background-color: white;
 }

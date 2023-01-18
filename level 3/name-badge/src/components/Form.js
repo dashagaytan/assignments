@@ -44,6 +44,7 @@ function Form(){
 
     return(
         <div className="form-container">
+            <h1 className="title"> Name Badge</h1>
             <form name="form" onSubmit={handleSubmit}>
                 <input 
                 type="text"
