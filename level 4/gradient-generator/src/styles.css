@@ -5,16 +5,10 @@
     background: rgb(255, 248, 248);
 }
 
-.main-container{
-    border: 1px solid black;
-    border-radius: 13px;
-    padding: 40px;
-}
 
-.gradient{
+/* .gradient{
     box-sizing: border-box;
-    
-}
+} */
 
 .title{
     color: rgb(43, 17, 70);
@@ -23,17 +17,26 @@
     padding-top: 20px; 
 }
 
-.form{
+.main-container{
     display: grid;
-    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+    padding: 1.5rem;
+}
+
+.form{
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 13px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     margin: 20px;
-    gap: 10px;
+    gap: 20px;
 }
 
 .color-input{
     height: 50px;
-    width: 100px;
-    margin: 40 auto;
+    width: 130px;
+    margin: 10 auto;
     margin-top: 10px;
     border:  rgb(43, 17, 70);
     background-color: transparent;
@@ -42,30 +45,32 @@
 
 .angle-input{
     height: 35px;
-    width: 50px;
+    width: 100px;
+    margin-top: 10px;
     border: 1px solid  rgb(43, 17, 70);
     border-radius: 4px;
     text-indent: 4px;
-    margin: 0 auto;
 }
 
 .gradient-box{
+    margin-top: 69px;
     width: 90%;
     text-align: center;
 }
 
 .gradient-color{
-    width: 90%;
-    height: 60%;
+    width: 80%;
+    height: 150px;
     background-color: white;
-    margin: 5px auto;
+    margin: 40px auto;
     border: 1px solid black;
     border-radius: 2px;
 }
 
 textarea{
-    color: gray;
-    width: 90%;
+    color: rgba(113, 113, 113, 0.932);
+    width: 80%;
     background-color: white;
     padding-left: 5px;
+    /* background: */
 }
