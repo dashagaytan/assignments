@@ -1,13 +1,16 @@
-import React, {useState} from 'react';
-import './App.css';
+import React from 'react';
 import Main from './Main'
+import {ThemeContextProvider} from "./themeContext"
 
-function App() {
+function App(props) {
 
   return (
     <>
-    <Main />
+      <ThemeContextProvider>
+        <Main />
+      </ThemeContextProvider>
     </>
+   
   );
 }
 

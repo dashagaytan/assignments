@@ -1,15 +1,24 @@
 import React from "react";
+import { ThemeContext } from "./themeContext";
 
-function Main(){
+function Main(props){
+    const context = React.useContext(ThemeContext)
+
     return(
-        <>
-        <nav>
-        
-        </nav>
-        <body>
-
-        </body>
-        </>
+        <div className="Main">
+            <div className="nav-bar">
+                <nav>
+                    <ul>
+                        <li>Home</li>
+                        <li>Contact</li>
+                        <li>About</li>
+                    </ul>
+                </nav>
+            </div>
+            <body>
+                <p>On click of a button you can change the theme from dark to light</p>
+            </body>
+        </div>
     )
 }
 
