@@ -1,7 +1,7 @@
 import React from "react";
 import { ThemeContext } from "./themeContext";
 
-function Main(props){
+function Body(props){
     const {color, toggleTheme} = React.useContext(ThemeContext)
 
     return(
@@ -23,4 +23,4 @@ function Main(props){
     )
 }
 
-export default Main;
+export default Body;

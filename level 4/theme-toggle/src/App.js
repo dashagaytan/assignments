@@ -1,5 +1,7 @@
 import React from 'react';
-import Main from './Main'
+import Body from './Body'
+import NavBar from './NavBar'
+import Footer from './Footer'
 import {ThemeContextProvider} from "./themeContext"
 
 function App(props) {
@@ -7,7 +9,9 @@ function App(props) {
   return (
     <>
       <ThemeContextProvider>
-        <Main/>
+        <Body/>
+        <NavBar />
+        <Footer />
       </ThemeContextProvider>
     </>
    
