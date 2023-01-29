@@ -6,16 +6,8 @@ function Body(props){
 
     return(
         <div className="Main">
-            <div className="nav-bar">
-                <nav>
-                    <ul>
-                        <li>Home</li>
-                        <li>Contact</li>
-                        <li>About</li>
-                    </ul>
-                </nav>
-            </div>
-            <div className="toggle">
+          
+            <div className={`${color}-theme`}>
                 <button onClick={toggleTheme} className={`${color}-theme`}>Click me</button>
                 <p>On click of a button you can change the theme from dark to light</p>
             </div>

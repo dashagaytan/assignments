@@ -1,16 +1,16 @@
 import React from 'react';
-import Body from './Body'
 import NavBar from './NavBar'
+import Body from './Body'
 import Footer from './Footer'
 import {ThemeContextProvider} from "./themeContext"
 
-function App(props) {
+function App() {
 
   return (
     <>
       <ThemeContextProvider>
-        <Body/>
         <NavBar />
+        <Body/>
         <Footer />
       </ThemeContextProvider>
     </>

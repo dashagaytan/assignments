@@ -6,8 +6,9 @@ function ThemeContextProvider(props){
     const [color, setColor] = React.useState("dark")
 
 
-    const toggleTheme = () => {
-        setColor(prevState => prevState === "dark" ? "ligth" : "dark")
+    function toggleTheme(event){
+        setColor(event.target.value)
+        console.log(event.target.value)
     }
 
     return(
