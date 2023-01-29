@@ -12,8 +12,8 @@ function ThemeContextProvider(props){
 
     return(
         <ThemeContext.Provider value={{
-            color,
-            toggleTheme
+            color: color,
+            toggleTheme: toggleTheme
         }}>
             {props.childern}
         </ThemeContext.Provider>

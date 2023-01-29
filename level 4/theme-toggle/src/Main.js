@@ -2,7 +2,7 @@ import React from "react";
 import { ThemeContext } from "./themeContext";
 
 function Main(props){
-    const context = React.useContext(ThemeContext)
+    const {color, toggleTheme} = React.useContext(ThemeContext)
 
     return(
         <div className="Main">
@@ -15,9 +15,10 @@ function Main(props){
                     </ul>
                 </nav>
             </div>
-            <body>
+            <div className="toggle">
+                <button onClick={toggleTheme} className={`${color}-theme`}>Click me</button>
                 <p>On click of a button you can change the theme from dark to light</p>
-            </body>
+            </div>
         </div>
     )
 }

@@ -7,7 +7,7 @@ function App(props) {
   return (
     <>
       <ThemeContextProvider>
-        <Main />
+        <Main/>
       </ThemeContextProvider>
     </>
    
