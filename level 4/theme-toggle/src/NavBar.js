@@ -1,19 +1,20 @@
 import React from "react";
-import { ThemeContext } from "./themeContext";
+import ThemeContext from "./themeContext";
 
 function NavBar(props){
-    const {color} = React.useContext(ThemeContext)
+    const context = React.useContext(ThemeContext)
 
     return(
         <div className="nav-bar">
-        <nav className={color}>
-            <ul>
-                <li>Home</li>
-                <li>Contact</li>
-                <li>About</li>
-            </ul>
-        </nav>
-    </div>
+            <nav className={`${context}-theme`}>
+                <ul>
+                    <li><a className="active" href="Body.js">HOME</a></li>
+                    <li><a href="#home">ABOUT</a></li>
+                    <li><a href="#home">CONTACT</a></li>
+                </ul>
+            </nav>
+      
+        </div>
     )
 }
 

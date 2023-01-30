@@ -1,15 +1,15 @@
 import React from "react";
-import { ThemeContext } from "./themeContext";
+import ThemeContext from "./themeContext";
 
 function Footer(props){
 
-    const {color} = React.useContext(ThemeContext)
+    const context = React.useContext(ThemeContext)
     return(
-        <>
-            <div className={color}>
-
+        <div className={`${context}-theme`}>
+            <div className="footer">
+                <p>Created by Dasha Gaytan | 2023</p>
             </div>
-        </>
+        </div>
     )
 }
 

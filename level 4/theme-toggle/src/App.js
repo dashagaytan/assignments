@@ -2,18 +2,19 @@ import React from 'react';
 import NavBar from './NavBar'
 import Body from './Body'
 import Footer from './Footer'
-import {ThemeContextProvider} from "./themeContext"
+import ThemeContext from "./themeContext"
 
 function App() {
+  const context = React.useContext(ThemeContext)
 
   return (
-    <>
-      <ThemeContextProvider>
+    <div className={`${context}-theme`}>
+      <ThemeContext.Provider value="light">
         <NavBar />
         <Body/>
         <Footer />
-      </ThemeContextProvider>
-    </>
+      </ThemeContext.Provider>
+    </div>
    
   );
 }
