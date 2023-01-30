@@ -11,7 +11,7 @@ function Body(props){
                 <h1 className="title">Change Theme from Light to Dark</h1>
                 <p>On click of a button you can change the theme from dark to light</p>
 
-                <button className={`${context}-theme`}>Click me</button>
+                <button>Click me</button>
             </div>
         </div>
     )
