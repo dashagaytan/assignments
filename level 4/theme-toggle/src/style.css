@@ -91,5 +91,6 @@ li a:hover {
 
 .dark-theme{
   color: rgb(253, 249, 249);
-  background-color: rgb(64, 64, 64);
+  background-color: rgb(0, 0, 0);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
 }

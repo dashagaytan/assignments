@@ -2,30 +2,16 @@ import React from 'react';
 import NavBar from './NavBar'
 import Body from './Body'
 import Footer from './Footer'
-import ThemeContext from "./themeContext"
+import {ThemeContextProvider} from "./themeContext"
 
-function App(props) {
-  const context = React.useContext(ThemeContext)
-//create state to change theme from light to dark 
-const [theme, setTheme] = React.useState("light")
-
-//function that toggles the button from light theme to dark
-const toggleTheme = () => {
-  setTheme(setTheme => setTheme === "light" ? "dark" : "lihgt")
-}
-
+function App() {
+ 
   return (
-    <div className={`${context.theme}-theme`}>
-      <ThemeContext.Provider value={{
-        theme,
-        toggleTheme
-      }}>
+      <ThemeContextProvider>
         <NavBar />
         <Body/>
         <Footer />
-      </ThemeContext.Provider>
-    </div>
-   
+      </ThemeContextProvider>
   );
 }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import ThemeContext from "./themeContext";
+import {ThemeContext} from "./themeContext";
 
 function NavBar(props){
     const {theme} = React.useContext(ThemeContext)

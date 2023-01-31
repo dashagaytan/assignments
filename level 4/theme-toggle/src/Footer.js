@@ -1,5 +1,5 @@
 import React from "react";
-import ThemeContext from "./themeContext";
+import {ThemeContext} from "./themeContext";
 
 function Footer(props){
 
@@ -7,7 +7,6 @@ function Footer(props){
     return(
         <div className={`${theme}-theme`}>
             <div className="footer">
-                <hr></hr>
                 <p>Created by Dasha Gaytan | 2023</p>
             </div>
         </div>
