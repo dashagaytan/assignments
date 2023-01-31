@@ -6,18 +6,20 @@ import ThemeContext from "./themeContext"
 
 function App(props) {
   const context = React.useContext(ThemeContext)
+//create state to change theme from light to dark 
+const [theme, setTheme] = React.useState("light")
 
-  //create state to toggle from light to dark mode
-  const [theme, setTheme]=React.useState("light")
-
-  //toggle function that we will add to our button
-  const toggleTheme =() =>{
-    setTheme(prevTheme => prevTheme === "light" ? "dark" : "light")
-  }
+//function that toggles the button from light theme to dark
+const toggleTheme = () => {
+  setTheme(setTheme => setTheme === "light" ? "dark" : "lihgt")
+}
 
   return (
-    <div className={`${context}-theme`}>
-      <ThemeContext.Provider value="light">
+    <div className={`${context.theme}-theme`}>
+      <ThemeContext.Provider value={{
+        theme,
+        toggleTheme
+      }}>
         <NavBar />
         <Body/>
         <Footer />

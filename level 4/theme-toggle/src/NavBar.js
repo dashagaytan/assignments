@@ -2,11 +2,12 @@ import React from "react";
 import ThemeContext from "./themeContext";
 
 function NavBar(props){
-    const context = React.useContext(ThemeContext)
+    const {theme} = React.useContext(ThemeContext)
+
 
     return(
         <div className="nav-bar">
-            <nav className={`${context}-theme`}>
+            <nav className={`${theme}-theme`}>
                 <ul>
                     <li><a className="active" href="Body.js">HOME</a></li>
                     <li><a href="#home">ABOUT</a></li>
