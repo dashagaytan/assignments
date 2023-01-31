@@ -8,7 +8,7 @@ function ThemeContextProvider(props){
 
     //function that toggles the button from light theme to dark
     const toggleTheme = () => {
-        setTheme(setTheme => setTheme === "light" ? "dark" : "light")
+        setTheme(prevState => prevState === "light" ? "dark" : "light")
     }
 
     return(
