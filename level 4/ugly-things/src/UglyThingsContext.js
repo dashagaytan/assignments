@@ -1,6 +1,6 @@
 import React from "react";
 
-const ThemeContext = React.createContext()
+const UglyThemeContext = React.createContext()
 
 function themeContextProvider(props){
     
@@ -10,14 +10,14 @@ function themeContextProvider(props){
         setColor(prevColor => prevColor === "light" ? "dark" : "light")
 }
     return(
-        <ThemeContext.Provder value={{
+        <UglyThemeContext.Provider value={{
             color,
             toggleTheme
         }}>
             {props.children}
-        </ThemeContext.Provder>
+        </UglyThemeContext.Provider>
     )
 }
 
 
-export {themeContextProvider, ThemeContext}
+export {themeContextProvider, UglyThemeContext}
