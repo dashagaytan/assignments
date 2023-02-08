@@ -1,0 +1,1 @@
+//input form: title, image, description of the ugly thing
