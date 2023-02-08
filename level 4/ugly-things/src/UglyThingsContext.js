@@ -1,10 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 
 const UglyThemeContext = React.createContext()
 
 function themeContextProvider(props){
     
-    const [color, setColor] = React.useState("light")
+    const [color, setColor] = useState("light")
     
     const toggleTheme = () => {
         setColor(prevColor => prevColor === "light" ? "dark" : "light")
