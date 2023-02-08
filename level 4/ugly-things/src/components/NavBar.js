@@ -3,6 +3,12 @@ import React from "react";
 
 function NavBar(props){
 
+    return(
+        <div className="NavBar">
+            <h1 className="title">Its Ugly Around Here</h1>
+            <button className="theme-btn">☀️</button>
+        </div>
+    )
 }
 
 export default NavBar;
