@@ -3,6 +3,7 @@
 import React from "react";
 import UglyList from "./UglyList";
 import UglyThings from "./UglyThings";
+import Footer from "./Footer"
 
 function Form(props){
 
@@ -10,6 +11,7 @@ function Form(props){
         <>
             <UglyList />
             <UglyThings />
+            <Footer />
         </>
     )
 }

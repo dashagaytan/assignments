@@ -1,4 +1,29 @@
-body {
+* {
   margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+}
 
+.NavBar{
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.title{
+  margin-top: 9px;
+  color: rgb(231, 139, 40);
+}
+
+.theme-btn{
+  cursor: pointer;
+  font-size: 40px;
+  border-radius: 3px;
+  border: none;
+  background-color: whitesmoke;
+}
+
+:hover.theme-btn{
+  background-color: rgb(255, 244, 142);
+  border-radius: 50%;
 }
