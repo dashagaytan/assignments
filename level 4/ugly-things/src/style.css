@@ -24,6 +24,6 @@
 }
 
 :hover.theme-btn{
-  background-color: rgb(255, 244, 142);
+  background-color: rgba(255, 244, 142, 0.539);
   border-radius: 50%;
 }
