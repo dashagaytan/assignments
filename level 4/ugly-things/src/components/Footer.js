@@ -3,7 +3,7 @@ import React from "react";
 function Footer(){
     return(
         <>
-            <section>© 2023 Dasha Gaytan</section>
+            <section className="footer">© 2023 Dasha Gaytan</section>
         </>
     )
 }
