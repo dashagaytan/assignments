@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 
 //context hold axios requests as well as objects functions manipulations.
@@ -21,6 +21,18 @@ function UglyThingProvider(props){
         }))
     }
 
+    function getUglyThings(){
+        axios.get("https://api.vschool.io/dashagaytan/thing")
+        .then(res => {
+            setUglyForm(() => (res.data))
+        })
+        .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        return getUglyThings();
+    }, []);
+
     //post user input to the list of ugly things on submit
     function handleSubmit(event){
         event.preventDefaoult()
@@ -32,8 +44,16 @@ function UglyThingProvider(props){
         .catch(err => console.log(err))
     }
 
-    function getUglyThings(){
-        axios.get("https://api.vschool.io/dashagaytan/thing")
-        .then(res => )
-    }
+    return (
+        <UglyContext.Provider value ={{
+            uglyForm,
+            handleChange,
+            handleSubmit
+        }}>
+            {props.children}
+        </UglyContext.Provider>
+    )
+
 }
+
+export {UglyThingProvider, UglyContext}
