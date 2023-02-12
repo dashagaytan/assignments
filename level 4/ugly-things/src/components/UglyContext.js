@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 //context hold axios requests as well as objects functions manipulations.
@@ -6,7 +6,7 @@ const UglyContext = React.createContext();
 
 //form state 
 function UglyThingProvider(props){
-    const [uglyForm, setUglyForm] = React.useState({
+    const [uglyForm, setUglyForm] = useState({
         title: '',
         desctiption: '',
         imgUrl: ''
@@ -38,7 +38,7 @@ function UglyThingProvider(props){
         event.preventDefaoult()
         axios.post("https://api.vschool.io/dashagaytan/thing", uglyForm)
         .then(res => {
-            console.log(res.data)
+            console.log(res.data) 
             return getUglyThings()
         })
         .catch(err => console.log(err))
