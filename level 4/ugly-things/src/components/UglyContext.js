@@ -13,7 +13,7 @@ function UglyThingProvider(props){
     })
 
     //handles user input
-    function handleChange(event){
+    const handleChange = (event) => {
         const {name, value} = event.target
         setUglyForm(prevState => ({
             ...prevState, 
@@ -34,9 +34,9 @@ function UglyThingProvider(props){
     }, []);
 
     //post user input to the list of ugly things on submit
-    function handleSubmit(event){
+    const handleSubmit = (event) => {
         event.preventDefaoult()
-        axios.post("https://api.vschool.io/dashagaytan/thing", uglyForm)
+        axios.post("https://api.vschool.io/dashagaytan/thing")
         .then(res => {
             console.log(res.data) 
             return getUglyThings()
@@ -46,10 +46,10 @@ function UglyThingProvider(props){
 
     return (
         <UglyContext.Provider value ={{
-            uglyForm,
-            handleChange,
-            handleSubmit
-        }}>
+            uglyForm: uglyForm,
+             handleChange: handleChange, 
+             handleSubmit: handleSubmit
+             }}>
             {props.children}
         </UglyContext.Provider>
     )

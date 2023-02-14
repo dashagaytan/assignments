@@ -1,11 +1,11 @@
 //input form: title, image, description of the ugly thing
 
-import React from "react";
+import React,{useContext} from "react";
 import { UglyContext } from "./UglyContext";
 import Footer from "./Footer"
 
 function Form(props){
-    const {uglyForm, handleChange, handleSubmit} = React.useContext(UglyContext)
+    const {uglyForm, handleChange, handleSubmit} = useContext(UglyContext)
 
     return(
        <div className="form-card">
