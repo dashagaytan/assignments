@@ -40,7 +40,21 @@
   height: 1rem;
   width: auto;
   padding: 2px;
-  
+
+}
+
+.submit-btn{
+  cursor: pointer;
+  background-color: rgb(231, 139, 40);
+  text-decoration: none;
+  width: 90px;
+  height: 25px;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+:hover.submit-btn{
+  background-color: rgb(255, 193, 79);
 }
 
 .footer{

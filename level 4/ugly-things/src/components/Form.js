@@ -29,13 +29,12 @@ function Form(props){
            input='text'
            name="desctiption"
            placeholder="description"
-           value={uglyThing.description}
+           value={uglyThing.desctiption}
            onChange={handleChange}
            className="input"
            />
+
            <button className="submit-btn">Submit</button>
-
-
          </form>
        </div>
     )
