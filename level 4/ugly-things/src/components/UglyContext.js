@@ -5,8 +5,8 @@ import axios from "axios";
 const UglyContext = React.createContext();
 
 //form state 
-function UglyThingProvider(props){
-    const [uglyForm, setUglyForm] = useState({
+function UglyThingsProvider(props){
+    const [uglyThing, setUglyThing] = useState({
         title: '',
         desctiption: '',
         imgUrl: ''
@@ -15,21 +15,22 @@ function UglyThingProvider(props){
     //handles user input
     const handleChange = (event) => {
         const {name, value} = event.target
-        setUglyForm(prevState => ({
+        setUglyThing(prevState => ({
             ...prevState, 
             [name]: value
         }))
     }
 
-    function getUglyThings(){
+    const getUglyThings =() => {
         axios.get("https://api.vschool.io/dashagaytan/thing")
         .then(res => {
-            setUglyForm(() => (res.data))
+            setUglyThing(() => (res.data))
         })
         .catch(err => console.log(err))
     }
 
     useEffect(() => {
+        console.log(UglyContext)
         return getUglyThings();
     }, []);
 
@@ -46,7 +47,7 @@ function UglyThingProvider(props){
 
     return (
         <UglyContext.Provider value ={{
-            uglyForm: uglyForm,
+            uglyThing: uglyThing,
              handleChange: handleChange, 
              handleSubmit: handleSubmit
              }}>
@@ -56,4 +57,4 @@ function UglyThingProvider(props){
 
 }
 
-export {UglyThingProvider, UglyContext}
+export {UglyThingsProvider, UglyContext}

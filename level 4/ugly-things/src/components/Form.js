@@ -5,7 +5,7 @@ import { UglyContext } from "./UglyContext";
 import Footer from "./Footer"
 
 function Form(props){
-    const {uglyForm, handleChange, handleSubmit} = useContext(UglyContext)
+    const {uglyThing, handleChange, handleSubmit} = useContext(UglyContext)
 
     return(
        <div className="form-card">
@@ -14,21 +14,21 @@ function Form(props){
            input='text'
            name="title"
            placeholder="Title"
-           value={uglyForm.title}
+           value={uglyThing.title}
            onChange={handleChange}
            />
            <input
            input='text'
            name="imgUrl"
            placeholder="Image Url"
-           value={uglyForm.imgUrl}
+           value={uglyThing.imgUrl}
            onChange={handleChange}
            />
            <input
            input='text'
            name="desctiption"
            placeholder="description"
-           value={uglyForm.description}
+           value={uglyThing.description}
            onChange={handleChange}
            />
            <button>Submit</button>
