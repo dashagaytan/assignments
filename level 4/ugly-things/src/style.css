@@ -28,6 +28,21 @@
   border-radius: 50%;
 }
 
+.form-card{
+  display: flex;
+  margin: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.input{
+  margin: 15px;
+  height: 1rem;
+  width: auto;
+  padding: 2px;
+  
+}
+
 .footer{
   text-align: center;
   font-size: 15px;

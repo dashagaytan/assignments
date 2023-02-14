@@ -2,7 +2,6 @@
 
 import React,{useContext} from "react";
 import { UglyContext } from "./UglyContext";
-import Footer from "./Footer"
 
 function Form(props){
     const {uglyThing, handleChange, handleSubmit} = useContext(UglyContext)
@@ -16,6 +15,7 @@ function Form(props){
            placeholder="Title"
            value={uglyThing.title}
            onChange={handleChange}
+           className="input"
            />
            <input
            input='text'
@@ -23,6 +23,7 @@ function Form(props){
            placeholder="Image Url"
            value={uglyThing.imgUrl}
            onChange={handleChange}
+           className="input"
            />
            <input
            input='text'
@@ -30,10 +31,10 @@ function Form(props){
            placeholder="description"
            value={uglyThing.description}
            onChange={handleChange}
+           className="input"
            />
-           <button>Submit</button>
+           <button className="submit-btn">Submit</button>
 
-           <Footer />
 
          </form>
        </div>
