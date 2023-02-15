@@ -3,13 +3,15 @@ import { UglyContext } from "./UglyContext";
 import Ugly from "./Ugly";
 
 function UglyList(props){
-    const {UglyThings} = useContext(UglyContext)
+    const {uglyThing, handleSubmit, handleChange} = useContext(UglyContext)
 
-    const listOfUglies = Ugly.map((thing, index ) => {
+    const listOfUglies = uglyThing.map((uglyImage, index) => {
         return(
-            <UglyThings 
-                key = {index}
-                thing ={thing}
+            <Ugly 
+                key = {uglyImage.id}
+                index = {index}
+                handleChange= {handleChange}
+                handleSubmit = {handleSubmit}
             />
         )
     })
