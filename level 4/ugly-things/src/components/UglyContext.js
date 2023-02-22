@@ -44,7 +44,6 @@ function UglyThingsProvider(props){
             .then(setUglyArr(uglyArr.filter((index) => index._id !== id)))
         }
 
-
     return (
         <UglyContext.Provider value ={{
             uglyThing: uglyThing,
