@@ -6,28 +6,29 @@ const UglyContext = React.createContext();
 
 //form state 
 function UglyThingsProvider(props){
+    const [uglyArr, setUglyArr] = useState([])
     const [uglyThing, setUglyThing] = useState({
         title: '',
         desctiption: '',
         imgUrl: ''
     })
-    
-        //submits form on click Submit
-        function handleSubmit(event){
-            axios.post("https://api.vschool.io/dashagaytan/thing/" , uglyThing)
-            .then(res => res)
-            .catch(err => console.log(err))
-        }
-    
-        //array of new images posted
-        const [uglyArr, setUglyArr] = useState([])
-        
+
         useEffect(() => {
             axios.get("https://api.vschool.io/dashagaytan/thing")
-            .then(res => setUglyArr(res.data.uglyThing))
+            .then(res => setUglyArr(res.data))
             .catch(err => console.log(err))
         }, []);
     
+        //submits form on click Submit
+        function addUglyThing(event){
+            axios.post("https://api.vschool.io/dashagaytan/thing/" , uglyThing)
+            .then(res => setUglyArr(
+                [...uglyArr,
+                res.data]
+            )
+            .catch(err => console.log(err))
+        }
+   
         //handles user input
         function handleChange(event){
             const {name, value} = event.target
@@ -46,9 +47,10 @@ function UglyThingsProvider(props){
 
     return (
         <UglyContext.Provider value ={{
-            uglyThing: uglyThing,
+            uglyThing:
+             uglyThing,
              handleChange, 
-             handleSubmit,
+             addUglyThing,
              handleDelete
              }}>
             {props.children}
