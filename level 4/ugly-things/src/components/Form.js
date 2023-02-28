@@ -4,11 +4,11 @@ import React,{useContext} from "react";
 import { UglyContext } from "./UglyContext";
 
 function Form(props){
-    const {handleChange, addUglyThing, uglyThing} = useContext(UglyContext)
+    const {handleChange, handleSubmit, uglyThing} = useContext(UglyContext)
 
     return(
        <div className="form-card">
-         <form onSubmit={addUglyThing}>
+         <form onSubmit={handleSubmit}>
            <input
            input='text'
            name="title"

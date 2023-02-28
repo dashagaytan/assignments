@@ -20,12 +20,9 @@ function UglyThingsProvider(props){
         }, []);
     
         //submits form on click Submit
-        function addUglyThing(event){
+        function handleSubmit(event){
             axios.post("https://api.vschool.io/dashagaytan/thing/" , uglyThing)
-            .then(res => setUglyArr(
-                [...uglyArr,
-                res.data]
-            )
+            .then(res => res.data)
             .catch(err => console.log(err))
         }
    
@@ -40,7 +37,8 @@ function UglyThingsProvider(props){
         }
 
         //delete image from list
-        function handleDelete(id){
+        function handleDelete(index){
+            let id = uglyArr[index]._id
             axios.delete(`https://api.vschool.io/dashagaytan/thing/${id}`)
             .then(setUglyArr(uglyArr.filter((index) => index._id !== id)))
         }
@@ -50,7 +48,7 @@ function UglyThingsProvider(props){
             uglyThing:
              uglyThing,
              handleChange, 
-             addUglyThing,
+             handleSubmit,
              handleDelete
              }}>
             {props.children}
