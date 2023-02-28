@@ -43,13 +43,19 @@ function UglyThingsProvider(props){
             .then(setUglyArr(uglyArr.filter((index) => index._id !== id)))
         }
 
+        //edit the image that's already added to the list
+        function handleEdit(){
+            axios.put("")
+        }
+
     return (
         <UglyContext.Provider value ={{
             uglyThing:
              uglyThing,
              handleChange, 
              handleSubmit,
-             handleDelete
+             handleDelete,
+             handleEdit
              }}>
             {props.children}
         </UglyContext.Provider>
