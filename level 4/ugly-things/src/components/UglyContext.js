@@ -7,10 +7,11 @@ const UglyContext = React.createContext();
 //form state 
 function UglyThingsProvider(props){
     const [uglyArr, setUglyArr] = useState([])
+    
     const [uglyThing, setUglyThing] = useState({
-        title: '',
-        desctiption: '',
-        imgUrl: ''
+        title: "Titile",
+        description: "description",
+        imgUrl: "https://st.depositphotos.com/1594920/2453/i/600/depositphotos_24530597-stock-photo-close-up-of-a-hairless.jpg"
     })
 
         useEffect(() => {
