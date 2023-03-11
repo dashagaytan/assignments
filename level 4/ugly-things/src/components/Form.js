@@ -12,6 +12,7 @@ function Form(props){
            <input
            input='text'
            name="title"
+           placeholder="Title"
            value={uglyThing.title}
            onChange={handleChange}
            className="input"
@@ -19,6 +20,7 @@ function Form(props){
            <input
            input='text'
            name="imgUrl"
+           placeholder="Image Url"
            value={uglyThing.imgUrl}
            onChange={handleChange}
            className="input"
@@ -26,12 +28,13 @@ function Form(props){
            <input
            input='text'
            name="desctiption"
+           placeholder="Description"
            value={uglyThing.description}
            onChange={handleChange}
            className="input"
            />
 
-           <button className="submit-btn">Submit</button>
+           <button className="submit-btn">Submit the Uglies</button>
          </form>
        </div>
     )

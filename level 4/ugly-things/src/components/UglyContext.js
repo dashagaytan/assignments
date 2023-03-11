@@ -8,9 +8,9 @@ const UglyContext = React.createContext();
 function UglyThingsProvider(props){
     
     const [uglyThing, setUglyThing] = useState({
-        title: "Titile",
-        description: "description",
-        imgUrl: "https://st.depositphotos.com/1594920/2453/i/600/depositphotos_24530597-stock-photo-close-up-of-a-hairless.jpg"
+        title: "",
+        description: "",
+        imgUrl: ""
     })
     
     const [uglyArr, setUglyArr] = useState([])
@@ -20,7 +20,7 @@ function UglyThingsProvider(props){
             .then(res => setUglyArr(res.data))
             .catch(err => console.log(err))
         }, []);
-        console.log(uglyArr)
+        // console.log(uglyArr)
     
         //submits form on click Submit
         function handleSubmit(event){
