@@ -12,17 +12,12 @@ function UglyThingsProvider(props){
         description: "",
         imgUrl: ""
     })
+    const [uglyArray, setUglyArray] = useState([])
+    const [editOption, setEditOption] = useState(false)
+    const [editUgly, setEditUgly] = useState({title: "", description: ""})
     
-    const [uglyArr, setUglyArr] = useState([])
-
-    
-    //submits form on click Submit
-    function handleSubmit(event){
-        axios.post("https://api.vschool.io/dashagaytan/thing/" , uglyThing)
-        .then(res => res.data)
-        .catch(err => console.log(err))
-    }
-    
+    // const [uglyArr, setUglyArr] = useState([])
+        
     //handles user input
     function handleChange(event){
         const {name, value} = event.target
@@ -37,42 +32,57 @@ function UglyThingsProvider(props){
     function getUglyThings(){
         fetch("https://api.vschool.io/dashagaytan/thing")
         .then(res => res.json())
-        .them(res => setUglyThing(res.data))
+        .then(data => {
+            setUglyArray(() => [...data])
+        })
         .catch(err => console.log(err))
     }
 
     useEffect(() => {
         getUglyThings()
     }, [])
+
+    //submits form on click Submit
+    function handleSubmit(event){
+        event.preventDefault()
+        const newUnglyThing = {
+            ...uglyThing}
+            setUglyThing(()=> ({
+                title: "",
+                descritption: "",
+                imgUrl: ""
+            }))
+            axios.post("https://api.vschool.io/dashagaytan/thing/" , newUnglyThing)
+            .then(() => getUglyThings())
+            .catch(err => console.log(err))
+        }
     
-    useEffect(() => {
-        axios.get("https://api.vschool.io/dashagaytan/thing")
-        .then(res => setUglyArr(res.data))
-        .catch(err => console.log(err))
-    }, []);
-    // console.log(uglyArr)
-
-
-    //delete image from list
         function handleDelete(index){
-            let id = uglyArr[index]._id
+            let id = uglyArray[index]._id
             axios.delete(`https://api.vschool.io/dashagaytan/thing/${id}`)
-            .then(setUglyArr(uglyArr.filter((index) => index._id !== id)))
+            .then(setUglyArray(uglyArray.filter((index) => index._id !== id)))
         }
 
-        //edit the image that's already added to the list
         function handleEdit(){
             axios.put("")
         }
 
+        function handleSave(){
+            
+        }
+
     return (
         <UglyContext.Provider value ={{
-            uglyThing:
              uglyThing,
+             uglyArray,
+             handleEdit,
+             handleDelete,
+             handleSave,
+             getUglyThings,
              handleChange, 
              handleSubmit,
-             handleDelete,
-             handleEdit
+            //  handleDelete,
+            //  handleEdit
              }}>
             {props.children}
         </UglyContext.Provider>

@@ -34,7 +34,7 @@ function Form(props){
            className="input"
            />
 
-           <button className="submit-btn">Submit the Uglies</button>
+           <button className="submit-btn">Submit</button>
          </form>
        </div>
     )
