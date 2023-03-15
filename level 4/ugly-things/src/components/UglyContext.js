@@ -45,28 +45,39 @@ function UglyThingsProvider(props){
     //submits form on click Submit
     function handleSubmit(event){
         event.preventDefault()
-        const newUnglyThing = {
-            ...uglyThing}
-            setUglyThing(()=> ({
-                title: "",
-                descritption: "",
-                imgUrl: ""
-            }))
-            axios.post("https://api.vschool.io/dashagaytan/thing/" , newUnglyThing)
+        const getNewUgly = {...uglyThing}
+        setUglyThing(() => ({
+            title: "",
+            description: "",
+            imgUrl: ""
+        }))
+            axios.post("https://api.vschool.io/dashagaytan/thing/" , getNewUgly)
             .then(() => getUglyThings())
             .catch(err => console.log(err))
         }
     
-        function handleDelete(index){
-            let id = uglyArray[index]._id
+        function handleDelete(id){
             axios.delete(`https://api.vschool.io/dashagaytan/thing/${id}`)
-            .then(setUglyArray(uglyArray.filter((index) => index._id !== id)))
+            .then(()=> getUglyThings())
+            .catch(err => console.log(err))
         }
 
-        function handleEdit(){
+        //watches for changes on edit
+        function handleEditChange(event){
+            const {name, value} = event.target
+            setEditUgly( prevState => ({
+                ...prevState,
+                [name]: value
+            }))
+        }
+
+        //edit option to change title and description of an image in the list
+        function handleEdit(id, ugly){
+            console.log(id, ugly)
             axios.put("")
         }
 
+        //saves the edited changes of an existing image
         function handleSave(){
             
         }
@@ -75,14 +86,15 @@ function UglyThingsProvider(props){
         <UglyContext.Provider value ={{
              uglyThing,
              uglyArray,
+             editOption,
+             editUgly,
              handleEdit,
              handleDelete,
              handleSave,
              getUglyThings,
              handleChange, 
              handleSubmit,
-            //  handleDelete,
-            //  handleEdit
+             handleEditChange
              }}>
             {props.children}
         </UglyContext.Provider>

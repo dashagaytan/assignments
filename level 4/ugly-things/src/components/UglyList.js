@@ -7,7 +7,7 @@ function UglyList(props){
   
     return(
         <div className="uglyList">
-            {}
+            {uglyThing}
         </div>
     )
 }
