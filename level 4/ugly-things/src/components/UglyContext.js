@@ -7,13 +7,13 @@ const UglyContext = React.createContext();
 //form state 
 function UglyThingsProvider(props){
     
-    const [uglyArray, setUglyArray] = useState([])
-    
     const [uglyThing, setUglyThing] = useState({
         title: "",
         description: "",
         imgUrl: ""
     })
+    
+    const [uglyArray, setUglyArray] = useState([])
         
     //handles user input
     function handleChange(event){
@@ -25,12 +25,10 @@ function UglyThingsProvider(props){
         // console.log(uglyThing)
     }
 
-    //get images from and API and set useEffect on first render
     function getUglyThings(){
         axios.get("https://api.vschool.io/dashagaytan/thing")
         .then(res =>{
-            console.log(res.data)
-             setUglyArray((res.data))
+             setUglyArray(res.data)
         })  
         .catch(err => console.log(err))
     }
@@ -39,35 +37,30 @@ function UglyThingsProvider(props){
         getUglyThings() 
     }, [])
 
-        //submits form on click Submit
-        function handleSubmit(event){
-            event.preventDefault()
-            // const getNewUgly = {...uglyThing}
-            // setUglyThing(() => ({
-            //     title: "",
-            //     description: "",
-            //     imgUrl: ""
-            // }))
-                axios.post("https://api.vschool.io/dashagaytan/thing/" , uglyThing)
-                .then(() => getUglyThings())
-                .catch(err => console.log(err))
-            }
-    
-    
-        function handleDelete(id){
-            axios.delete(`https://api.vschool.io/dashagaytan/thing/${id}`)
-            .then(()=> getUglyThings())
-            .catch(err => console.log(err))
-        }
+    function addUgly(){
+        axios.post("https://api.vschool.io/dashagaytan/thing", uglyThing)
+        .then(() => getUglyThings())
+        .catch(err => console.log(err))
+    }
+
+    function handleSubmit(e){
+        e.preventDefault()
+        addUgly(uglyThing)
+        setUglyThing(()=> ({
+            title: "",
+            description: "",
+            imgUrl: ""
+        }))
+    }
 
     return (
         <UglyContext.Provider value ={{
              uglyThing,
              uglyArray,
-             handleDelete,
              getUglyThings,
+             addUgly,
              handleChange, 
-             handleSubmit,
+             handleSubmit
              }}>
             {props.children}
         </UglyContext.Provider>
