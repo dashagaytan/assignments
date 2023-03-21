@@ -9,8 +9,8 @@ function UglyThingsProvider(props){
     
     const [uglyThing, setUglyThing] = useState({
         title: "",
-        description: "",
-        imgUrl: ""
+        imgUrl: "",
+        description: ""
     })
     
     const [uglyArray, setUglyArray] = useState([])

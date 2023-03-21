@@ -10,7 +10,7 @@
   justify-content: space-around;
 }
 
-.title{
+.title, .description{
   margin-top: 9px;
   color: rgb(231, 139, 40);
 }
@@ -44,6 +44,10 @@
 
 }
 
+.uglyCard {
+  margin-top: 40px;
+  
+}
 .submit-btn{
   cursor: pointer;
   background-color: rgb(231, 139, 40);
