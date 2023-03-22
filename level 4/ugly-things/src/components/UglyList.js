@@ -10,11 +10,11 @@ return (
         {uglyArray.map(item => {
                 return (
                     <UglyCard 
-                    key ={item.id}
-                    id ={item.id}
-                    title={item.title}
-                    description = {item.description}
-                    imgUrl ={item.imgUrl}
+                        key ={item.id}
+                        id ={item.id}
+                        title={item.title}
+                        description = {item.description}
+                        imgUrl ={item.imgUrl}
                     />
                 )
             })}

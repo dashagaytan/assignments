@@ -46,7 +46,7 @@ function UglyThingsProvider(props){
     
     //DELETE request to delete an existing thing from the list
     function handleDelete(id){
-        axios.delete(`https://api.vschool.io/dashagaytan/thing${id}`)
+        axios.delete(`https://api.vschool.io/dashagaytan/thing/${id}`)
         .then(res => getUglyThings())
         .catch(err => console.log(err))
         }
@@ -64,13 +64,22 @@ function UglyThingsProvider(props){
         getUglyThings() 
     }, [])
 
+    //PUT request to edit an existing image title and description 
+    function handleEdit(id, editUgly){
+        axios.put(`https://api.vschool.io/dashagaytan/thing/${id}`, editUgly)
+        .then(res => console.log(res.data))
+        .then(res => getUglyThings())
+            .catch(err => console.log(err))
+    }
+
     return (
         <UglyContext.Provider value ={{
             uglyThing,
             uglyArray,
             handleChange,
             handleSubmit,
-            handleDelete
+            handleDelete,
+            handleEdit
              }}>
             {props.children}
         </UglyContext.Provider>
