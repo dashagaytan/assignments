@@ -67,10 +67,22 @@ function UglyThingsProvider(props){
     //PUT request to edit an existing image title and description 
     function handleEdit(id, editUgly){
         axios.put(`https://api.vschool.io/dashagaytan/thing/${id}`, editUgly)
-        .then(res => console.log(res.data))
-        .then(res => getUglyThings())
+        .then((res) => console.log(res.data))
+        .then(() => getUglyThings())
             .catch(err => console.log(err))
     }
+
+    function handleEditChange(event){
+        const {name, value} = event.target
+        setEditOption(true)
+        setEditData(prevState => {
+            return{
+                ...prevState,
+                [name]: value
+            }
+        })
+    }
+
 
     return (
         <UglyContext.Provider value ={{
@@ -79,7 +91,9 @@ function UglyThingsProvider(props){
             handleChange,
             handleSubmit,
             handleDelete,
-            handleEdit
+            handleEdit,
+            handleEditChange
+
              }}>
             {props.children}
         </UglyContext.Provider>

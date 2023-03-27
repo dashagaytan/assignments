@@ -1,10 +1,12 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import { UglyContext } from "./UglyContext";
 
 function UglyCard(prop){
-    const {handleDelete} = useContext(UglyContext)
-    
-
+    // const [editOption, setEditOption] = useState(false)
+    // const [eidtData, setEditData] = useState({
+    //     title: "",
+    //     description: ""
+    // })
 
     return(
         <>
