@@ -14,6 +14,11 @@ function UglyThingsProvider(props){
     })
     
     const [uglyArray, setUglyArray] = useState([])
+    const [editMode, setEditMode] = useState(false)
+    const [editOption, setEditOption] = useState({
+        title: "",
+        description: ""
+    })
         
     //handles the change of state 
     function handleChange(event){
