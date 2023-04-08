@@ -3,7 +3,7 @@ import UglyCard from "./UglyCard";
 import { UglyContext } from "./UglyContext";
 
 export default function UglyList(){
-  const { uglyArray} = useContext(UglyContext)
+  const {uglyArray} = useContext(UglyContext)
 
 return (
     <div>

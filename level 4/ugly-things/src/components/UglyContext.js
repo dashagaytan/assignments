@@ -7,18 +7,15 @@ const UglyContext = React.createContext();
 //form state 
 function UglyThingsProvider(props){
     
+    //initial state
     const [uglyThing, setUglyThing] = useState({
         title: "",
         imgUrl: "",
         description: ""
     })
     
+    //array that will keep all submitted items 
     const [uglyArray, setUglyArray] = useState([])
-    const [editMode, setEditMode] = useState(false)
-    const [editOption, setEditOption] = useState({
-        title: "",
-        description: ""
-    })
         
     //handles the change of state 
     function handleChange(event){
@@ -50,11 +47,11 @@ function UglyThingsProvider(props){
     }
     
     //DELETE request to delete an existing thing from the list
-    function handleDelete(id){
-        axios.delete(`https://api.vschool.io/dashagaytan/thing/${id}`)
-        .then(res => getUglyThings())
-        .catch(err => console.log(err))
-        }
+    // function handleDelete(id){
+    //     axios.delete(`https://api.vschool.io/dashagaytan/thing/${id}`)
+    //     .then(res => getUglyThings())
+    //     .catch(err => console.log(err))
+    //     }
 
     //GET request to an API 
     function getUglyThings(){
@@ -70,24 +67,12 @@ function UglyThingsProvider(props){
     }, [])
 
     //PUT request to edit an existing image title and description 
-    function handleEdit(id, editUgly){
-        axios.put(`https://api.vschool.io/dashagaytan/thing/${id}`, editUgly)
-        .then((res) => console.log(res.data))
-        .then(() => getUglyThings())
-            .catch(err => console.log(err))
-    }
-
-    function handleEditChange(event){
-        const {name, value} = event.target
-        setEditOption(true)
-        setEditData(prevState => {
-            return{
-                ...prevState,
-                [name]: value
-            }
-        })
-    }
-
+    // function handleEdit(id, editUgly){
+    //     axios.put(`https://api.vschool.io/dashagaytan/thing/${id}`, editUgly)
+    //     .then((res) => console.log(res.data))
+    //     .then(() => getUglyThings())
+    //         .catch(err => console.log(err))
+    // }
 
     return (
         <UglyContext.Provider value ={{
@@ -95,10 +80,8 @@ function UglyThingsProvider(props){
             uglyArray,
             handleChange,
             handleSubmit,
-            handleDelete,
-            handleEdit,
-            handleEditChange
-
+            // handleDelete,
+            // handleEdit,
              }}>
             {props.children}
         </UglyContext.Provider>
