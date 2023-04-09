@@ -3,18 +3,18 @@ import NavBar from './components/NavBar'
 import Form from './components/Form'
 import UglyList from "./components/UglyList";
 import Footer from './components/Footer'
-import { UglyThingsProvider } from "./components/UglyContext";
+import { UglyProvider } from "./components/UglyContext";
 
 
 function App() {
   return (
     <div className="App">
-      <UglyThingsProvider>
+      <UglyProvider>
         <NavBar />
         <Form />
         <UglyList />
         <Footer />
-      </UglyThingsProvider>
+      </UglyProvider>
     </div>
   );
 }
