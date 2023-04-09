@@ -7,8 +7,6 @@ const {handleChange, handleSubmit, uglyData} = useContext(UglyContext)
 
     return(
 <div>
-        <h1 className="main-title">Ugly Things</h1>
-
         <div className="main-form">
         <form onSubmit={handleSubmit}>
             <input 
