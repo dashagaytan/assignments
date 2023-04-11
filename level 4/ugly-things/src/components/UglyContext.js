@@ -60,11 +60,12 @@ function UglyProvider(props){
     }
 
     //delete function 
-    const deleteUgly = (id) =>{
+    const deleteUgly = (index) =>{
         console.log("delete function ran")
-        axios.delete(`uglyAPI${id}`)
-        .then(()=> getUgly())
-        .catch(err=> console.log(err))
+        const newItem = [...uglyList]
+        newItem.splice(index,1);
+        setUglyList(newItem)
+    
     }
 
 

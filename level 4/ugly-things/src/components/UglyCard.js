@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, {useContext, useState} from "react";
 import { UglyContext } from "./UglyContext";
 
@@ -28,7 +29,9 @@ function UglyCard(props){
 
         const handleSubmitEdit = (e) =>{
             e.preventDefault()
-            
+            axios.put("https://api.vschool.io/dashagaytan/thing", editUgly)
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
         }
 
     return(
