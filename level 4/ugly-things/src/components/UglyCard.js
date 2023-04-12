@@ -38,13 +38,13 @@ function UglyCard(props){
         <div className="UglyCard">
             {editMode ?
                 <form onSubmit={handleSubmitEdit}>
+                     <img className="img" src={props.imgUrl} alt={props.description}/>
                     <input
                     className="edit-input"
                     name = "title"
                     value = {editUgly.title}
                     onChange = {handleEditChange}
                      />
-                     <img className="img" src={props.imgUrl} alt={props.description}/>
                     <input
                     className="edit-input"
                     name = "description"
