@@ -60,20 +60,23 @@ function UglyProvider(props){
     }
 
     //delete function 
-    const deleteUgly = (index) =>{
-        console.log("delete function ran")
-        const newItem = [...uglyList]
-        newItem.splice(index,1);
-        setUglyList(newItem)
+    const deleteUgly = (id) =>{
+        console.log("delete request sent");
+        axios.delete(`uglyAPI${id}`)
+            .then(()=>{
+                axios.get(uglyAPI)
+                .then(res => setUglyList(res.data))
+            })
+        } 
     
-    }
-
 
 return(
     <UglyContext.Provider value={{
         uglyData,
+        uglyAPI,
         handleChange,
         uglyList,
+        setUglyList,
         handleSubmit,
         deleteUgly
     }}>

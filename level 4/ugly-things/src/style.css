@@ -4,18 +4,22 @@
 }
 
 .NavBar{
-  background-color: whitesmoke;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  background-color: #333;
+  color: #fff;
+  height: 50px;
+  align-items: center;
 }
 
-.title, .description{
-  margin-top: 9px;
-  color: rgb(231, 139, 40);
+.title {
+  margin: 0;
+  padding: 10px;
+  font-size: 1.2 rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
 }
 
-.theme-btn{
+/* .theme-btn{
   cursor: pointer;
   font-size: 40px;
   border-radius: 3px;
@@ -60,7 +64,7 @@
 
 :hover.submit-btn{
   background-color: rgb(255, 193, 79);
-}
+} */
 
 .footer{
   text-align: center;

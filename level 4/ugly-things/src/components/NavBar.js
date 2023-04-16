@@ -6,7 +6,7 @@ function NavBar(){
     return(
         <div className="NavBar">
             <h1 className="title">Its Ugly Around Here</h1>
-            <button className="theme-btn">☀️</button>
+            {/* <button className="theme-btn">☀️</button> */}
         </div>
     )
 }
