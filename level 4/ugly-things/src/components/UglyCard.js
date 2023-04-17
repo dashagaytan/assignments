@@ -4,7 +4,7 @@ import axios from "axios";
 
 
 function UglyCard(props){
-    const {deleteUgly, uglyAPI,setUglyList} = useContext(UglyContext)
+    const {deleteUgly} = useContext(UglyContext)
 
     const [editMode, setEditMode]=useState(false)
     const [editUgly, setEditUgly] = useState({
@@ -27,14 +27,9 @@ function UglyCard(props){
             })
         }
 
-        const handleSubmitEdit = (id) =>{
-            axios.put(`uglyAPI${id}`, editUgly)
-                .then(() => {
-                    axios.get(uglyAPI)
-                    .then(res => setUglyList(res.data))
-                    .catch(err => console.log(err))
-                })
-                .catch(err => console.log(err))
+        const handleSubmitEdit = (e, id) =>{
+           e.preventDefault();
+           axios.put("https://api.vschool.io/dashagaytan/thing").then(res=>console.log(res))
         }
 
     return(

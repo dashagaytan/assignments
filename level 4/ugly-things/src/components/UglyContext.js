@@ -4,7 +4,6 @@ import axios from "axios"
 const UglyContext = React.createContext();
 
 function UglyProvider(props){
-    const uglyAPI = "https://api.vschool.io/dashagaytan/thing"
    
     //states: 
     const [uglyList, setUglyList] = useState([])
@@ -16,7 +15,7 @@ function UglyProvider(props){
 
         //functions: 
     const getUgly = () =>{
-        axios.get(uglyAPI)
+        axios.get("https://api.vschool.io/dashagaytan/thing")
         .then(res => {
             setUglyList(res.data)
         })
@@ -54,26 +53,26 @@ function UglyProvider(props){
     const handleSubmit = (e) => {
         e.preventDefault();
         addUgly();
-        axios.post(uglyAPI, uglyData)
+        axios.post("https://api.vschool.io/dashagaytan/thing", uglyData)
             .then(res => console.log(res.data))
             .catch(err => console.log(err))
     }
 
     //delete function 
     const deleteUgly = (id) =>{
-        console.log("delete request sent");
-        axios.delete(`uglyAPI${id}`)
-            .then(()=>{
-                axios.get(uglyAPI)
-                .then(res => setUglyList(res.data))
-            })
+        axios.delete(`https://api.vschool.io/dashagaytan/thing/${id}`)
+        .then(res => {
+          const updatedList = uglyList.filter(item => item.id !== id);
+          setUglyList(updatedList);
+          console.log(res)
+        })
+        .catch(err => console.log(err));
         } 
     
 
 return(
     <UglyContext.Provider value={{
         uglyData,
-        uglyAPI,
         handleChange,
         uglyList,
         setUglyList,
