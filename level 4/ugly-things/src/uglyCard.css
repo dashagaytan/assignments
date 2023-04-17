@@ -1,7 +1,15 @@
-.ugly-card{
-    color: whitesmoke;
+.UglyCard{
+    color: rgb(0, 0, 0);
+    padding-bottom: 15px;
 }
 
+/* list style */
+.list-container{
+    padding: 30px;
+    display: grid;
+    padding-bottom: 30px;
+
+}
 .img{
     width: 310px;
     height: 240px;

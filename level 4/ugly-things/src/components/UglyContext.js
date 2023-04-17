@@ -61,18 +61,15 @@ function UglyProvider(props){
     //delete function 
     const deleteUgly = (id) =>{
         axios.delete(`https://api.vschool.io/dashagaytan/thing/${id}`)
-        .then(res => {
-          const updatedList = uglyList.filter(item => item.id !== id);
-          setUglyList(updatedList);
-          console.log(res)
-        })
-        .catch(err => console.log(err));
+            .then(() => getUgly())
+            .catch(err => console.log(err));
         } 
     
 
 return(
     <UglyContext.Provider value={{
         uglyData,
+        getUgly,
         handleChange,
         uglyList,
         setUglyList,
