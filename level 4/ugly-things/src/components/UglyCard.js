@@ -4,7 +4,7 @@ import axios from "axios";
 
 
 function UglyCard(props){
-    const {deleteUgly, getUgly} = useContext(UglyContext)
+    const {deleteUgly,getUgly} = useContext(UglyContext)
 
     const [editMode, setEditMode]=useState(false)
     const [editUgly, setEditUgly] = useState({
@@ -27,12 +27,22 @@ function UglyCard(props){
             })
         }
 
-        const handleSubmitEdit = (e, id) =>{
+        const handleSubmitEdit = (e) =>{
            e.preventDefault();
-           axios.put(`https://api.vschool.io/dashagaytan/thing${id}`, editUgly)
-            .then(res=>getUgly())
-            .catch(err => console.log(err))
+
+           const updatedUgly ={
+            title: editUgly.title,
+            description: editUgly.description
+           }
+           axios.put(`https://api.vschool.io/dashagaytan/thing/${props.id}`, updatedUgly)
+           .then(() => getUgly())
+           .catch(err => console.log(err))
+           console.log(updatedUgly)
+
+           setEditMode(false)
+
         }
+
 
     return(
         <div className="UglyCard">
@@ -53,7 +63,7 @@ function UglyCard(props){
                     value = {editUgly.description}
                     onChange = {handleEditChange}
                      />
-                    <button className="sub-edit">Submit</button>
+                    <button className="sub-edit">Save Changes</button>
                 </form>
                 :
                 <div>

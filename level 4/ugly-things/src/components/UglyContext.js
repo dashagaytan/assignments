@@ -69,6 +69,7 @@ function UglyProvider(props){
 return(
     <UglyContext.Provider value={{
         uglyData,
+        getUgly,
         handleChange,
         uglyList,
         setUglyList,
