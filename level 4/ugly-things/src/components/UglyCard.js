@@ -65,9 +65,10 @@ function UglyCard(props){
                     </br>
                 </div>
             }
-    
-            <button className="editBtn" onClick={toggleEditUgly}>{editMode ? "Close" : "Edit"}</button>
-            <button className="delBtn" onClick={deleteUgly}>Delete</button>
+            <div className="action-btns">
+                <button className="editBtn" onClick={toggleEditUgly}>{editMode ? "Close" : "Edit"}</button>
+                <button className="delBtn" onClick={deleteUgly}>Delete</button>
+            </div>
         </div>
     )
 }

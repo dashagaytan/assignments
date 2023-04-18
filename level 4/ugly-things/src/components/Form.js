@@ -7,8 +7,8 @@ const {handleChange, handleSubmit, uglyData} = useContext(UglyContext)
 
     return(
 <div>
-        <div className="main-form">
         <form onSubmit={handleSubmit}>
+        <div className="main-form">
             <input 
             className="form-input"
             name = "title"
@@ -31,8 +31,8 @@ const {handleChange, handleSubmit, uglyData} = useContext(UglyContext)
             onChange = {handleChange}
             />
             <button className="form-btn">Add Ugly Thing</button>
-        </form>
         </div>
+        </form>
 
 </div>
     )

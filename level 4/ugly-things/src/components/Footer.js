@@ -3,7 +3,9 @@ import React from "react";
 function Footer(){
     return(
         <>
-            <section className="footer">© 2023 Dasha Gaytan</section>
+            <section className="footer"> 
+                <p>© 2023 Dasha Gaytan</p>
+            </section>
         </>
     )
 }

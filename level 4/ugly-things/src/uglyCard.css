@@ -1,16 +1,44 @@
 .UglyCard{
-    color: rgb(0, 0, 0);
+    color: rgb(252, 100, 100);
     padding-bottom: 15px;
 }
 
-/* list style */
+/* list style : list container located in UglyList component*/
 .list-container{
-    padding: 30px;
     display: grid;
-    padding-bottom: 30px;
-
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+    padding: 25px;
 }
+
+/* sytle list items: located in UglyCard component */
 .img{
-    width: 310px;
-    height: 240px;
+    width: 300px;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-title{
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.desc{
+    margin-top: 10px;
+}
+
+.action-btns{
+    margin-top: 10px;
+}
+
+.editBtn, .delBtn, .sub-edit{
+    border: none;
+    background-color: #ddd;
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+
+.editBtn:hover, .delBtn:hover, .sub-edit:hover{
+    background-color: #bbb;
+    cursor: pointer;
 }
