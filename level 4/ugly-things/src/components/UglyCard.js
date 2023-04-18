@@ -4,7 +4,7 @@ import axios from "axios";
 
 
 function UglyCard(props){
-    const {deleteUgly,getUgly} = useContext(UglyContext)
+    const {deleteUgly, getUgly} = useContext(UglyContext)
 
     const [editMode, setEditMode]=useState(false)
     const [editUgly, setEditUgly] = useState({
@@ -67,7 +67,7 @@ function UglyCard(props){
             }
             <div className="action-btns">
                 <button className="editBtn" onClick={toggleEditUgly}>{editMode ? "Close" : "Edit"}</button>
-                <button className="delBtn" onClick={deleteUgly}>Delete</button>
+                <button className="delBtn" onClick={() => deleteUgly(props.id)}>Delete</button>
             </div>
         </div>
     )

@@ -61,7 +61,7 @@ function UglyProvider(props){
     //delete function 
     const deleteUgly = (id) =>{
         axios.delete(`https://api.vschool.io/dashagaytan/thing/${id}`)
-            .then(() => getUgly())
+            .then(res => setUglyList(prevState => prevState.filter(item => item._id !== id)))
             .catch(err => console.log(err));
         } 
     
