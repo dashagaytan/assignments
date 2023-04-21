@@ -3,7 +3,7 @@ import React from "react";
 function Footer(){
     return(
        <footer>
-            <section>Plumbing Co. | 2023 | developed by: DASHA G.</section>
+            <section>&copy; 2023 The Plumbing Co. | developed by: DASHA G.</section>
        </footer>
     )
 }

@@ -11,7 +11,8 @@ function App() {
 
       <nav className="navBar">
        
-        <Link className="link" to="/" style={{ padding: 5 }}> <h2>Plumbing Co.</h2></Link>
+        <Link className="link" to="/" style={{ padding: 5 }}> <h2>The Plumbing Co.</h2></Link>
+        <Link className="link" to="/" style={{ padding: 5 }}>Home</Link>
         <Link className="link" to="/about" style={{ padding: 5 }}>About</Link>
         <Link className="link" to="/services" style={{ padding: 5 }}>Services</Link>
       </nav>
@@ -21,7 +22,7 @@ function App() {
           <Route path="/about" element={<About />}/>
           <Route path="/services" element={<Services />}/>
         </Routes>
-        
+
         <Footer />
     </Router>
   );

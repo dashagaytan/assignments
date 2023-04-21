@@ -39,7 +39,7 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: #f8f8f8;
+  background-color: rgba(153, 205, 50, 0.79);
   padding: 20px;
   text-align: center;
 }
