@@ -118,6 +118,28 @@ button {
 button:hover {
   background-color: #4b0082;
 }
+.home-title {
+  font-size: 48px;
+  color: #4b0082;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.home h4{
+  font-size: 24px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.home p{
+  font-size: 18px;
+  color: #888;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
 
 .about{
   background-image: url("https://images.unsplash.com/photo-1527066236128-2ff79f7b9705?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2076&q=80");
