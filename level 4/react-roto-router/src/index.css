@@ -119,6 +119,31 @@ button:hover {
   background-color: #4b0082;
 }
 
-.home-title{
-  
+.about{
+  background-image: url("https://images.unsplash.com/photo-1527066236128-2ff79f7b9705?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2076&q=80");
+  background-size: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 80%;
+  height: 100;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 50px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+
+}
+
+
+.about h2{
+  color: #1c4aa6;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.about p{
+  color: #000000;
+  font-size: 18px;
+  line-height: 1.5;
 }
