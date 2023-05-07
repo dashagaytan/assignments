@@ -1,13 +1,18 @@
 import React from "react";
 
 function Home(){
+    function searchMealNanny(){
+        console.log("searching meal nanny");
+    }
     return(
-        <div>
-            <h1>Meal Nanny</h1>
+        <div className="home-container">
+            <h1 className="title">Meal Nanny</h1> 
+            <img src="images/homepageimg.png" alt="homeimg"/>
+            <p>Meal Nanny is a meal planning app that allows you to add meals to your meal planner.</p>
             <input 
             placeholder="Seach Meal Nanny"
             className="searchBox"/>
-            <button className="searchBtn">Seach</button>
+            <button onClick={searchMealNanny} className="searchButton">Search</button>
         </div>
     )
 }
