@@ -9,9 +9,11 @@ function MealProvider(props){
     const [mealList, setMealList] = useState([])
     const [savedMeals, setSavedMeals] = useState([])
     
+   
+
     return(
         <MealContext.Provider value={{
-
+            
         }}>
             {props.children}
         </MealContext.Provider>

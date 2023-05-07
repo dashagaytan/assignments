@@ -6,12 +6,13 @@ function Home(){
     }
     return(
         <div className="home-container">
-            <h1 className="title">Meal Nanny</h1> 
-            <img src="images/homepageimg.png" alt="homeimg"/>
+            {/* <img src="images/homepageimg.png" alt="homeimg"/> */}
             <p>Meal Nanny is a meal planning app that allows you to add meals to your meal planner.</p>
+
             <input 
             placeholder="Seach Meal Nanny"
             className="searchBox"/>
+            
             <button onClick={searchMealNanny} className="searchButton">Search</button>
         </div>
     )

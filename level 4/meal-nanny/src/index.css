@@ -7,9 +7,3 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.footer{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-}
