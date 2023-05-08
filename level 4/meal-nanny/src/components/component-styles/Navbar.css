@@ -3,6 +3,7 @@ width: 100%;
 height: atuo;
 background-color: #f5f5f5;
 justify-content: space-between;
+align-items: center;
 display: flex;
 }
 
