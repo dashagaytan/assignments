@@ -5,14 +5,14 @@ const MealContext = React.createContext();
 
 function MealProvider(props){
 
-    const [search, setSearch] = useState([])
-    const [mealList, setMealList] = useState([])
-    const [savedMeals, setSavedMeals] = useState([])
+    // const [search, setSearch] = useState([])
+    // const [mealList, setMealList] = useState([])
+    // const [savedMeals, setSavedMeals] = useState([])
     
    function searchMeals(){
-    
-    axios.get()
+        
    }
+
     return(
         <MealContext.Provider value={{
             
