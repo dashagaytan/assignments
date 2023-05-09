@@ -25,7 +25,7 @@ function RandomMeal(){
                         <h2 className="randomMeal-name">{meal.strMeal}</h2>
                         <img className="randomMeal-img" src={meal.strMealThumb} alt="meal" style={{ width: "500px", height: "auto", borderRadius: "10px" }}/>
                         <p className="randomMeal-category">{meal.strCategory}</p>
-                        <button className="randomMeal-btn" onClick={getRandomMeal}>Get another Meal 🥘</button>
+                        <button className="randomMeal-btn" onClick={getRandomMeal}>Different Meal plz 🥘</button>
                             <div className="details-container">
                                 <div>
                                     <h3 className="ingredients-title">To make this, you will need: </h3>
