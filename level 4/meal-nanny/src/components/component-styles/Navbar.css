@@ -1,10 +1,11 @@
 .nav-bar{
-width: 100%;
-height: atuo;
-background-color: #f5f5f5;
-justify-content: space-between;
-align-items: center;
-display: flex;
+    width: 100%;
+    height: atuo;
+    background-color: #68ac96;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    color: #fdc57b;
 }
 
 .title{
@@ -13,7 +14,7 @@ display: flex;
 
 .link{
     text-decoration: none;
-    color: #2c3e50;
+    color: #fdc57b;
     font-size: 20px;
     padding: 10px;
     transition:all 0.3s ease;
