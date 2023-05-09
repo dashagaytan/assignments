@@ -24,8 +24,8 @@ function RandomMeal(){
                     <div className="random-meal">
                         <h2 className="randomMeal-name">{meal.strMeal}</h2>
                         <img className="randomMeal-img" src={meal.strMealThumb} alt="meal" style={{ width: "500px", height: "auto", borderRadius: "10px" }}/>
-                        <p className="randomMeal-category">{meal.strTags}</p>
-                        <button className="randomMeal-btn" onClick={getRandomMeal}>Meal Nanny show another meal</button>
+                        <p className="randomMeal-category">{meal.strCategory}</p>
+                        <button className="randomMeal-btn" onClick={getRandomMeal}>Get another Meal 🥘</button>
                             <div className="details-container">
                                 <div>
                                     <h3 className="ingredients-title">Ingredients Needed:</h3>

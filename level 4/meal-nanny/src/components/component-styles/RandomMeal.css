@@ -18,7 +18,7 @@
   .random-meal{
     background-color: #fbf2d5;
     border-radius: 8px;
-    box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
     padding: 50px;
     text-align: center;
     transition: all 0.3s ease;
@@ -26,11 +26,11 @@
   }
 
   .random-meal:hover{
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
 
   .randomMeal-btn{
-    background-color: #4caf50;
+    background-color: #ff847c;
     border: none;
     border-radius: 8px;
     color: #fff;
@@ -41,7 +41,7 @@
   }
 
   button:hover {
-    background-color: #3e8e41;
+    background-color: #e84a5f;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
     transform: translateY(-2px);
   }
@@ -57,4 +57,8 @@
 
   .random-instructions{
     font-size: 16px;
+  }
+
+  p{
+    color: var(--main-branding-color);
   }
