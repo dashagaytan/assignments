@@ -8,10 +8,14 @@ footer {
     color: #fdc57b;
   }
 
-  a{
+  .apiLink {
     text-decoration: none;
     color: #fff;
   }
-  a:hover{
+
+  .apiLink:hover{
     color: #fba535;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 8px;
   }
