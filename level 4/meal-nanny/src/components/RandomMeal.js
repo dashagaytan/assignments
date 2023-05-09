@@ -28,15 +28,15 @@ function RandomMeal(){
                         <button className="randomMeal-btn" onClick={getRandomMeal}>Get another Meal 🥘</button>
                             <div className="details-container">
                                 <div>
-                                    <h3 className="ingredients-title">Ingredients Needed:</h3>
-                                    <p className="random-ingredients">{meal.strIngredient1} | {meal.strMeasure1}</p>
-                                    <p className="random-ingredients">{meal.strIngredient2} | {meal.strMeasure2}</p>
-                                    <p className="random-ingredients">{meal.strIngredient3} | {meal.strMeasure3}</p>
-                                    <p className="random-ingredients">{meal.strIngredient4} | {meal.strMeasure4}</p>
-                                    <p className="random-ingredients">{meal.strIngredient5} | {meal.strMeasure5}</p>
-                                    <p className="random-ingredients">{meal.strIngredient6} | {meal.strMeasure6}</p>
-                                    <p className="random-ingredients">{meal.strIngredient5} | {meal.strMeasure7}</p>
-                                    <p className="random-ingredients">{meal.strIngredient6} | {meal.strMeasure8}</p>
+                                    <h3 className="ingredients-title">To make this, you will need: </h3>
+                                    <p className="random-ingredients">{meal.strMeasure1} | {meal.strIngredient1}</p>
+                                    <p className="random-ingredients">{meal.strMeasure2} | {meal.strIngredient2}</p>
+                                    <p className="random-ingredients">{meal.strMeasure3} | {meal.strIngredient3}</p>
+                                    <p className="random-ingredients">{meal.strMeasure4} | {meal.strIngredient4}</p>
+                                    <p className="random-ingredients">{meal.strMeasure5} | {meal.strIngredient5}</p>
+                                    <p className="random-ingredients">{meal.strMeasure6} | {meal.strIngredient6}</p>
+                                    <p className="random-ingredients">{meal.strMeasure7} | {meal.strIngredient7}</p>
+                                    <p className="random-ingredients">{meal.strMeasure8} | {meal.strIngredient8}</p>
                                 </div>
                             </div>
                     </div>
@@ -45,5 +45,4 @@ function RandomMeal(){
         </div>
     )
 }
-
 export default RandomMeal;
