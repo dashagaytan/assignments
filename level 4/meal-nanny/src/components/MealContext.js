@@ -5,14 +5,8 @@ const MealContext = React.createContext();
 
 function MealProvider(props){
 
-    // const [search, setSearch] = useState([])
-    // const [mealList, setMealList] = useState([])
-    // const [savedMeals, setSavedMeals] = useState([])
+    const searchAPI = "www.themealdb.com/api/json/v1/1/search.php?s=Pasta"
     
-   function searchMeals(){
-        
-   }
-
     return(
         <MealContext.Provider value={{
             
