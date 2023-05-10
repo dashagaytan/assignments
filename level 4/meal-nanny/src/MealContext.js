@@ -9,36 +9,23 @@ function MealProvider(props){
     const [query, setQuery] = useState('')
     const [search, setSearch] = useState([])
 
-    const searchMeals = () => {
-        axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`)
-        .then((res)=>setSearch(res.data.meals))
-        .catch(err => console.log(err))
+    const searchMeals = (e) => {
+        e.preventDefault()
+            axios.get(searchAPI)
+            .then((res)=>setSearch(res.data.meals))
+            .catch(err => console.log(err))
     }
     useEffect(()=>{
         console.log("search meal nanny useEffect ran")
         searchMeals();
     })
 
-    const handleSearchChange =(e)=>{
-        const {name, value} = e.target
-        setSearch(prevState => {
-            return{
-                ...prevState,
-                 [name]: value
-                }
-            })
-    }
-
-    // const addFavoriteMeal =()=>{
-    //     console.log('add favorite meal ran')
-    //     setQuery(prevState => {
-    //         return[...prevState, query]
-    //     })
-    // }
+    const handleSearchChange = (e) => {setQuery(e.target.value)}
 
     return(
         <MealContext.Provider value={{
             search,
+            query,
             handleSearchChange,
             searchMeals,
 
