@@ -3,8 +3,9 @@ import {MealContext} from "../MealContext";
 import {useNavigate} from 'react-router-dom';
 
 function Home(){
-    const {handleSearchChange, searchMeals,query} = useContext(MealContext)
+    const {searchMeals, query, handleSearchChange} = useContext(MealContext)
     const navigate = useNavigate()
+
     return(
         <div className="">
             <div className="home-form">
@@ -14,7 +15,7 @@ function Home(){
                     <input
                     type="text"
                     value={query}
-                    placeholder="Type in what you're craving "
+                    placeholder="Type in what you're craving... "
                     onChange={handleSearchChange}
                     />
                     <button>Search Meal Nanny</button>
@@ -23,14 +24,14 @@ function Home(){
                 <ul>
                     {searchMeals.map(meal => {
                         return (
-                        <li key={meal.idMeal}>{meal.strMeal}</li>
+                        <li key={meal.idMeal} onClick={()=> navigate(`/recipe/${meal.idMeal}`)}>{meal.strMeal}</li>
                         )
                     })
                     }
                 </ul>
             <br>
             </br>
-            
+
             <p>Can't decide? Let Meal Nanny pick your meal 🍱</p>
             <button onClick={()=> navigate("/randomMeal")}> Let Meal Nanny Choose your meal </button>
         </div>   

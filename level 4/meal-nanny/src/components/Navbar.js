@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom"
 import "./component-styles/Navbar.css"
-// import logo from "./images/mealnanny.png"
+// import logo from "../../images/mealnanny.png"
 
 function Navbar(){
     return(
@@ -11,7 +11,7 @@ function Navbar(){
                 <ul>
                     <Link className="link" to="/"><li>Home</li></Link>
                     <Link className="link" to="/randomMeal"><li>Random Meal</li></Link>
-                    <div className="title"><img src="./images/mealnanny.png" alt="logo" className="logo"/></div>
+                    <div className="title"><img src="../images/mealnanny.png" alt="logo" className="logo"/></div>
                     <Link className="link" to="/savedMeal"><li>My Meals</li></Link>
                     <Link className="link" to="/recipe"><li>Recipes</li></Link>
 
