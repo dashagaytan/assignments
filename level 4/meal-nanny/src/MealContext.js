@@ -27,8 +27,7 @@ function MealProvider(props){
             search,
             query,
             handleSearchChange,
-            searchMeals,
-
+            searchMeals
         }}>
             {props.children}
         </MealContext.Provider>

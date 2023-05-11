@@ -30,6 +30,7 @@ function Home(){
                 </ul>
             <br>
             </br>
+            
             <p>Can't decide? Let Meal Nanny pick your meal 🍱</p>
             <button onClick={()=> navigate("/randomMeal")}> Let Meal Nanny Choose your meal </button>
         </div>   
