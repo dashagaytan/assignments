@@ -2,11 +2,11 @@ import React, {useState} from "react";
 
 function SavedMeals(){
 
-const [deleteMeal, setDeleteMeal] = useState()
+const [deleteMeal, setDeleteMeal] = useState("")
 
     return(
         <div>
-            
+            <h1>Saved Meals: </h1>
         </div>
     )
 }

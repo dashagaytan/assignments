@@ -1,44 +1,43 @@
-import React, {useContext, useState} from "react";
+import React, {useContext} from "react";
 import {MealContext} from "../MealContext";
 import {useNavigate} from 'react-router-dom';
 import "./component-styles/Home.css"
 
 function Home(){
-    const {searchMealNanny, searchMeal} = useContext(MealContext)
-    const [query, setQuery] = useState("")
+    const { handleSearch,
+            meals,
+            searchMeal,
+            setSearchMeal} = useContext(MealContext)
+            
     const navigate = useNavigate()
-
-    const handleSearchChange =(e)=>{
-        setQuery(e.target.value)
-    }
 
     return(
         <div className="home">
-            <div className="home-form">
             <h2>Meal Nanny is here to help 🥘</h2>
             <p>What do you want to cook? 🍲</p>
-                <form onSubmit={searchMealNanny}>
+                <form onSubmit={handleSearch}>
                     <input
                     type="text"
-                    value={query}
+                    value={searchMeal}
                     placeholder="Type in what you're craving... "
-                    onChange={handleSearchChange}
+                    onChange={(e)=> setSearchMeal(e.target.value)}
                     />
                     <button>Search Meal Nanny</button>
                 </form>
-            </div>
                 <div className="search-grid">
-                    {searchMeal ? (
-                        searchMeal.map(meal => {
-                            return (
+                    {meals ? (
+                        <ul>
+                        {meals.map((meal) => (
                                 <div className="search-card" key={meal.idMeal}>
-                                    <h3>{meal.strMeal}</h3>
-                                    <img src={meal.strMealThumb} alt=""/>
-                                    <p>{meal.strInstructions}</p>
-                                    <p>{meal.strCategory}</p>
+                                    <li>
+                                        <h3>{meal.strMeal}</h3>
+                                        <img src={meal.strMealThumb} alt=""/>
+                                        {/* <p>{meal.strInstructions}</p>
+                                        <p>{meal.strCategory}</p> */}
+                                    </li>
                                 </div>
-                            )
-                        })
+                        ))}
+                        </ul>
                     )
                 :
                 (<h2>Meal Nanny can't find this recipe...Try another...</h2>)}
