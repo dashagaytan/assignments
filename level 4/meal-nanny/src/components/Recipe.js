@@ -1,9 +1,10 @@
 import React from "react";
 
-function Recipe(){
+function Recipe(props){
     return(
         <>
-        
+            <h1>Recipe</h1>
+           
         </>
     )
 }
