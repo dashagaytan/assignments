@@ -6,7 +6,7 @@ const [deleteMeal, setDeleteMeal] = useState("")
 
     return(
         <div>
-            <h1>Saved Meals: </h1>
+            <h1>Saved Meals:  </h1>
         </div>
     )
 }

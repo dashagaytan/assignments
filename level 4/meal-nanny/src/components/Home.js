@@ -8,7 +8,7 @@ function Home(){
             meals,
             searchMeal,
             setSearchMeal} = useContext(MealContext)
-            
+
     const navigate = useNavigate()
 
     return(
@@ -29,18 +29,20 @@ function Home(){
                         <ul>
                         {meals.map((meal) => (
                                 <div className="search-card" key={meal.idMeal}>
-                                    <li>
-                                        <h3>{meal.strMeal}</h3>
-                                        <img src={meal.strMealThumb} alt=""/>
-                                        {/* <p>{meal.strInstructions}</p>
-                                        <p>{meal.strCategory}</p> */}
-                                    </li>
+                                    <ul className="search-list">
+                                        <li>
+                                            <h3>{meal.strMeal}</h3>
+                                            <img src={meal.strMealThumb} alt=""/>
+                                            {/* <p>{meal.strInstructions}</p>
+                                            <p>{meal.strCategory}</p> */}
+                                        </li>
+                                    </ul>
                                 </div>
                         ))}
                         </ul>
                     )
                 :
-                (<h2>Meal Nanny can't find this recipe...Try another...</h2>)}
+                (<h2>oops...Meal Nanny doesn't have this meal...Try another 🥘</h2>)}
                 </div>
             <br>
             </br>
