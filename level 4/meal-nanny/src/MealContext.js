@@ -36,6 +36,11 @@ function MealProvider({children}){
         setViewRecipe([...viewRecipe, recipe])
     }
 
+    function deleteMeal(idMeal) {
+        setSavedMeals(savedMeals.filter((meal) => meal.idMeal !== idMeal));
+      }
+      
+
     return(
         <MealContext.Provider value={{
             handleSearch,
@@ -45,6 +50,7 @@ function MealProvider({children}){
             handleAddToMyMeals,
             savedMeals,
             getRecipe,
+            deleteMeal,
             viewRecipe
         }}>
             {children}

@@ -1,14 +1,9 @@
-import React, {useContext, useState} from "react";
+import React, {useContext} from "react";
 import { MealContext } from "../MealContext";
 
-function SavedMeals(){
-    const {savedMeals} = useContext(MealContext)
+function SavedMeals(props){
+    const {savedMeals,deleteMeal} = useContext(MealContext)
 
-const [deleteMeal, setDeleteMeal] = useState("")
-
-const deleteRecipe =()=>{
-    setDeleteMeal(deleteMeal)
-}
 
     return(
         <div>
@@ -19,10 +14,10 @@ const deleteRecipe =()=>{
                         <h4>{meal.strMeal}</h4>
                         <img src={meal.strMealThumb} alt=""/>
                         <p>{meal.strInstructions}</p>
+                        <button onClick={()=> deleteMeal(meal.idMeal)}>Delete Meal</button>
                     </li>
                 ))}
             </ul>
-            <button onClick={deleteRecipe}>Delete Meal</button>
         </div>
     )
 }

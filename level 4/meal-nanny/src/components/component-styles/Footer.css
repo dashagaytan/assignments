@@ -5,6 +5,8 @@ footer {
     padding: 20px;
     text-align: center;
     color: #fdc57b;
+    position: sticky;
+    bottom: 0;
   }
 
   .apiLink {
