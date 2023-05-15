@@ -8,6 +8,8 @@ function MealProvider({children}){
     //setup useState for user to search meal by name, and save found meals into an array. 
     const [searchMeal, setSearchMeal] = useState("")
     const [meals, setMeals] = useState([])
+    const [savedMeals, setSavedMeals]=useState([])
+    const [viewRecipe, setViewRecipe] = useState([])
 
     //axios get request to fetch meals being search 
     const searchMealNanny = () => {
@@ -24,12 +26,26 @@ function MealProvider({children}){
         searchMealNanny();
     }
 
+    function handleAddToMyMeals(meal){
+        setSavedMeals([...savedMeals, meal])
+        alert(`Meal was added to "My Meals"`)
+
+    }
+
+    function getRecipe(recipe){
+        setViewRecipe([...viewRecipe, recipe])
+    }
+
     return(
         <MealContext.Provider value={{
             handleSearch,
             meals,
             searchMeal,
-            setSearchMeal
+            setSearchMeal,
+            handleAddToMyMeals,
+            savedMeals,
+            getRecipe,
+            viewRecipe
         }}>
             {children}
         </MealContext.Provider>

@@ -1,22 +1,25 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import {MealContext} from "../MealContext";
 import {useNavigate} from 'react-router-dom';
 import "./component-styles/Home.css"
+// import SavedMeals from "./SavedMeals";
 
 function Home(){
     const { handleSearch,
             meals,
             searchMeal,
-            setSearchMeal} = useContext(MealContext)
+            setSearchMeal,handleAddToMyMeals} = useContext(MealContext)
 
     const navigate = useNavigate()
 
     return(
-        <div className="home">
+        <>
+            <div className="search-form">
             <h2>Meal Nanny is here to help 🥘</h2>
             <p>What do you want to cook? 🍲</p>
                 <form onSubmit={handleSearch}>
                     <input
+                    className="search-box"
                     type="text"
                     value={searchMeal}
                     placeholder="Type in what you're craving... "
@@ -24,6 +27,9 @@ function Home(){
                     />
                     <button>Search Meal Nanny</button>
                 </form>
+                <p>Can't decide? Let Meal Nanny pick your meal 🍱</p>
+            <button onClick={()=> navigate("/randomMeal")}> Let Meal Nanny Choose your meal </button>
+            </div>
                 <div className="search-grid">
                     {meals ? (
                         <ul>
@@ -33,8 +39,9 @@ function Home(){
                                         <li>
                                             <h3>{meal.strMeal}</h3>
                                             <img src={meal.strMealThumb} alt=""/>
-                                            {/* <p>{meal.strInstructions}</p>
-                                            <p>{meal.strCategory}</p> */}
+                                            <br>
+                                            </br>
+                                            <button onClick={()=>handleAddToMyMeals(meal)}>Add to My Meals</button>
                                         </li>
                                     </ul>
                                 </div>
@@ -46,9 +53,11 @@ function Home(){
                 </div>
             <br>
             </br>
-            <p>Can't decide? Let Meal Nanny pick your meal 🍱</p>
-            <button onClick={()=> navigate("/randomMeal")}> Let Meal Nanny Choose your meal </button>
-        </div>   
+            <div className="search-form">
+            
+            </div>
+            
+        </>   
     )
 }
 

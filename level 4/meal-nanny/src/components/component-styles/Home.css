@@ -1,7 +1,71 @@
-.home{
-    margin: 20px;
+.search-form{
+    display: flex;
     align-items: center;
     justify-content: center;
-    display: flex;
     flex-direction: column;
 }
+
+.search-grid{
+    margin-right: 30px;
+    margin-top: 20px;
+}
+
+.search-card{
+    display: inline-block;
+    height: 100%;
+    background-color: #fbf2d5;
+    border-radius: 15px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 1);
+    overflow: hidden;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    vertical-align: baseline;
+    text-align: center;
+    padding: 5px;
+    width: 300px;
+    height: 400px;
+    
+}
+.search-list h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  .search-list img {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 10px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+
+.search-list{
+    list-style: none;
+    padding: 20px;
+
+}
+
+.search-list li{
+    margin-bottom: 10px;
+}
+
+.search-list button {
+    background-color: #ff847c;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 8px 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .search-list button:hover {
+    background-color: #e84a5f;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .search-box{
+    width: 300px;
+  }
