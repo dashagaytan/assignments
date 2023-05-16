@@ -5,7 +5,7 @@ const MealContext = createContext()
 
 function MealProvider({children}){
 
-    //setup useState for user to search meal by name, and save found meals into an array. 
+    //useState setup to search, save meals and view recipes
     const [searchMeal, setSearchMeal] = useState("")
     const [meals, setMeals] = useState([])
     const [savedMeals, setSavedMeals]=useState([])
@@ -32,8 +32,9 @@ function MealProvider({children}){
 
     }
 
-    function getRecipe(recipe){
-        setViewRecipe([...viewRecipe, recipe])
+    function getRecipe(item){
+        setViewRecipe([...viewRecipe, item])
+        console.log(viewRecipe)
     }
 
     function deleteMeal(idMeal) {
@@ -49,8 +50,8 @@ function MealProvider({children}){
             setSearchMeal,
             handleAddToMyMeals,
             savedMeals,
-            getRecipe,
             deleteMeal,
+            getRecipe,
             viewRecipe
         }}>
             {children}

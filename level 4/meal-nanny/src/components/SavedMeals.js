@@ -1,14 +1,13 @@
 import React, {useContext} from "react";
 import { MealContext } from "../MealContext";
 
-function SavedMeals(props){
-    const {savedMeals,deleteMeal} = useContext(MealContext)
-
+function SavedMeals(){
+    const {savedMeals, deleteMeal} = useContext(MealContext)
 
     return(
-        <div>
-            <h1>Saved Meals:  </h1>
-            <ul>
+        <div className="savedMeal-container">
+            <h1 className="saved-title">Saved Meals:  </h1>
+            <ul className="saved-card">
                 {savedMeals.map((meal)=> (
                     <li key={meal.idMeal}>
                         <h4>{meal.strMeal}</h4>

@@ -67,5 +67,26 @@
   }
 
   .search-box{
-    width: 300px;
+    width: 250px;
+    padding: 5px;
+    border-radius: 8px;
+  }
+  .search-btn{
+    width: 200px;
+    padding: 5px;
+    margin: 5px;
+    background-color: #ff847c;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px 10px;
+    transition: all 0.3s ease;
+  }
+
+  .search-btn:hover {
+    background-color: #e84a5f;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
   }

@@ -17,7 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} component={Home}/> 
           <Route path="/savedMeal" element={<SavedMeals />} component={SavedMeals}/> 
-          <Route path="/recipe" element={<Recipe />}/>
+          <Route path="/recipe/:idMeal" element={<Recipe />}/>
           <Route path="/randomMeal" element={<RandomMeal />}/>
         </Routes>
 

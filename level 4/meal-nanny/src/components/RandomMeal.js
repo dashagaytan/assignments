@@ -1,8 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
+import { MealContext } from "../MealContext";
 import axios from "axios";
+import {Link} from "react-router-dom"
 import "./component-styles/RandomMeal.css"
 
 function RandomMeal(){
+    const { getRecipe } = useContext(MealContext);
 
     const [randomMeal, setRandomMeal] = useState([])
 
@@ -16,7 +19,6 @@ function RandomMeal(){
         getRandomMeal();
     },[])
 
-
     return(
         <div className="randomMeal-container">
             {randomMeal.map(meal =>(
@@ -25,8 +27,11 @@ function RandomMeal(){
                         <h2 className="randomMeal-name">{meal.strMeal}</h2>
                         <img className="randomMeal-img" src={meal.strMealThumb} alt="meal" style={{ width: "500px", height: "auto", borderRadius: "10px" }}/>
                         <p className="randomMeal-category">{meal.strCategory}</p>
-                        <button className="randomMeal-btn" onClick={getRandomMeal}>Different Meal plz 🥘</button>
-                            <div className="details-container">
+                        <button className="randomMeal-btn1" onClick={getRandomMeal}>Different Meal plz</button>
+                        <Link to={`/recipe/${meal.idMeal}`} 
+                        className="randomMeal-btn2"
+                         onClick={()=> getRecipe(meal.idMeal)}>View Recipe</Link>
+                            {/* <div className="details-container">
                                 <div>
                                     <h3 className="ingredients-title">To make this, you will need: </h3>
                                     <p className="random-ingredients">{meal.strMeasure1} | {meal.strIngredient1}</p>
@@ -38,7 +43,7 @@ function RandomMeal(){
                                     <p className="random-ingredients">{meal.strMeasure7} | {meal.strIngredient7}</p>
                                     <p className="random-ingredients">{meal.strMeasure8} | {meal.strIngredient8}</p>
                                 </div>
-                            </div>
+                            </div> */}
                     </div>
                </div> 
             ))}

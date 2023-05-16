@@ -25,10 +25,10 @@ function Home(){
                     placeholder="Type in what you're craving... "
                     onChange={(e)=> setSearchMeal(e.target.value)}
                     />
-                    <button>Search Meal Nanny</button>
+                    <button className="search-btn">Search Meal Nanny</button>
                 </form>
                 <p>Can't decide? Let Meal Nanny pick your meal 🍱</p>
-            <button onClick={()=> navigate("/randomMeal")}> Let Meal Nanny Choose your meal </button>
+            <button className="search-btn" onClick={()=> navigate("/randomMeal")}> Let Meal Nanny Choose your meal </button>
             </div>
                 <div className="search-grid">
                     {meals ? (
