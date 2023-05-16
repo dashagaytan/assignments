@@ -1,5 +1,6 @@
 import React, {useContext} from "react";
 import { MealContext } from "../MealContext";
+import "./component-styles/SavedMeals.css"
 
 function SavedMeals(){
     const {savedMeals, deleteMeal} = useContext(MealContext)
@@ -13,7 +14,7 @@ function SavedMeals(){
                         <h4>{meal.strMeal}</h4>
                         <img src={meal.strMealThumb} alt=""/>
                         <p>{meal.strInstructions}</p>
-                        <button onClick={()=> deleteMeal(meal.idMeal)}>Delete Meal</button>
+                        <button className="delete-btn" onClick={()=> deleteMeal(meal.idMeal)}>Delete Meal</button>
                     </li>
                 ))}
             </ul>

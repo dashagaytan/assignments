@@ -6,18 +6,13 @@ import logo from "../images/mealnanny.png"
 function Navbar(){
     return(
         <div className="nav-bar">
-            
-            <div className="nav-links">
-                <ul>
-                    <div className="title"><img src={logo} alt="logo" className="logo"/></div>
-                    <Link className="link" to="/"><li>Home</li></Link>
-                    <Link className="link" to="/randomMeal"><li>Random Meal</li></Link>
-                    <Link className="link" to="/savedMeal"><li>My Meals</li></Link>
-                    {/* <Link className="link" to="/recipe"><li>Recipes</li></Link> */}
-
-                </ul>
-            </div>
-          
+            <Link to="/"><li><img src={logo} alt="logo" className="logo"/></li></Link>
+                <div className="nav-links">
+                    <ul>
+                        <li><Link className="link" to="/randomMeal">Random Meal</Link></li>
+                        <li><Link className="link" to="/savedMeal">My Meals</Link></li>
+                    </ul>
+                </div>
         </div>
     )
 }

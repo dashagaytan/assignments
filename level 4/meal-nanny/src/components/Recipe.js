@@ -11,7 +11,7 @@ function Recipe(){
         axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`)
         .then(res => setRecipe(res.data.meals[0]))
         .catch(err => console.log(err))
-    }, [])
+    }, [idMeal])
 
 
     if(!recipe) {

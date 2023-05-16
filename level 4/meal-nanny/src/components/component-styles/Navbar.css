@@ -1,13 +1,13 @@
 .nav-bar{
     padding: 5px;
     background-color: #68ac96;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     display: flex;
     color: #fdc57b;
 }
 .logo{
-    height: 140px;
+    height: 150px;
     width: auto;
 }
 .title{
@@ -26,7 +26,7 @@
     display: flex;
     justify-content: center;
     text-decoration: none;
-    color: #fdc57b;
+    color: #050505;
     font-size: 20px;
     padding: 13px;
     transition: all 0.3s ease;
@@ -34,20 +34,20 @@
 
   .link:hover{
     text-decoration: underline;
-    color: #fff;
+    color: #fdc57b;
     cursor: pointer;
   }
 
 .nav-links ul{
     display: flex;
+    align-items: center;
     margin: 0;
     padding: 0;
     list-style: none;
+    text-decoration: none;
 }
 
-.nav-links li{
-    display: inline;
+.nav-links  ul li{
+    margin: 0 1rem;
     text-decoration: none;
-    margin-right: 10px;
-    align-items: center;
 }
