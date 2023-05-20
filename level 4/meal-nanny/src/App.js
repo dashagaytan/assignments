@@ -11,19 +11,20 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
   return (
-    <Router>
+
+   
       <div className="App">
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} component={Home}/> 
-          <Route path="/savedMeal" element={<SavedMeals />} component={SavedMeals}/> 
+          <Route path="/" element={<Home />}/> 
+          <Route path="/savedMeal" element={<SavedMeals />}/> 
           <Route path="/recipe/:idMeal" element={<Recipe />}/>
           <Route path="/randomMeal" element={<RandomMeal />}/>
         </Routes>
 
         <Footer />
       </div>
-    </Router>
+    
   );
 }
 
