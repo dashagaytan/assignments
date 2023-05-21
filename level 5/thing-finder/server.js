@@ -44,19 +44,19 @@ const inventoryItems = [
     }
 ]
 //get all
-app.get("/inventoryItems", (req, res)=>{
+app.get("/inventory", (req, res)=>{
     res.send(inventoryItems)
 } )
 
 //get one url params
-app.get("/:itemId", (req, res)=> {
-    const itemId = req.params.itemId
-    const foundItem = inventoryItems.find(item => item._id === itemId)
-    res.send(foundItem)
-})
+// app.get("/:itemId", (req, res)=> {
+//     const itemId = req.params.itemId
+//     const foundItem = inventoryItems.find(item => item._id === itemId)
+//     res.send(foundItem)
+// })
 
 //get one url quiry
-app.get("/search/type", (req, res)=>{
+app.get("/inventory/type", (req, res)=>{
     const type = req.query.type
     const filterType = inventoryItems.filter(item => item.type === type)
     res.send(filterType)
@@ -65,6 +65,3 @@ app.get("/search/type", (req, res)=>{
 app.listen(8000, () => {
     console.log("Server is running on port 8000")
 })
-
-
-module.exports = express
