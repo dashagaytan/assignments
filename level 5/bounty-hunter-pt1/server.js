@@ -29,5 +29,5 @@ app.post("/bounties", (req, res)=>{
 app.listen(9000, ()=>{
     console.log("Server is running on port 9000")
 })
-Se.
-module.exportts = express
+
+module.exports = express
