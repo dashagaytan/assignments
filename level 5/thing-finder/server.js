@@ -56,11 +56,12 @@ app.get("/inventory", (req, res)=>{
 // })
 
 //get one url quiry
-app.get("/inventory/type", (req, res)=>{
+app.get("/inventory/search/type", (req, res)=>{
     const type = req.query.type
     const filterType = inventoryItems.filter(item => item.type === type)
     res.send(filterType)
 })
+
 
 app.listen(8000, () => {
     console.log("Server is running on port 8000")
