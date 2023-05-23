@@ -61,10 +61,21 @@ app.post("/", (req, res) => {
     res.send(`Added ${newTodo.name} to the Database`)
 })
 
-// UPDATE ONE / put request
-
 //DELETE ONE / delete request
+app.delete("/:itemId", (req, res)=> {
+    const itemId = req.params.itemId
+    const findIndex = todos.findIndex(todo => todo._id === itemId)
+    todos.splice(findIndex, 1)
+    console.log('Todo item was deleted from Database')
+})
 
+// UPDATE ONE / put request
+app.put("/:itemId", (req, res)=> {
+    const itemId = req.params.itemId
+    const todoIndex = todos.findIndex(todo => todo._id === itemId)
+    const updateTodo = Object.assign(todos[todoIndex], req.body)
+    res.send(updateTodo)
+})
 
 
 
