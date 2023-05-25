@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import "../components/bounty.css"
 
 function AddBountyForm(props){
     const initInputs = {
         firstName: props.firstName || "",
         lastName: props.lastName || "",
         bounty: props.bounty || "",
-        type: props.type || ""
+        type: props.type || "",
+        living: props.living,
     }
 
     const [inputs, setInputs] = useState(initInputs)
@@ -52,6 +54,13 @@ function AddBountyForm(props){
                 value={inputs.type}
                 onChange={handleChange}
                 />
+                <input 
+                placeholder="Living?"
+                name="living"
+                value={inputs.living}
+                onChange={handleChange}
+                />
+
                 <button>{props.btnText}</button>
             </form>
         </div>

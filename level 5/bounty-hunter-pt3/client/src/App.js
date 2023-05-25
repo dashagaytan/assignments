@@ -25,10 +25,14 @@ function App() {
     })
   }
 
-  //DELET request
-  // function deleteBounty(bountyId){
-
-  // }
+  //DELETE request
+  function deleteBounty(bountyId){
+    axios.delete(`/bounties/${bountyId}`)
+    .then(res => {
+      setBounties(prevState => prevState.filter(bounty => bounty.id !== bountyId))
+    })
+    .catch(err => console.log(err))
+  }
 
   //UPDATE request
   // function editBounty(newBounty,bountyId){
@@ -47,9 +51,11 @@ function App() {
       addBounty={addBounty}
       btnText = "Add Bounty"/>
      {
-      bounties.map(bounty => <Bounty 
-        {...bounty}
-        key={bounty._id}
+      bounties.map(bounty =>
+        <Bounty 
+          {...bounty}
+          key={bounty._id}
+          deleteBounty={deleteBounty}
         />)
      }
     </div>

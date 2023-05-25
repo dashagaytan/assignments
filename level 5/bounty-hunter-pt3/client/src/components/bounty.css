@@ -18,3 +18,23 @@
     background-color: rgba(37, 227, 113, 0.463);
     border-radius: 5px;
 }
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    margin: 0 32px;
+}
+
+input {
+    width: 180px;
+    height: 35px;
+    margin: 10px;
+}
+
+button{
+    width: 120px;
+    height: 35px;
+    background-color: rgb(134, 205, 34);
+    color: white;
+    border-radius: 10px;
+}
