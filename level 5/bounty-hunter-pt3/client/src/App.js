@@ -25,7 +25,16 @@ function App() {
     })
   }
 
+  //DELET request
+  // function deleteBounty(bountyId){
 
+  // }
+
+  //UPDATE request
+  // function editBounty(newBounty,bountyId){
+  //   axios.put(`/bounties/${bountyId}`, newBounty)
+    
+  // }
 
   useEffect(()=> {
     getBounties();
@@ -34,6 +43,9 @@ function App() {
   return (
     <div className="App">
       <h1 style={{margin: "20px", color: "rgb(0, 77, 35)"}}>Bounties:</h1>
+      <AddBountyForm
+      addBounty={addBounty}
+      btnText = "Add Bounty"/>
      {
       bounties.map(bounty => <Bounty 
         {...bounty}
