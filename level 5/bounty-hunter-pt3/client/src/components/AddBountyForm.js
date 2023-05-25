@@ -7,7 +7,7 @@ function AddBountyForm(props){
         lastName: props.lastName || "",
         bounty: props.bounty || "",
         type: props.type || "",
-        living: props.living,
+        living: props.living
     }
 
     const [inputs, setInputs] = useState(initInputs)
@@ -19,8 +19,10 @@ function AddBountyForm(props){
 
     function handleSubmit(e){
         e.preventDefault();
-        props.addBounty(inputs, props._id)
-        setInputs(initInputs)
+        props.submit(inputs, props._id)
+        alert("Edit was Added")
+        // setInputs(initInputs)
+        // props.setEditToggle(prevState => !prevState)
     }
 
     return(
@@ -61,7 +63,7 @@ function AddBountyForm(props){
                 onChange={handleChange}
                 />
 
-                <button>{props.btnText}</button>
+                <button className="submit">{props.btnText}</button>
             </form>
         </div>
     )

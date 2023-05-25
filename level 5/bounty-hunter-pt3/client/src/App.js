@@ -35,10 +35,15 @@ function App() {
   }
 
   //UPDATE request
-  // function editBounty(newBounty,bountyId){
-  //   axios.put(`/bounties/${bountyId}`, newBounty)
-    
-  // }
+  function editBounty(newBounty, bountyId){
+    axios.put(`/bounties/${bountyId}`, newBounty)
+    .then(res => {
+      setBounties(prevState => 
+        prevState.map(bounty => (bounty._id !== bountyId ? bounty : res.data))
+        )
+    })
+    .catch(err => console.log(err))
+  }
 
   useEffect(()=> {
     getBounties();
@@ -48,7 +53,7 @@ function App() {
     <div className="App">
       <h1 style={{margin: "20px", color: "rgb(0, 77, 35)"}}>Bounties:</h1>
       <AddBountyForm
-      addBounty={addBounty}
+      submit={addBounty}
       btnText = "Add Bounty"/>
      {
       bounties.map(bounty =>
@@ -56,6 +61,7 @@ function App() {
           {...bounty}
           key={bounty._id}
           deleteBounty={deleteBounty}
+          editBounty={editBounty}
         />)
      }
     </div>

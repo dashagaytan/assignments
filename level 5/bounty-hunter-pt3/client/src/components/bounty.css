@@ -10,7 +10,7 @@
     display: flex;
     flex-direction: column;
     margin: 0 32px;
-    width: 350px;
+    width: 400px;
     margin-bottom: 20px;
     margin-top: 20px;
     border: solid black 1px;
@@ -37,4 +37,18 @@ button{
     background-color: rgb(134, 205, 34);
     color: white;
     border-radius: 10px;
+    margin-bottom: 4px;
+}
+
+.delete-btn{
+    margin-top: 5px;
+    background-color: rgb(206, 31, 54);
+    color: white;
+    border-radius: 10px;
+}
+
+.edit-btn{
+    background-color: rgb(60, 60, 181);
+    color: white;
+    margin-top: 4px;
 }
