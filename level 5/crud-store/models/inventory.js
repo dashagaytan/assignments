@@ -11,7 +11,8 @@ const inventorySchema = new Schema({
     description: {
         type: String,
         require: true
-    }
+    },
+    price: Number
 })
 
-module.exports - mongoose.model(("Inventory", inventorySchema))
+module.exports = mongoose.model("Inventory", inventorySchema)

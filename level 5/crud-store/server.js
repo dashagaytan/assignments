@@ -7,10 +7,10 @@ const app = express()
 app.use(express.json())  // Looks for a request body, and turns it inot 'req.body'
 app.use(morgan('dev')) // Logs requests to the console
 
-mongoose.connect('mongodv://localhost:27017/crudStoredb')
+mongoose.connect('mongodb://localhost:27017/crudStoredb')
     .then(()=> console.log("Connected to DB"))
 
-app.use("/inventory", require("./routes/inventoryRoute.js"))    // route we tell the app to use and for server to see
+app.use("/inventory", require("./routes/inventoryRouter.js"))    // route we tell the app to use and for server to see
 
 // error handler
 app.use((err, req, res, next)=>{
