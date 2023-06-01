@@ -16,7 +16,22 @@ inventoryRouter.get("/", (req, res, next)=> {
 })
 
 //Get One
-
+    inventoryRouter.get("/:itemId", (req, res, next)=> {
+        Inventory.findById(itemId, (err, foundItem) => {
+            if(err){
+                res.status(500)
+                return next(err)
+            }
+            if(!foundItem){
+                const err = newError(`The item with id ${itemId} was not found`)
+                err.status = 404
+                res.status(500)
+                return next(err)
+            }
+            res.status(200).send(foundItem)
+        })
+    })
+    
 //Post One
 
 //Update One
