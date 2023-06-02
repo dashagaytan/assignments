@@ -1,5 +1,5 @@
 const express = require("express")
-const { default: mongoose } = require("mongoose")
+const mongoose = require("mongoose")
 const morgan = require("morgan")
 const app = express()
 
@@ -7,8 +7,10 @@ const app = express()
 app.use(express.json())
 app.use(morgan('dev'))
 
-mongoose.connect("mongodb://localhost:27017/bountyHuntingdb")
+mongoose.connect('mongodb://localhost:27017/bountyHunterdb')
 .then(()=> console.log("Connected to DB"))
+
+app.use("/bounties", require("./routes/bountyRouter.js"))
 
 //error handler
 app.use((err, req, res, next)=>{
@@ -19,5 +21,3 @@ app.use((err, req, res, next)=>{
 app.listen(8000, ()=> {
     console.log("Server is running on port 8000")
 })
-
-module.exports = express;
