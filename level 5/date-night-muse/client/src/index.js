@@ -1,16 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
-import {BrowserRouter} from "react-router-dom"
+import {MuseProvider} from './MuseContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <MealProvider>
-          <App /> 
-      </MealProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+    <MuseProvider>
+        <App /> 
+    </MuseProvider>
 );

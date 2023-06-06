@@ -1,16 +1,20 @@
 import React from "react";
-import { BrowserRouter as Routes, Route} from 'react-router-dom';
-import Navbar from "./components/Navbar.js"
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Home from "./components/Home.js"
+import HeadOut from "./components/HeadOut.js";
+import StayIn from "./components/StayIn.js"
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Routes>
-        <Route />
-        <Route />
-        <Route />
-      </Routes>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/headOut" element={<HeadOut/>}/>
+          <Route path="/stayIn" element={<StayIn/>}/>
+        </Routes>
+
+      </Router>
     </div>
   );
 }

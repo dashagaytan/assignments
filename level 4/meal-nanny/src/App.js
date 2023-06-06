@@ -5,8 +5,6 @@ import SavedMeals from "./components/SavedMeals"
 import Recipe from "./components/Recipe";
 import RandomMeal from "./components/RandomMeal"
 import Footer from "./components/Footer";
-
-
 import { BrowserRouter as Routes, Route} from 'react-router-dom';
 
 function App() {
