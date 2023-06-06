@@ -40,6 +40,7 @@ function StayIn(props){
                     {console.log(item, "item")}
                     <h3>{item.title}</h3>
                     <p>{item.description}</p>
+                    <p>{item.category}</p>
                 </div>
             ))}
         </>

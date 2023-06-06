@@ -10,14 +10,17 @@ function HeadOut(props){
 
     function handleHeadOutMuse(){
         getHeadOutDates();
-        setHeadOut(false)
+        // setHeadOut(false)
+        setHeadOut(prevState => !prevState)
     }
 
     return(
         <>
-        <h2>Stay In Date Muse</h2>
+        <h2>Head Out Date Muse</h2>
         <h4>Let the Muse guide you: </h4>
-
+        <button onClick={()=> navigate("/")}>Home Page</button>
+        <br>
+        </br>
         <select onChange={filterHeadOut} className="filter-form">
                 <option value="reset">- Lets Head Out-</option>
                 <option value="restaurants">Restaurant</option>
@@ -30,11 +33,12 @@ function HeadOut(props){
         </br>
         {showHeadOut && (
       <>
-            <h2>Stay In Dates:</h2>
+            <h2>Head Out Dates:</h2>
             {headOut.map((item) => (
                 <div key={item.id}>
                     <h3>{item.title}</h3>
                     <p>{item.description}</p>
+                    <p>{item.category}</p>
                 </div>
             ))}
         </>
