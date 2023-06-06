@@ -1,4 +1,4 @@
-const mongoose = require('mongoos')
+const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 // Stay In Date Night Muse bluepring 
@@ -17,4 +17,4 @@ const stayInSchema = new Schema({
       },
 })
 
-module.exports = mongoose.module("StayIn", stayInSchema)
+module.exports = mongoose.model("StayIn", stayInSchema)

@@ -13,7 +13,7 @@ mongoose.connect('mongodb://localhost:27017/datenightdb')
 
 // Routes we tell the app to use our routes that we have created in order for the server to see it.
 app.use("/stayIn", require("./routes/stayInRoutes.js"))
-app.use("/tvShows", (require("./routes/headOutRoutes.js")))
+app.use("/headOut", (require("./routes/headOutRoutes.js")))
 
 //error handler
 app.use((err, req, res, next)=>{

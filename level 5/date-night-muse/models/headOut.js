@@ -1,4 +1,4 @@
-const mongoose = require('mongoos')
+const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 // Head out Date Night Muse bluepring 
@@ -21,4 +21,4 @@ const headOutSchema = new Schema({
       },
 })
 
-module.exports = mongoose.module("HeadOut", headOutSchema)
+module.exports = mongoose.model("HeadOut", headOutSchema)
