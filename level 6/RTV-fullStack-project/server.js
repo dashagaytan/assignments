@@ -15,7 +15,7 @@ mongoose.connect('mongodb://localhost:27017/rvtdb',
 
 // express routes 
 app.use('/user', require('./routes/authRouter.js'))
-app.use('/api', expressjwt({ secret: process.env.SECRET, algorithms: ['HS26']}))
+app.use('/api', expressjwt({ secret: process.env.SECRET, algorithms: ['HS256']}))
 app.use('/api/issue', require('./routes/issueRouter.js'))
 app.use('/api/comments', require('./routes/commentsRouter.js'))
 

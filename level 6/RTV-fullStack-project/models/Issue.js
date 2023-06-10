@@ -4,11 +4,11 @@ const Schema = mongoose.Schema
 const issueSchema = new Schema({
     title: {
         type: String,
-        require: true
+        required: true
     },
     description: {
         type: String,
-        require: true
+        required: true
     }, 
     likes: {
         type: Number,
@@ -21,7 +21,7 @@ const issueSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: "User",
-        require: true
+        required: true
     }
 })
 
