@@ -1,20 +1,20 @@
 import React from 'react'
 import {Routes, Route, Navigate} from 'react-router-dom'
 import Navbar from './components/Navbar.js'
-// import Auth from './components/Auth.js';
-// import Profile from './components/Profile.js'
-// import Public from './components/Public.js'
-// import { UserContext } from './context/UserProvider'
+import Auth from './components/Auth.js';
+import Profile from './components/Profile.js'
+import Public from './components/Public.js'
+import { UserContext } from './context/UserProvider'
 
 export default function App(props) {
-  
+
   return (
     <div className="App">
       <Navbar />
       <Routes>
 
         <Route path='/'
-        element={token ? <Navigate to="/profile"/> : <Auth/>}
+        element={<Auth/>}
         /> 
 
         <Route 
