@@ -8,7 +8,7 @@ export default function AuthForm(props){
 
     return (
         <>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}> 
             <input
             type="text"
             value={username}

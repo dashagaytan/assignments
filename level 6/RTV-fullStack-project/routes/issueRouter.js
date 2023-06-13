@@ -3,7 +3,7 @@ const issueRouter = express.Router()
 const Issue = require('../models/Issue.js')
 
 // Get all issues
-issueRouter.get('/', (req, res, err)=> {
+issueRouter.get('/', (req, res, next)=> {
     Issue.find((err, issues)=> {
         if(err){
             res.status(500)
@@ -14,7 +14,7 @@ issueRouter.get('/', (req, res, err)=> {
 })
 
 // Get issues by user id
-issueRouter.get('/user', (req, res, err)=> {
+issueRouter.get('/user', (req, res, next)=> {
     Issue.find({ user: req.auth._id}, (err, issues)=> {
         if(err){
             res.status(500)
@@ -25,7 +25,7 @@ issueRouter.get('/user', (req, res, err)=> {
 })
 
 // Add new Issue
-issueRouter.post('/', (req, res, err)=> {
+issueRouter.post('/', (req, res, next)=> {
     req.body.user = req.auth._id
     const newIssue = new Issue(req.body)
     newIssue.save((err, savedIssue)=>{
@@ -38,7 +38,7 @@ issueRouter.post('/', (req, res, err)=> {
 })
 
 // Delete Issue
-issueRouter.delete('/:issueId', (req, res, err)=> {
+issueRouter.delete('/:issueId', (req, res, next)=> {
     Issue.findOneAndDelete(
         {_id: req.params.issueId, user: req.auth._id},
         (err, deletedIssue) => {
@@ -52,7 +52,7 @@ issueRouter.delete('/:issueId', (req, res, err)=> {
 })
 
 // Update Issue 
-issueRouter.put('/:issueId', (req, res, err)=> {
+issueRouter.put('/:issueId', (req, res, next)=> {
     Issue.findOneAndUpdate(
         {_id: req.params.issueId, user: req.auth._id},
         req.body,
@@ -68,7 +68,7 @@ issueRouter.put('/:issueId', (req, res, err)=> {
 })
 
 // upvote an issue 👍🏼
-issueRouter.put('/upvote/:issueId', (req, res, err)=> {
+issueRouter.put('/upvote/:issueId', (req, res, next)=> {
     Issue.findOneAndUpdate(
         {_id: req.params.issueId},
         {$inc: {upvotes: 1}},
@@ -85,7 +85,7 @@ issueRouter.put('/upvote/:issueId', (req, res, err)=> {
 })
 
 // downvote an issue 👎🏼
-issueRouter.put('/downvote/:issueId', (req, res, err)=> {
+issueRouter.put('/downvote/:issueId', (req, res, next)=> {
     Issue.findOneAndUpdate(
         {_id: req.params.issueId},
         {$inc: {downvotes: 1}},

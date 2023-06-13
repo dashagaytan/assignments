@@ -3,12 +3,12 @@ import axios from 'axios'
 
 export const CommentsContext = React.createContext()
 
-export default function CommentsProvider({children}){
+export default function CommentsProvider(props){
 
     return (
-        <CommentsContext.Provider>
+        <CommentsContext.Provider value ={{}}>
 
-            {children}
+            {props.children}
         </CommentsContext.Provider>
     )
 }

@@ -9,7 +9,7 @@ import { UserContext } from './context/UserProvider'
 export default function App(props) {
 
   return (
-    <div className="App">
+    <div className="app">
       <Navbar />
       <Routes>
 
