@@ -6,9 +6,7 @@ export default function IssueList(props){
     return (
         <div className="issue-list">
             {issues.map(issue =>
-             <Issue key={issue.id} 
-             issue={issue}
-              />
+             <Issue {...issue} key={issue._id}/>
             )}
         </div>
     )

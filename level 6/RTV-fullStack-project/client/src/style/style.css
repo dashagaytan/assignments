@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     font-size: 16px;
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
     outline: none;
     text-decoration: none;
 }
@@ -22,6 +22,11 @@
 .navbar > a{
     color: white;
 }
+.navbar >a:hover{
+    background-color: #233142;
+    padding: 8px;
+    border-radius: 5px;
+}
 
 .logout{
     width: 100px;
@@ -29,6 +34,10 @@
     color: white;
     padding: 4px;
     border-radius: 10px;
+    cursor: pointer;
+}
+.logout:hover{
+    background-color: #fe3838;
 }
 
 .auth-container{
@@ -44,8 +53,11 @@
 }
 
 .auth-container > p {
-    margin: 1px;
+    margin: 8px;
     text-decoration: underline;
+}
+.auth-container >p:hover{
+    cursor: pointer;
 }
 
 .auth-container > form{
@@ -68,6 +80,7 @@
     margin: 16px 8px;
     padding: 8px;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 .todo-list{
@@ -115,4 +128,18 @@
     margin: 8px 0;
     padding: 8px;
     border-radius: 5px;
+}
+
+.issue{
+    box-sizing: border-box;
+    border: solid 1px #233142;
+    margin: 15px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.issue > h1{
+    margin-bottom: 5px;
+    color: #f93838;
+    font-size: 18px;
 }

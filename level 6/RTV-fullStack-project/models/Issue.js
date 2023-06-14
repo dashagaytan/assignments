@@ -10,19 +10,19 @@ const issueSchema = new Schema({
         type: String,
         required: true
     }, 
-    imgUrl: {
-        type: String,
-        required: true
-    },
-    likes: {
+    upvoted: {
+        type: "Schema.Types.ObjectId",
+        ref: "User",
         type: Number,
         default: 0
     },
-    dislikes: {
+    downvoted: {
+        type: "Schema.Types.ObjectId",
+        ref: "User",
         type: Number,
         default: 0
     },
-    user: {
+    postedBy: {
         type: Schema.Types.ObjectId,
         ref: "User",
         required: true

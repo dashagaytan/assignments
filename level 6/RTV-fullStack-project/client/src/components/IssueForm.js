@@ -2,8 +2,7 @@ import React, {useState} from "react";
 
 const initInputs = {
     title: "",
-    description: "",
-    imgUrl: ""
+    description: ""
 }
 
 export default function IssueForm(props){
@@ -23,7 +22,7 @@ export default function IssueForm(props){
         addIssue(inputs)
     }
 
-    const { title, description, imgUrl } = inputs
+    const { title, description } = inputs
     return (
         <form onSubmit={handleSubmit}>
             <input 
@@ -40,12 +39,6 @@ export default function IssueForm(props){
             value={description}
             onChange={handleChange}
             />
-            <input 
-            type="text" 
-            name="imgUrl" 
-            value={imgUrl} 
-            onChange={handleChange} 
-            placeholder="Image Url"/>
             <button>Add Post</button>
         </form>
     )

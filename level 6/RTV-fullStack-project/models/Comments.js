@@ -10,6 +10,11 @@ const commentsSchema = new Schema({
        type: Schema.Types.ObjectId,
        ref: 'Issue',
        required: true
+    },
+    userComment: {
+        type: Schema.Types.ObjectId,
+        ref:'User',
+        required: true
     }
     
     // user: {
@@ -18,3 +23,5 @@ const commentsSchema = new Schema({
     //     required: true
     // },
 })
+
+module.exports= mongoose.model("Comments", commentsSchema)

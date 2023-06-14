@@ -77,6 +77,17 @@ export default function UserProvider(props){
             .catch(err => console.log(err.response.data.errMsg))
     }
 
+    // get all posted issues
+    function getAllIssues(issueId){
+        userAxios.get("/api/issue")
+        .then(res => {
+            setUserState(prevState => ({
+                ...prevState, issue: res.data
+            }))
+        })
+        .catch(err => console.log(err.response.data.errMsg))
+    }
+
     // add Issue
     function addIssue(newIssue){
         userAxios.post("/api/issue", newIssue)
@@ -86,7 +97,35 @@ export default function UserProvider(props){
                 issues: [...prevState.issues, res.data]
             }))
         })
+        .catch(err => console.log(err.response.data.errMsg))
     }
+    
+    //Delete Issue
+    function deleteIssue(issueId){
+        userAxios.delete(`/api/issue/${issueId}`)
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err.response.data.errMsg))
+        getUserIssue();
+    }
+
+    // upvote issue
+    function upvote(issueId){
+        userAxios.put(`/api/issue/upvote/${issueId}`)
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err.response.data.errMsg))
+
+        getAllIssues();
+    }
+
+    // downvote issue
+    function downvote(issueId){
+        userAxios.put(`/api/issue/downvote/${issueId}`)
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err.response.data.errMsg))
+
+        getAllIssues()
+    }
+
 
     return (
         <UserContext.Provider
@@ -96,7 +135,12 @@ export default function UserProvider(props){
             login,
             logout,
             addIssue,
-            getUserIssue
+            deleteIssue,
+            getUserIssue,
+            getAllIssues,
+            upvote,
+            downvote, 
+            userAxios
         }}>
 
             {props.children}

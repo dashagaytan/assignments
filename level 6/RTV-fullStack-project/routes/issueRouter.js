@@ -71,7 +71,7 @@ issueRouter.put('/:issueId', (req, res, next)=> {
 issueRouter.put('/upvote/:issueId', (req, res, next)=> {
     Issue.findOneAndUpdate(
         {_id: req.params.issueId},
-        {$inc: {upvotes: 1}},
+        {$inc: {upvoted: 1}},
         {new: true},
         (err, updatedIssue)=> {
             if(err){
@@ -85,10 +85,10 @@ issueRouter.put('/upvote/:issueId', (req, res, next)=> {
 })
 
 // downvote an issue 👎🏼
-issueRouter.put('/downvote/:issueId', (req, res, next)=> {
+issueRouter.put('/downvoted/:issueId', (req, res, next)=> {
     Issue.findOneAndUpdate(
         {_id: req.params.issueId},
-        {$inc: {downvotes: 1}},
+        {$inc: {downvote: 1}},
         {new: true},
         (err, updatedIssue)=> {
             if(err){
