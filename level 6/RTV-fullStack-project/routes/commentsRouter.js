@@ -14,8 +14,8 @@ commentsRouter.get('/', (req, res, next)=> {
 })
 
 // Get issues by user id
-commentsRouter.get('/user', (req, res, next)=> {
-    Comments.find({ user: req.auth._id}, (err, comments)=> {
+commentsRouter.get('/:issueId', (req, res, next)=> {
+    Comments.find({ issue: req.params.issueId}, (err, comments)=> {
         if(err){
             res.status(500)
             return next(err)
@@ -24,10 +24,10 @@ commentsRouter.get('/user', (req, res, next)=> {
     })
 })
 
-// Add new Issue
+// Add new Comment
 commentsRouter.post('/', (req, res, next)=> {
-    req.body.user = req.auth._id
-    const newComment = new Issue(req.body)
+    req.body.user = req.user._id
+    const newComment = new Comment(req.body)
     newComment.save((err, savedComment)=>{
         if(err){
             res.status(500)
@@ -37,21 +37,21 @@ commentsRouter.post('/', (req, res, next)=> {
     })
 })
 
-// Delete Issue
+// Delete Comment
 commentsRouter.delete('/:commentId', (req, res, next)=> {
     Comments.findOneAndDelete(
-        {_id: req.params.commentId, user: req.auth._id},
+        {_id: req.params.commentId},
         (err, deletedComment) => {
             if(err){
                 res.status(500)
                 return next(err)
             }
-            return res.status(200).send(`Successfully deleted comment: ${deletedComment.title}`)
+            return res.status(200).send(`Successfully deleted comment: ${deletedComment}`)
         }
     )
 })
 
-// Update Issue 
+// Update Comment 
 commentsRouter.put('/:commentId', (req, res, next)=> {
     Comments.findOneAndUpdate(
         {_id: req.params.commentId, user: req.auth._id},
