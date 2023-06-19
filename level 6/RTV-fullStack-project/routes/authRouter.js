@@ -23,14 +23,14 @@ authRouter.post('/signup', (req, res, next)=> {
             // return user info and a token
                                           //payload    ,  //secret from .env->file
             const token = jwt.sign(savedUser.withoutPassword(), process.env.SECRET)
-            return res.status(200).send({ token, user: savedUser.withoutPassword})
+            return res.status(200).send({ token, user: savedUser.withoutPassword() })
         })
     })
 })
 
 //login
 authRouter.post('/login', (req, res, next)=> {
-    User.findOne( { username: req.body.username.toLowerCase()}, (err, user)=> {
+    User.findOne( { username: req.body.username.toLowerCase() }, (err, user)=> {
         if(err){
             res.status(500)
             return next(err)
@@ -49,7 +49,7 @@ authRouter.post('/login', (req, res, next)=> {
               return next(new Error("Username or Password are incorrect"))
             }
             const token = jwt.sign(user.withoutPassword(), process.env.SECRET)
-            return res.status(200).send({ token, user.withoutPassword })
+            return res.status(200).send({ token, user: user.withoutPassword() })
         })
     })
 })
