@@ -4,6 +4,7 @@ import Navbar from './components/Navbar.js'
 import Auth from './components/Auth.js';
 import Profile from './components/Profile.js'
 import Public from './components/Public.js'
+import ProtectedRoute from './components/ProtectedRoute.js';
 import { UserContext } from './context/UserProvider'
 
 export default function App(props) {
@@ -11,8 +12,7 @@ export default function App(props) {
 
   return (
     <div className="app">
-     <Navbar logout={logout} token={token}/>
-       
+      {token && <Navbar logout={logout} token={token}/>}
       <Routes>
         <Route path='/'
         element= {token ? <Navigate to="/profile"/> : <Auth />}
@@ -20,12 +20,16 @@ export default function App(props) {
 
         <Route 
           path="/profile"
-          element={<Profile />}
+          element={<ProtectedRoute token={token} rederectTo = "/">
+            <Profile />
+          </ProtectedRoute>}
         />
 
         <Route 
           path="/public"
-          element={<Public />}
+          element={<ProtectedRoute token={token} rederectTo = "/">
+            <Public />
+          </ProtectedRoute>}
         />
 
       </Routes>
