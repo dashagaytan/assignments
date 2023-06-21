@@ -28,15 +28,13 @@ export default function Issue(props){
         getComments(_id)
         setToggle(prevState => !prevState)
     }
-
-    const voteCount = upvoted.length - downvoted.length
     
     return (
         <div className="issue">
             <h1>{ title }</h1>
             <h3>{ description }</h3>
             {/* {username !== commentedBy.username && <p>posted by: {commentedBy.username}</p>} */}
-            <p>Votes: {voteCount}</p>
+            <p>Votes: </p>
             <button className="likeBtn" onClick={()=> upvote(_id)}>Like</button>
             <button className="dislikeBtn" onClick={() => downvote(_id)}>Dislike</button>
 

@@ -15,13 +15,13 @@ const issueSchema = new Schema({
         ref: "User",
         required: true
     },
-    upvoted: {
+    upvote: {
         type: "Schema.Types.ObjectId",
         ref: "User",
         type: Number,
         default: 0
     },
-    downvoted: {
+    downvote: {
         type: "Schema.Types.ObjectId",
         ref: "User",
         type: Number,
