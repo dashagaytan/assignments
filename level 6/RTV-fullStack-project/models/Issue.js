@@ -27,7 +27,7 @@ const issueSchema = new Schema({
         type: Number,
         default: 0
     },
-    votes: [{
+    userVotes: [{
         type: String
     }],
     postDate: {

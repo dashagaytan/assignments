@@ -182,6 +182,12 @@ export default function UserProvider(props){
             }else {return null}
         })
     }
+
+    // add comment under posted issue 
+    function addComment(commentIssue, issueId){
+        userAxios.put(`/api/comment/${issueId}, commentIssue`)
+
+    }
     
     return (
         <UserContext.Provider

@@ -2,27 +2,6 @@ const express = require('express')
 const commentsRouter = express.Router()
 const Comments = require('../models/Comments.js')
 
-// Get all issues
-commentsRouter.get('/', (req, res, next)=> {
-    Comments.find((err, comments)=> {
-        if(err){
-            res.status(500)
-            return next(err)
-        }
-        return res.status(200).send(comments)
-    })
-})
-
-// Get issues by user id
-commentsRouter.get('/:issueId', (req, res, next)=> {
-    Comments.find({ issue: req.params.issueId}, (err, comments)=> {
-        if(err){
-            res.status(500)
-            return next(err)
-        }
-        return res.status(200).send(comments)
-    })
-})
 
 // Add new Comment
 commentsRouter.post('/', (req, res, next)=> {
