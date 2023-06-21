@@ -184,10 +184,43 @@ export default function UserProvider(props){
     }
 
     // add comment under posted issue 
-    function addComment(commentIssue, issueId){
-        userAxios.put(`/api/comment/${issueId}, commentIssue`)
+   // add comment under posted issue
+function addComment(commentId, issueId) {
+    userAxios
+      .post(`/api/comment`, { issue: issueId, comment: commentId })
+      .then(res => {
+        const updatedIssues = issueList.map(issue => {
+          if (issueId === issue._id) {
+            return {
+              ...issue,
+              comments: [...issue.comments, res.data._id]
+            };
+          }
+          return issue;
+        });
+        setIssueList(updatedIssues);
+      })
+      .catch(err => console.log(err.response.data.errMsg));
+  }
 
-    }
+  // delete comment 
+  function deletedComment(commentId, issueId){
+    userAxios.delete(`/api/comment/${commentId}`)
+    .then(res => {
+        const updatedComments = issueList.map(issue => {
+            if(issueId === issue._id){
+                return {
+                    ...issue,
+                    comments: issue.comments.filter(comment =>comment._id !== commentId )
+                }
+            }
+            return issue;
+        })
+        setIssueList(updatedComments)
+    })
+    .catch(err => console.log(err.response.data.errMsg))
+  }
+  
     
     return (
         <UserContext.Provider
@@ -197,9 +230,17 @@ export default function UserProvider(props){
             login,
             logout,
             addIssue,
+            issueList,
+            page,
+            setPage,
+            userErr,
+            setUserErr,
+            sortByVotes,
             resetAuthErr,
             handleUpvote,
-            handleDownvote
+            handleDownvote,
+            addComment,
+            deletedComment
         }}>
 
             {props.children}

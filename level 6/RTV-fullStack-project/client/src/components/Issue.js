@@ -33,7 +33,6 @@ export default function Issue(props){
         <div className="issue">
             <h1>{ title }</h1>
             <h3>{ description }</h3>
-            {/* {username !== commentedBy.username && <p>posted by: {commentedBy.username}</p>} */}
             <p>Votes: </p>
             <button className="likeBtn" onClick={()=> upvote(_id)}>Like</button>
             <button className="dislikeBtn" onClick={() => downvote(_id)}>Dislike</button>
