@@ -1,14 +1,11 @@
 import React, { useState } from "react";
+import { UserContext } from "../context/UserProvider";
 
 export default function CommentsForm(props){
-const [inputs, setInputs] = useState({text: " "})
-const {_id, addComment} = props
 
-function handleSubmit(e){
-    e.preventDefault();
-    addComment(_id, inputs)
-    setInputs(inputs)
-}
+const {_id, setComments} = props
+const { addComment } = {UserContext}
+const [inputs, setInputs] = useState({comment: " "})
 
 function handleChange(e){
     const {name, value} = e.target
@@ -18,13 +15,20 @@ function handleChange(e){
     }))
 }
 
+function handleSubmit(e){
+    e.preventDefault();
+    setComments(false)
+    addComment(_id, inputs)
+}
+
     return(
         <form onSubmit={handleSubmit}>
             <textarea
-            name="text"
-            value={inputs.text}
-            onChange={handleChange}
-            placeholder = "Leave a comment..."/>
+                type="text"
+                name="comment"
+                value={inputs.comment}
+                onChange={handleChange}
+                placeholder = "Leave a comment..."/>
             <button>Post Comment</button>
         </form>
     )

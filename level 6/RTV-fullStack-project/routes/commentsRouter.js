@@ -3,10 +3,32 @@ const commentsRouter = express.Router()
 const Comments = require('../models/Comments.js')
 
 
+// get all comments 
+commentsRouter.get('/', (req, res, next)=> {
+    Comments.find((err, comments) => {
+        if(err){
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(comments)
+    })
+})
+
+// get one comment by issue id
+commentsRouter.get('/:issueId', (req, res, next)=> {
+    Comments.find({issue: req.params.issueId}, (err, comments) => {
+        if(err){
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(comments)
+    })
+})
+
 // Add new Comment
 commentsRouter.post('/', (req, res, next)=> {
     req.body.user = req.user._id
-    const newComment = new Comment(req.body)
+    const newComment = new Comments(req.body)
     newComment.save((err, savedComment)=>{
         if(err){
             res.status(500)

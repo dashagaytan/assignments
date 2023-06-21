@@ -10,20 +10,16 @@ const issueSchema = new Schema({
         type: String,
         required: true
     }, 
-    postedBy: {
+    user: {
         type: Schema.Types.ObjectId,
-        ref: "User",
-        required: true
+       ref:'User',
+       required: true
     },
     upvote: {
-        type: "Schema.Types.ObjectId",
-        ref: "User",
         type: Number,
         default: 0
     },
     downvote: {
-        type: "Schema.Types.ObjectId",
-        ref: "User",
         type: Number,
         default: 0
     },

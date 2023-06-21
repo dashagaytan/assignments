@@ -1,13 +1,15 @@
-import React, {useState} from "react";
-
-const initInputs = {
-    title: "",
-    description: ""
-}
+import React, { useState } from "react";
 
 export default function IssueForm(props){
+
+    const { addIssue } = props  
+
+    const initInputs = {
+        title: "",
+        description: ""
+    }
+
     const [inputs, setInputs] = useState(initInputs)
-    const {addIssue} = props  //passing in a function from Profile 
 
     function handleChange(e){
         const {name, value} = e.target
@@ -20,11 +22,13 @@ export default function IssueForm(props){
     function handleSubmit(e){
         e.preventDefault()
         addIssue(inputs)
+        setInputs(initInputs)
     }
 
     const { title, description } = inputs
+
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="issue-form">
             <input 
             type="text"
             name="title"

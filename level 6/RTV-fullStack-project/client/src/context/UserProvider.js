@@ -21,7 +21,7 @@ export default function UserProvider(props){
     const [userState, setUserState] = useState(initState)
     const [issueList, setIssueList] = useState([])
     const [page, setPage] = useState("")
-    const [userErr, setUserErr] = useState("")
+    // const [userErr, setUserErr] = useState("")
 
     // Signup
     function signup(credentials){ 
@@ -110,7 +110,6 @@ export default function UserProvider(props){
             .catch(err => console.log(err.response.data.errMsg))
     }
 
-
     // add Issue
     function addIssue(newIssue){
         userAxios.post("/api/issue", newIssue)
@@ -125,65 +124,6 @@ export default function UserProvider(props){
         .catch(err => console.log(err.response.data.errMsg))
     }
     
-    // delete posted issue 
-    // function deleteIssue(issueId){
-    //     userAxios.delete(`api/issue/${issueId}`)
-    //     .then(res => {
-    //         setIssueList(prevState => prevState.filter(issue._id !== issueId))
-    //     })
-    //     .catch(err => console.log)
-    // }
-    
-    // handle posted issues upvotes and downvotes 
-    function handleUpvote(voteId){
-        issueList.forEach(issue => {
-            if(issue._id === voteId && userState.user._id === issue.user){
-                return setUserErr("Cannot vote on your own issue!")
-            } else if ( issue._id === voteId && issue.votedUsers.include(userState.user._id)){
-                return setUserErr("You have already voted!")
-            } else if(issue._id === voteId){
-                setUserErr(" ")
-                userAxios.put(`api/issue/upvote/${voteId}`)
-                .then(res => {
-                    const updatedIssue = issueList.map(issue => {
-                        if(voteId === issue._id){
-                            return res.data
-                        } else {
-                            return issue
-                        }
-                    })
-                    setIssueList(updatedIssue)
-                })
-                .catch(err => console.log(err))
-            }else {return null}
-        })
-    }
-
-    function handleDownvote(voteId){
-        issueList.forEach(issue => {
-            if(issue._id === voteId && userState.user._id === issue.user){
-                return setUserErr("Cannot vote on your own issue!")
-            } else if ( issue._id === voteId && issue.votedUsers.include(userState.user._id)){
-                return setUserErr("You have already voted!")
-            } else if(issue._id === voteId){
-                setUserErr(" ")
-                userAxios.put(`api/issue/downvote/${voteId}`)
-                .then(res => {
-                    const updatedIssue = issueList.map(issue => {
-                        if(voteId === issue._id){
-                            return res.data
-                        } else {
-                            return issue
-                        }
-                    })
-                    setIssueList(updatedIssue)
-                })
-                .catch(err => console.log(err))
-            }else {return null}
-        })
-    }
-
-    // add comment under posted issue 
    // add comment under posted issue
 function addComment(commentId, issueId) {
     userAxios
@@ -204,7 +144,7 @@ function addComment(commentId, issueId) {
   }
 
   // delete comment 
-  function deletedComment(commentId, issueId){
+  function deleteComment(commentId, issueId){
     userAxios.delete(`/api/comment/${commentId}`)
     .then(res => {
         const updatedComments = issueList.map(issue => {
@@ -233,14 +173,10 @@ function addComment(commentId, issueId) {
             issueList,
             page,
             setPage,
-            userErr,
-            setUserErr,
             sortByVotes,
             resetAuthErr,
-            handleUpvote,
-            handleDownvote,
             addComment,
-            deletedComment
+            deleteComment
         }}>
 
             {props.children}

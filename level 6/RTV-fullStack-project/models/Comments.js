@@ -7,9 +7,16 @@ const commentsSchema = new Schema({
         required: true
    },
    commentedBy: {
-       type: Schema.Types.ObjectId,
-       ref:'User',
+       type: String,
        required: true
+   },
+   username: {
+        type: String
+   },
+   user: {
+    type: Schema.Types.ObjectId,
+    ref:'User',
+    required: true
    },
    issue: {
        type: Schema.Types.ObjectId,
