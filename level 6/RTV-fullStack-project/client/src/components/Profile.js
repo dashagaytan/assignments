@@ -5,11 +5,11 @@ import { UserContext } from "../context/UserProvider.js";
 
 
 export default function Profile(){
-    const {user: { username}, getUserIssue, addIssue, issues} = useContext(UserContext)
+    const {user: { username}, addIssue, issues} = useContext(UserContext)
     
     //render all user posts on at login
     useEffect(() => {
-        getUserIssue();
+        // getUserIssue();
     },[])
 
     return (

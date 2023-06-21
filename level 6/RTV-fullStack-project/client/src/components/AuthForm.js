@@ -1,10 +1,14 @@
 import React from "react";
 
 export default function AuthForm(props){
-    const {handleChange,
-         handleSubmit,
+    const {
+        handleChange,
+        handleSubmit,
         btnText,
-        inputs: { username, password}} = props
+        errMsg,
+        inputs: 
+        { username, password}} 
+        = props
 
     return (
         <>
@@ -24,6 +28,7 @@ export default function AuthForm(props){
             placeholder="Password"
             />
             <button>{ btnText }</button>
+            <p style={{color: "#f74a4a"}}>{ errMsg }</p>
        </form>
         </>
     )

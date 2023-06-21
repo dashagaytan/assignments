@@ -93,16 +93,6 @@ export default function UserProvider(props){
             .catch(err => console.log(err.response.data.errMsg))
     }
 
-    // get all posted issues
-    function getAllIssues(issueId){
-        userAxios.get("/api/issue")
-        .then(res => {
-            setUserState(prevState => ({
-                ...prevState, issue: res.data
-            }))
-        })
-        .catch(err => console.log(err.response.data.errMsg))
-    }
 
     // add Issue
     function addIssue(newIssue){
@@ -116,47 +106,16 @@ export default function UserProvider(props){
         .catch(err => console.log(err.response.data.errMsg))
     }
     
-    //Delete Issue
-    function deleteIssue(issueId){
-        userAxios.delete(`/api/issue/${issueId}`)
-        .then(res => console.log(res.data))
-        .catch(err => console.log(err.response.data.errMsg))
-        getUserIssue();
-    }
-
-    // upvote issue
-    function upvote(issueId){
-        userAxios.put(`/api/issue/upvote/${issueId}`)
-        .then(res => console.log(res.data))
-        .catch(err => console.log(err.response.data.errMsg))
-
-        getAllIssues();
-    }
-
-    // downvote issue
-    function downvote(issueId){
-        userAxios.put(`/api/issue/downvote/${issueId}`)
-        .then(res => console.log(res.data))
-        .catch(err => console.log(err.response.data.errMsg))
-
-        getAllIssues()
-    }
-
-
+    
+    
     return (
         <UserContext.Provider
-         value={{
+        value={{
             ...userState,
             signup,
             login,
             logout,
             addIssue,
-            deleteIssue,
-            getUserIssue,
-            getAllIssues,
-            upvote,
-            downvote, 
-            userAxios,
             resetAuthErr
         }}>
 
@@ -164,3 +123,51 @@ export default function UserProvider(props){
         </UserContext.Provider>
     )
 }
+
+
+
+
+    // deleteIssue,
+    // getUserIssue,
+    // getAllIssues,
+    // upvote,
+    // downvote, 
+
+
+
+
+    //Delete Issue
+    // function deleteIssue(issueId){
+    //     userAxios.delete(`/api/issue/${issueId}`)
+    //     .then(res => console.log(res.data))
+    //     .catch(err => console.log(err.response.data.errMsg))
+    //     getUserIssue();
+    // }
+
+    // // upvote issue
+    // function upvote(issueId){
+    //     userAxios.put(`/api/issue/upvote/${issueId}`)
+    //     .then(res => console.log(res.data))
+    //     .catch(err => console.log(err.response.data.errMsg))
+
+    //     getAllIssues();
+    // }
+
+    // // downvote issue
+    // function downvote(issueId){
+    //     userAxios.put(`/api/issue/downvote/${issueId}`)
+    //     .then(res => console.log(res.data))
+    //     .catch(err => console.log(err.response.data.errMsg))
+
+    //     getAllIssues()
+    // }
+    // // get all posted issues
+    // function getAllIssues(issueId){
+    //     userAxios.get("/api/issue")
+    //     .then(res => {
+    //         setUserState(prevState => ({
+    //             ...prevState, issue: res.data
+    //         }))
+    //     })
+    //     .catch(err => console.log(err.response.data.errMsg))
+    // }

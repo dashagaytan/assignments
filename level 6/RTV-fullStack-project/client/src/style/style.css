@@ -8,9 +8,9 @@
     text-decoration: none;
 }
 
-.app{
+/* .app{
     background-color: #e3e3e3;
-}
+} */
 
 .navbar{
     display: flex;
@@ -139,6 +139,7 @@
 }
 
 .issue > h1{
+    color: #455d7a;
     margin-bottom: 5px;
     color: #f93838;
     font-size: 18px;
