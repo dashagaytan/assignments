@@ -18,8 +18,10 @@ export default function UserProvider(props){
         issues: [],
         errMsg: ""
     }
-
     const [userState, setUserState] = useState(initState)
+    const [issueList, setIssueList] = useState([])
+    const [page, setPage] = useState("")
+    const [userErr, setUserErr] = useState("")
 
     // Signup
     function signup(credentials){ 
@@ -29,6 +31,7 @@ export default function UserProvider(props){
             // save user in local storage
             localStorage.setItem("token", token)
             localStorage.setItem("user", JSON.stringify(user))
+            getAllIssues();
             setUserState(prevState=> ({
                 ...prevState,
                 user,
@@ -45,7 +48,8 @@ export default function UserProvider(props){
             const {user, token} = res.data
             localStorage.setItem("token", token)
             localStorage.setItem("user", JSON.stringify(user))
-            getUserIssue()
+            getUserIssue();
+            getAllIssues();
             setUserState(prevState=> ({
                 ...prevState,
                 user,
@@ -81,6 +85,19 @@ export default function UserProvider(props){
         }))
     }
 
+    function sortByVotes(){
+        issueList && issueList.sort((a,b) => {
+            return b.votes -a.votes
+        })
+    }
+
+    // get all issues 
+    function getAllIssues(){
+        userAxios.get("api/issue")
+        .then(res => setIssueList(res.data))
+        .then(sortByVotes())
+        .catch(err => console.log(err))
+    }
     // get user issues
     function getUserIssue(){
         userAxios.get("/api/issue/user")
@@ -102,11 +119,49 @@ export default function UserProvider(props){
                 ...prevState,
                 issues: [...prevState.issues, res.data]
             }))
+            getUserIssue();
+            getAllIssues();
         })
         .catch(err => console.log(err.response.data.errMsg))
     }
     
+    // delete posted issue 
+    // function deleteIssue(issueId){
+    //     userAxios.delete(`api/issue/${issueId}`)
+    //     .then(res => {
+    //         setIssueList(prevState => prevState.filter(issue._id !== issueId))
+    //     })
+    //     .catch(err => console.log)
+    // }
     
+    // handle posted issues upvotes and downvotes 
+    function handleUpvote(voteId){
+        issueList.forEach(issue => {
+            if(issue._id === voteId && userState.user._id === issue.user){
+                return setUserErr("Cannot vote on your own issue!")
+            } else if ( issue._id === voteId && issue.votedUsers.include(userState.user._id)){
+                return setUserErr("You have already voted!")
+            } else if(issue._id === voteId){
+                setUserErr(" ")
+                userAxios.put(`api/issue/upvote/${voteId}`)
+                .then(res => {
+                    const updatedIssue = issueList.map(issue => {
+                        if(voteId === issue._id){
+                            return res.data
+                        } else {
+                            return issue
+                        }
+                    })
+                    setIssueList(updatedIssue)
+                })
+                .catch(err => console.log(err))
+            }else {return null}
+        })
+    }
+
+    function handleDownvote(voteId){
+
+    }
     
     return (
         <UserContext.Provider
@@ -123,51 +178,3 @@ export default function UserProvider(props){
         </UserContext.Provider>
     )
 }
-
-
-
-
-    // deleteIssue,
-    // getUserIssue,
-    // getAllIssues,
-    // upvote,
-    // downvote, 
-
-
-
-
-    //Delete Issue
-    // function deleteIssue(issueId){
-    //     userAxios.delete(`/api/issue/${issueId}`)
-    //     .then(res => console.log(res.data))
-    //     .catch(err => console.log(err.response.data.errMsg))
-    //     getUserIssue();
-    // }
-
-    // // upvote issue
-    // function upvote(issueId){
-    //     userAxios.put(`/api/issue/upvote/${issueId}`)
-    //     .then(res => console.log(res.data))
-    //     .catch(err => console.log(err.response.data.errMsg))
-
-    //     getAllIssues();
-    // }
-
-    // // downvote issue
-    // function downvote(issueId){
-    //     userAxios.put(`/api/issue/downvote/${issueId}`)
-    //     .then(res => console.log(res.data))
-    //     .catch(err => console.log(err.response.data.errMsg))
-
-    //     getAllIssues()
-    // }
-    // // get all posted issues
-    // function getAllIssues(issueId){
-    //     userAxios.get("/api/issue")
-    //     .then(res => {
-    //         setUserState(prevState => ({
-    //             ...prevState, issue: res.data
-    //         }))
-    //     })
-    //     .catch(err => console.log(err.response.data.errMsg))
-    // }
