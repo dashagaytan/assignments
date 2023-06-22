@@ -15,6 +15,9 @@ const issueSchema = new Schema({
        ref:'User',
        required: true
     },
+    username: {
+        type:String,
+    },
     upvote: {
         type: Number,
         default: 0

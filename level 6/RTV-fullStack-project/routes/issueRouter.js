@@ -26,9 +26,10 @@ issueRouter.get('/user', (req, res, next)=> {
 
 // Add new Issue
 issueRouter.post('/', (req, res, next)=> {
-    req.body.user = req.auth._id
+    req.body.user = req.user._id
+    req.body.username = req.user.username
     const newIssue = new Issue(req.body)
-    newIssue.save((err, savedIssue)=>{
+    newIssue.save((err, savedIssue) => {
         if(err){
             res.status(500)
             return next(err)
@@ -40,7 +41,7 @@ issueRouter.post('/', (req, res, next)=> {
 // Delete Issue
 issueRouter.delete('/:issueId', (req, res, next)=> {
     Issue.findOneAndDelete(
-        {_id: req.params.issueId, user: req.auth._id},
+        {_id: req.params.issueId},
         (err, deletedIssue) => {
             if(err){
                 res.status(500)
@@ -51,29 +52,13 @@ issueRouter.delete('/:issueId', (req, res, next)=> {
     )
 })
 
-// Update Issue 
-issueRouter.put('/:issueId', (req, res, next)=> {
-    Issue.findOneAndUpdate(
-        {_id: req.params.issueId, user: req.auth._id},
-        req.body,
-        {new: true},
-        (err, updatedIssue)=> {
-            if(err){
-                res.status(500)
-                return next(err)
-            }
-            return res.status(200).send(updatedIssue)
-        }
-    )
-})
-
 // upvote an issue 👍🏼
 issueRouter.put('/upvote/:issueId', (req, res, next)=> {
     Issue.findOneAndUpdate(
         {_id: req.params.issueId},
         { $inc: {upvote: 1 },
         $push: {userVotes: 
-            { $each: [req.user._id] }
+            { $each: [req.user.username] }
         }},
         {new: true},
         (err, updatedIssue)=> {
@@ -89,9 +74,9 @@ issueRouter.put('/upvote/:issueId', (req, res, next)=> {
 issueRouter.put('/downvote/:issueId', (req, res, next)=> {
     Issue.findOneAndUpdate(
         {_id: req.params.issueId},
-        { $inc: {downvote: -1 },
+        { $inc: {downvote: 1 },
         $push: {userVotes: 
-            { $each: [req.user._id] }
+            { $each: [req.user.username] }
         }},
         {new: true},
         (err, updatedIssue)=> {

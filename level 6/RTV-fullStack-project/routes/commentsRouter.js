@@ -28,7 +28,7 @@ commentsRouter.get('/:issueId', (req, res, next)=> {
 // Add new Comment
 commentsRouter.post('/', (req, res, next)=> {
     req.body.user = req.user._id
-    const newComment = new Comments(req.body)
+    const newComment = new Comment(req.body)
     newComment.save((err, savedComment)=>{
         if(err){
             res.status(500)

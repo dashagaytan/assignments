@@ -6,15 +6,16 @@ export default function CommentsList(props){
 
     return (
         <div className="comment-list">
-            { comments.length >= 1 && <h2>Comments</h2>}
+            {Array.isArray(comments) && comments.length > 0 && <h2>Comments</h2>}
 
-            { comments.map((comment) => (
+            {Array.isArray(comments) &&
+            comments.map((comment) => (
                 <Comments
-                    key={_id}
-                    {...comment}
-                    comments = {comments._id}
-                    deleteComment={deleteComment}
-                    page={page}
+                key={comment._id}
+                {...comment}
+                comments={comment.comments}
+                deleteComment={deleteComment}
+                page={page}
                 />
             ))}
         </div>

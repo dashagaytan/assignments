@@ -5,7 +5,7 @@ import { UserContext } from "../context/UserProvider.js";
 
 
 export default function Profile(){
-    const {user: { username}, addIssue, issues} = useContext(UserContext)
+    const {user: { username}, addIssue, issues, deleteComment,handleUpvote, handleDownvote, page, setPage, sortByVote} = useContext(UserContext)
     
     //render all user posts on at login
     useEffect(() => {
@@ -20,7 +20,13 @@ export default function Profile(){
             <h4> Post an Issue</h4>
             <IssueForm addIssue={addIssue}/>
             <h4>Your Posted Issues</h4>
-            <IssueList issues={issues}/>
+            <IssueList 
+            deleteComment ={deleteComment}
+            issues={issues}
+            page={page}
+            handleDownvote={handleDownvote}
+            handleUpvote={handleUpvote}
+            />
 
         </div>
     )
