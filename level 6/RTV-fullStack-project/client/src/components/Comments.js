@@ -7,7 +7,7 @@ export default function Comments(props){
     function handleDelete(){
         if(page === "profile")
         return (
-            <button onClick={()=> deleteComment({username,comments}, _id)}> Delete Comment</button>
+            <button onClick={()=> deleteComment(_id)}> Delete Comment</button>
         )
     }
     return (

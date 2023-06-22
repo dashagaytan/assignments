@@ -7,7 +7,7 @@ const userAxios = axios.create()
 userAxios.interceptors.request.use(config => {
     const token = localStorage.getItem('token')
     config.headers.Authorization =`Bearer ${token}`
-    return config
+    return config 
 })
 
 export default function UserProvider(props){
@@ -140,7 +140,13 @@ function addComment(commentId, issueId) {
         });
         setIssueList(updatedIssues);
       })
-      .catch(err => console.log(err.response.data.errMsg));
+      .catch(err => {
+        if (err.response && err.response.data && err.response.data.errMsg) {
+          console.log(err.response.data.errMsg);
+        } else {
+          console.log("An error occurred while adding a comment.");
+        }
+        });
   }
 
   // delete comment 

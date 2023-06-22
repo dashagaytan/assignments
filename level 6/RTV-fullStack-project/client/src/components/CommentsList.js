@@ -2,18 +2,21 @@ import React from "react";
 import Comments from "./Comments";
 
 export default function CommentsList(props){
-    const {comments, page, deleteComment} = props
+    const {comments, page, deleteComment, _id} = props
 
     return (
         <div className="comment-list">
-            {comments.map(comment =>
+            { comments.length >= 1 && <h2>Comments</h2>}
+
+            { comments.map((comment) => (
                 <Comments
-                    key={comment._id}
-                    {...comments}
+                    key={_id}
+                    {...comment}
+                    comments = {comments._id}
                     deleteComment={deleteComment}
                     page={page}
                 />
-            )}
+            ))}
         </div>
     )
 }

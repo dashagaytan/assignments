@@ -5,10 +5,10 @@ import CommentsList from "./CommentsList";
 
 export default function Issue(props){
     // const [toggle, setToggle]= useState(false)
-    const [comments, setComments] = useState(false)
+    const [inputComments, setInputComments] = useState(false)
     const [error, setError] = useState(false)
 
-    const {title, description, _id, handleUpvote, handleDownvote, page, username, userErr} = props
+    const {title, description, _id, handleUpvote, handleDownvote, page, username, userErr, comments} = props
     const {addComment, deleteComment} = useContext(UserContext)
 
     function displayUserErr(id){
@@ -33,13 +33,13 @@ export default function Issue(props){
                 <button className="dislikeBtn" onClick={() => {return (handleDownvote(_id), displayUserErr(_id)) }}>👎🏼</button>
             </div>
             <div>
-            <button onClick={() => {setComments(!comments)}}>Add Comment</button>
+            <button onClick={() => {setInputComments(!inputComments)}}>Add Comment</button>
             <>
             {error && userErr}
             </>
             <CommentsList
             comments = {comments} _id={_id} page ={page} deleteComment ={deleteComment}/>
-            { addComment && <CommentsForm addComment = {addComment} _id={_id} setComments = {setComments}/>}
+            { addComment && <CommentsForm addComment = {addComment} _id={_id} setInputComments = {setInputComments}/>}
             </div>
         </div>
     )
