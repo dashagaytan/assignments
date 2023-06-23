@@ -1,26 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import {IssueContext} from "../context/IssueProvider.js"
 
 export default function IssueForm(props){
 
     const { addIssue } = props  
+    const { inputs, setInputs, initInputs } = useContext(IssueContext)
 
-    const initInputs = {
-        title: "",
-        description: ""
-    }
-
-    const [inputs, setInputs] = useState(initInputs)
 
     function handleChange(e){
         const {name, value} = e.target
-        setInputs(prevState=> ({
-            ...prevState,
-            [name]: value
+        setInputs(prev => ({
+            ...prev,
+            [name]:value
         }))
     }
 
     function handleSubmit(e){
-        e.preventDefault()
+        e.preventDefault();
         addIssue(inputs)
         setInputs(initInputs)
     }

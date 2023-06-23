@@ -19,7 +19,7 @@ export default function IssueProvider(props){
         voters: []
     }
 
-    const commentInput = {
+    const commentsInput = {
         comment: '',
         issue: ''
     }
@@ -33,7 +33,7 @@ export default function IssueProvider(props){
 
     const [userState, setUserState] = useState(initState)
     const [inputs, setInputs]= useState(initInputs)
-    const [comments, setComments]= useState(commentInput)
+    const [comments, setComments]= useState(commentsInput)
 
 
     // get all issues
@@ -102,7 +102,7 @@ export default function IssueProvider(props){
     }
 
     // handle upvote and downvote
-    function handleVoteing(vote, issueId){
+    function handleVoting(vote, issueId){
         userAxios.put(`/api/issue/${vote}/${issueId}`)
         .then(res => {
             setUserState(prev => ({
@@ -126,7 +126,7 @@ export default function IssueProvider(props){
             addIssue,
             deleteIssue,
             addComment,
-            handleVoteing
+            handleVoting
         }}>
             {props.children}
         </IssueContext.Provider>

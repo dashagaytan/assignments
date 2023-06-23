@@ -1,46 +1,42 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
+import { IssueContext } from "../context/IssueProvider";
 import { UserContext } from "../context/UserProvider";
 import CommentsForm from "./CommentsForm";
 import CommentsList from "./CommentsList";
 
 export default function Issue(props){
-    // const [toggle, setToggle]= useState(false)
-    const [inputComments, setInputComments] = useState(false)
-    const [error, setError] = useState(false)
 
-    const {title, description, _id, handleUpvote, handleDownvote, page, username, userErr, comments} = props
-    const {addComment, deleteComment} = useContext(UserContext)
+    const { issue } = props
+    const { handleVoting, deleteIssue} = useContext(IssueContext)
+    const { user } = useContext(UserContext)
 
-    function displayUserErr(id){
-        if(id === _id){
-            setError(!error)
-            setTimeout(()=> {return (setError(false))}, 2000)
-        }else {return null}
+    function voting(vote, id, username){
+        const voted = issue.userVotes.includes(username) 
+        voted ? alert(" You already voted on this issue")  //determine if user has already voted on the issue
+        :
+        handleVoting(vote, id)  // else handle voting function is called to allow user to submit their vote
+        .then(() => {
+            window.location.reload();  // reload the page after voting
+        })
+        .catch(err => console.log("Error occured while voting...", err))
     }
-    
     return (
-        <div className="issue">
-            <>
-                <h1>{ title }</h1>
-                <h3>{ description }</h3>
-            </>
-            <>
-                <p className="list-username">{ username }</p>
-            </>
-            {/* <p>Votes: </p> */}
-            <div className="vote-container">
-                <button className="likeBtn" onClick={()=> {return (handleUpvote(_id), displayUserErr(_id)) }}>👍🏼</button>
-                <button className="dislikeBtn" onClick={() => {return (handleDownvote(_id), displayUserErr(_id)) }}>👎🏼</button>
+        <div className="issue-container">
+            {user._id === issue.user && (<em className="delete-issue" onClick={() => deleteIssue(issue._id)}>Delete Issue</em>)}
+            <h1>{ issue.title }</h1>
+            <p>{ issue.description }</p>
+            <div className="votes">
+               <em onClick={() => voting("upvote", issue._id, user.username)} className="upvote"> 👍🏼 </em>
+               <i>{ issue.upvote }</i>
+                <em onClick={() => voting("downvote", issue._id, user.username)} className="downvote"> 👎🏼 </em>
+                <i>{ issue.downvote }</i>
             </div>
-            <div>
-            <button onClick={() => {setInputComments(!inputComments)}}>Add Comment</button>
             <>
-            {error && userErr}
+            <h2>Leave a comment: </h2>
+                <CommentsForm issueId = { issue._id}/>
+                <CommentsList issueId = { issue._id} comments = { issue.comments}/>
             </>
-            <CommentsList
-            comments = {comments} _id={_id} page ={page} deleteComment ={deleteComment}/>
-            { addComment && <CommentsForm addComment = {addComment} _id={_id} setInputComments = {setInputComments}/>}
-            </div>
         </div>
     )
-} 
+
+}

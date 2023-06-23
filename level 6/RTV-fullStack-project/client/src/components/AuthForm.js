@@ -9,7 +9,7 @@ export default function AuthForm(props){
         inputs: 
         { username, password}} 
         = props
-
+ 
     return (
         <>
         <form onSubmit={handleSubmit}> 

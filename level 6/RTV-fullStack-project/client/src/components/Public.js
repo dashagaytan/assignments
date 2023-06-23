@@ -1,31 +1,26 @@
 import React, { useContext, useEffect } from "react"
 import IssueList from "./IssueList"
-import { UserContext } from "../context/UserProvider"
+import { IssueContext } from "../context/IssueProvider"
 
 export default function Public() {
   const {
-    issueList,
-    handleUpvote,
-    hadnleDownvote,
-    setPage,
-    userErr,
-    setUserErr, 
-    sortByVotes } = useContext(UserContext)
+      user: {
+        username
+      },
+      issues,
+      getIssues
+    } = useContext(IssueContext)
 
-  useEffect(() => {
-    setPage("public")
-    sortByVotes()
-  }, [])
+    useEffect(() => {
+      getIssues()
+    }, [getIssues])
 
   return (
     <div className="public-container">
-      <h1>Issues</h1>
-      <IssueList
-        issues={issueList}
-        upVote={handleUpvote}
-        hadnleDownvote={hadnleDownvote}
-        userErr={userErr}
-        setUserErr={setUserErr} />
+      <h1>{username} Welcome to Public Issues</h1>
+      <h2>Issues:</h2>
+      <IssueList  issues={ issues }/>
+ 
     </div>
   )
 }
