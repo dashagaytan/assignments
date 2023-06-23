@@ -17,8 +17,8 @@ export default function Public() {
 
   return (
     <div className="public-container">
-      <h1>{username} Welcome to Public Issues</h1>
-      <h2>Issues:</h2>
+      <h1 className="title">{username} Take a look at Public Issues</h1>
+      <h2 className="subtitle">Issues:</h2>
       <IssueList  issues={ issues }/>
  
     </div>

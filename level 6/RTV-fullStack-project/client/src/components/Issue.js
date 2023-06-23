@@ -11,31 +11,36 @@ export default function Issue(props){
     const { user } = useContext(UserContext)
 
     function voting(vote, id, username){
-        const voted = issue.userVotes.includes(username) 
-        voted ? alert(" You already voted on this issue")  //determine if user has already voted on the issue
+        const voted = issue.userVotes.includes(username) //.user.includes used to be votedUsers
+        console.log(voted)
+        voted ? alert("You have already voted")
         :
-        handleVoting(vote, id)  // else handle voting function is called to allow user to submit their vote
-        .then(() => {
-            window.location.reload();  // reload the page after voting
-        })
-        .catch(err => console.log("Error occured while voting...", err))
+        handleVoting(vote, id)
+        window.location.reload()
     }
+
     return (
         <div className="issue-container">
-            {user._id === issue.user && (<em className="delete-issue" onClick={() => deleteIssue(issue._id)}>Delete Issue</em>)}
-            <h1>{ issue.title }</h1>
-            <p>{ issue.description }</p>
+            {user._id === issue.user && (<i className="delete-issue" onClick={() => deleteIssue(issue._id)}>Delete Issue</i>)}
+            <h1 className="issue-title">{ issue.title }</h1>
+            <p className="issue-description">{ issue.description }</p>
             <div className="votes">
-               <em onClick={() => voting("upvote", issue._id, user.username)} className="upvote"> 👍🏼 </em>
+            <br>
+            </br>
+               <i onClick={() => voting("upvote", issue._id, user.username)} className="upvote">👍🏼 </i>
                <i>{ issue.upvote }</i>
-                <em onClick={() => voting("downvote", issue._id, user.username)} className="downvote"> 👎🏼 </em>
+                <i onClick={() => voting("downvote", issue._id, user.username)} className="downvote">👎🏼</i>
                 <i>{ issue.downvote }</i>
             </div>
             <>
-            <h2>Leave a comment: </h2>
-                <CommentsForm issueId = { issue._id}/>
-                <CommentsList issueId = { issue._id} comments = { issue.comments}/>
+            <h2>Share your thoughts</h2>
+            <br>
+            </br>
+                <CommentsForm issueId={ issue._id}/>
+                <CommentsList issueId={ issue._id} comments={ issue.comments}/>
             </>
+            <br>
+            </br>
         </div>
     )
 

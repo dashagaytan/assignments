@@ -83,16 +83,23 @@
     cursor: pointer;
 }
 
-.todo-list{
-
-}
-
-.todo{
-
-}
-
-.public{
+.public-container{
     height: 100vh;
+    text-align: center;
+    margin-top: 20px;
+    color: #455d7a;
+}
+
+.public-container > .title{
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px; 
+}
+
+.public-container > .subtitle{
+    font-size: 24px;
+    font-weight: normal;
+    margin-bottom: 10px;
 }
 
 .profile{

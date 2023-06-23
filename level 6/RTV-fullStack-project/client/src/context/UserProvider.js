@@ -18,6 +18,7 @@ export default function UserProvider(props){
         issues: [],
         errMsg: ""
     }
+    
     const [userState, setUserState] = useState(initState)
 
     // Signup

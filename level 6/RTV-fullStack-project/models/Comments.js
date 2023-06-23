@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const commentsSchema = new Schema({
    comment:{
-        type:String,
+        type: String,
         required: true
    },
    commentedBy: {
@@ -14,9 +14,9 @@ const commentsSchema = new Schema({
         type: String
    },
    user: {
-    type: Schema.Types.ObjectId,
-    ref:'User',
-    required: true
+        type: Schema.Types.ObjectId,
+        ref:'User',
+        required: true
    },
    issue: {
        type: Schema.Types.ObjectId,

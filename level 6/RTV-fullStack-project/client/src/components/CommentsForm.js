@@ -11,7 +11,7 @@ const [comment, setComment] = useState("")
 
 function handleChange(e){
     const {name, value} = e.target
-    setComments(prevState=> ({
+    setComments(prevState => ({
         ...prevState,
         [name]: value,
         commentedBy: username,
@@ -28,14 +28,14 @@ function handleSubmit(e){
 
     return(
         <form onSubmit={handleSubmit} className="comment-form">
-            <textarea
+            <input
                 type="text"
                 name="comment"
                 value={comment}
                 onChange={handleChange}
-                placeholder = "Share your thoughts on this issue..."
+                placeholder = "Leave a comment . . . "
                 />
-            <button>Post Comment</button>
+            <button>Post</button>
         </form>
     )
 }

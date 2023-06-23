@@ -74,7 +74,7 @@ issueRouter.put('/upvote/:issueId', (req, res, next)=> {
 issueRouter.put('/downvote/:issueId', (req, res, next)=> {
     Issue.findOneAndUpdate(
         {_id: req.params.issueId},
-        { $inc: {downvote: 1 },
+        { $inc: {downvote: -1 },
         $push: {userVotes: 
             { $each: [req.user.username] }
         }},

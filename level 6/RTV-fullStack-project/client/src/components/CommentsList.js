@@ -6,10 +6,7 @@ export default function CommentsList(props){
 
     return (
         <div className="comment-list">
-            { comments && 
-            comments.map(post => (
-                <Comment key={ post._id } comment = {post} issueId = {post.issueId}/>
-            ))}
-        </div>
+           { (comments) ? comments.map(post => (<Comment comment={post} issueId={post.issueId} key={post._id}>{post.comment}</Comment>)) : console.log("fail") }
+     </div>
     )
 }
