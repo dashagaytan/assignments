@@ -1,11 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import {MuseProvider} from './MuseContext';
+import { BrowserRouter } from 'react-router-dom'
+import MuseProvider from './context/MuseProvider.js';
+import UserProvider from "./context/UserProvider.js"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <MuseProvider>
-        <App /> 
-    </MuseProvider>
+    <BrowserRouter>
+        <MuseProvider>
+            <UserProvider>
+                <App /> 
+            </UserProvider>
+        </MuseProvider>
+    </BrowserRouter>
 );

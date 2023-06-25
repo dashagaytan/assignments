@@ -1,5 +1,5 @@
 import React, { useContext, useState} from "react";
-import {MuseContext} from "../MuseContext"
+import {MuseContext} from "../context/MuseProvider.js"
 import {useNavigate} from "react-router-dom"
 import "../style.css"
 
