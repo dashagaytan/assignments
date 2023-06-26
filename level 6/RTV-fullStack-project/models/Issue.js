@@ -11,8 +11,8 @@ const issueSchema = new Schema({
     }, 
     
     user: {
-        type: Schema.Types.ObjectId,
-       ref:'User',
+       type: Schema.Types.ObjectId,
+       ref: 'User',
        required: true
     },
     username: {

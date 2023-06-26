@@ -63,6 +63,8 @@ export default function IssueProvider(props){
     function getUserIssue(){
         userAxios.get('/api/issue/user')
         .then(res => {
+            console.log('Response:', res);
+            console.log('Response data:', res.data);
             Promise.all(res.data.map(async issue => {
                 return {
                     ...issue,

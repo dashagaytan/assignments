@@ -1,8 +1,9 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useRef } from "react"
 import IssueList from "./IssueList"
 import { IssueContext } from "../context/IssueProvider"
 
 export default function Public() {
+  const getData = useRef(false)
   const {
       user: {
         username
@@ -12,7 +13,10 @@ export default function Public() {
     } = useContext(IssueContext)
 
     useEffect(() => {
-      getIssues()
+      if(!getData.current){
+        getIssues()
+        getData.current = true
+      }
     }, [getIssues])
 
   return (

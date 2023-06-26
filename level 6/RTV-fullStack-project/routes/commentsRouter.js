@@ -5,23 +5,23 @@ const Comments = require('../models/Comments.js')
 
 // get all comments 
 commentsRouter.get('/', (req, res, next)=> {
-    Comments.find((err, comments) => {
+    Comments.find((err, comment) => {
         if(err){
             res.status(500)
             return next(err)
         }
-        return res.status(200).send(comments)
+        return res.status(200).send(comment)
     })
 })
 
 // get one comment by issue id
 commentsRouter.get('/:issueId', (req, res, next)=> {
-    Comments.find({issue: req.params.issueId}, (err, comments) => {
+    Comments.find({issue: req.params.issueId}, (err, comment) => {
         if(err){
             res.status(500)
             return next(err)
         }
-        return res.status(200).send(comments)
+        return res.status(200).send(comment)
     })
 })
 

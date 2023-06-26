@@ -4,30 +4,30 @@ const Issue = require('../models/Issue.js')
 
 // Get all issues
 issueRouter.get('/', (req, res, next)=> {
-    Issue.find((err, issues)=> {
+    Issue.find((err, issue)=> {
         if(err){
             res.status(500)
             return next(err)
         }
-        return res.status(200).send(issues)
+        return res.status(200).send(issue)
     })
 })
 
 // Get issues by user id
 issueRouter.get('/user', (req, res, next)=> {
-    Issue.find({ user: req.auth._id}, (err, issues)=> {
+    Issue.find({ user: req.auth._id}, (err, issue)=> {
         if(err){
             res.status(500)
             return next(err)
         }
-        return res.status(200).send(issues)
+        return res.status(200).send(issue)
     })
 })
 
 // Add new Issue
 issueRouter.post('/', (req, res, next)=> {
-    req.body.user = req.user._id
-    req.body.username = req.user.username
+    req.body.user = req.auth._id
+    // req.body.username = req.user.username
     const newIssue = new Issue(req.body)
     newIssue.save((err, savedIssue) => {
         if(err){
@@ -74,7 +74,7 @@ issueRouter.put('/upvote/:issueId', (req, res, next)=> {
 issueRouter.put('/downvote/:issueId', (req, res, next)=> {
     Issue.findOneAndUpdate(
         {_id: req.params.issueId},
-        { $inc: {downvote: -1 },
+        { $inc: {downvote: 1 },
         $push: {userVotes: 
             { $each: [req.user.username] }
         }},

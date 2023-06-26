@@ -21,7 +21,6 @@ export default function Issue(props){
 
     return (
         <div className="issue-container">
-            {user._id === issue.user && (<i className="delete-issue" onClick={() => deleteIssue(issue._id)}>Delete Issue</i>)}
             <h1 className="issue-title">{ issue.title }</h1>
             <p className="issue-description">{ issue.description }</p>
             <div className="votes">
@@ -32,6 +31,8 @@ export default function Issue(props){
                 <i onClick={() => voting("downvote", issue._id, user.username)} className="downvote">👎🏼</i>
                 <i>{ issue.downvote }</i>
             </div>
+            <br></br>
+            {user._id === issue.user && (<i className="delete-issue" onClick={() => deleteIssue(issue._id)}>X</i>)}
             <>
             <h2>Share your thoughts</h2>
             <br>

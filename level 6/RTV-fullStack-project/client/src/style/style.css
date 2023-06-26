@@ -8,10 +8,6 @@
     text-decoration: none;
 }
 
-/* .app{
-    background-color: #e3e3e3;
-} */
-
 .navbar{
     display: flex;
     justify-content: space-around;
@@ -137,7 +133,7 @@
     border-radius: 5px;
 }
 
-.issue{
+.issue-container{
     box-sizing: border-box;
     border: solid 1px #233142;
     margin: 15px;
