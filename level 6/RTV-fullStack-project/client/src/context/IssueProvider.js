@@ -124,11 +124,11 @@ export default function IssueProvider(props){
 
     // add comment to an existing issue
     function addComment(){
-        console.log(comments)
+        // console.log(comments)
         userAxios.post('/api/comment', comments)
         .then(res => {
+            console.log(res.data)
             setUserState(prevState => {
-                // console.log('prevState State', prevState)
                 const issues = prevState.issues.find((issue) => issue._id === res.data.issue)
                 issues.comments.push(res.data)
                 return ({
@@ -143,13 +143,14 @@ export default function IssueProvider(props){
     function handleVoting(vote, issueId){
         userAxios.put(`/api/issue/${vote}/${issueId}`)
         .then(res => {
-            setUserState((prevState) => ({
+            setUserState(prevState => ({
                 ...prevState,
                 issues: [res.data]
             }))
         })
         .catch(err => console.log(err.response.data.errMsg))
     }
+
 
     return (
         <IssueContext.Provider value={{

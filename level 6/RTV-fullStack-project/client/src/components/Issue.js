@@ -3,6 +3,7 @@ import { IssueContext } from "../context/IssueProvider";
 import { UserContext } from "../context/UserProvider";
 import CommentsForm from "./CommentsForm";
 import CommentsList from "./CommentsList";
+import "../style/style.css"
 
 export default function Issue(props){
 
@@ -12,7 +13,7 @@ export default function Issue(props){
 
     function voting(vote, id, username){
         const voted = issue.userVotes.includes(username) //.user.includes used to be votedUsers
-        console.log(voted)
+        // console.log(voted)
         voted ? alert("You have already voted")
         :
         handleVoting(vote, id)
@@ -26,9 +27,9 @@ export default function Issue(props){
             <div className="votes">
             <br>
             </br>
-               <i onClick={() => voting("upvote", issue._id, user.username)} className="upvote">👍🏼 </i>
+               <i style={{borderRadius: "25px", padding: "5px"}} onClick={() => voting("upvote", issue._id, user.username)} className="upvote">👍🏼 </i>
                <i>{ issue.upvote }</i>
-                <i onClick={() => voting("downvote", issue._id, user.username)} className="downvote">👎🏼</i>
+                <i style={{borderRadius: "25px", padding: "5px"}} onClick={() => voting("down", issue._id, user.username)} className="downvote">👎🏼</i>
                 <i>{ issue.downvote }</i>
             </div>
             <br></br>

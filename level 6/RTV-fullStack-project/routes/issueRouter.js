@@ -54,10 +54,9 @@ issueRouter.delete('/:issueId', (req, res, next)=> {
 
 // upvote an issue 👍🏼
 issueRouter.put('/upvote/:issueId', (req, res, next)=> {
-    Issue.findOneAndUpdate(
-        {_id: req.params.issueId},
+    Issue.findOneAndUpdate({_id: req.params.issueId},
         { $inc: {upvote: 1 },
-        $push: {userVotes: 
+        $push: { userVotes: 
             { $each: [req.user.username] }
         }},
         {new: true},
@@ -72,8 +71,7 @@ issueRouter.put('/upvote/:issueId', (req, res, next)=> {
 
 // downvote an issue 👎🏼
 issueRouter.put('/downvote/:issueId', (req, res, next)=> {
-    Issue.findOneAndUpdate(
-        {_id: req.params.issueId},
+    Issue.findOneAndUpdate({_id: req.params.issueId},
         { $inc: {downvote: 1 },
         $push: {userVotes: 
             { $each: [req.user.username] }

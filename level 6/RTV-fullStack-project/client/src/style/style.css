@@ -148,3 +148,14 @@
     color: #f93838;
     font-size: 18px;
 }
+
+.upvote, .downvote{
+    cursor: pointer;
+    margin: 10px;
+}
+.upvote:hover{
+    background-color: #629832
+}
+.downvote:hover{
+    background-color:#f93838 ;
+}
