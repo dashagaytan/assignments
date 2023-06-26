@@ -35,7 +35,7 @@ authRouter.post('/signup', (req, res, next)=> {
 
 //login
 authRouter.post('/login', (req, res, next)=> {
-    // find user by the provided userbame in db
+    // find user by the provided username in db
     User.findOne( { username: req.body.username.toLowerCase() }, (err, user)=> {
         // handle db errors
         if(err){
