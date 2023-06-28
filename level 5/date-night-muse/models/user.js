@@ -26,10 +26,11 @@ const userSchema = new Schema({
 
 // pre-saved hook to encrypt user password on signup
 userSchema.pre("save", function(next){
-    if(!this.isModified("password")) return next()
-    bcrypt.hash(this.password, 10, (err, hash)=> {
+    const user = this
+    if(!user.isModified("password")) return next()
+    bcrypt.hash(user.password, 10, (err, hash)=> {
         if(err) return next(err)
-        this.password = hash
+        user.password = hash
         next()
     })
 })

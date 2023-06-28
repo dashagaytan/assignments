@@ -29,7 +29,7 @@ function HeadOut(props){
         <br>
         </br>
         <button onClick={handleHeadOutMuse}>See all Adventure Dates</button>
-        <button onClick={()=> navigate("/")}>⬅</button>
+        {/* <button onClick={()=> navigate("/home")}>⬅</button> */}
         <br>
         </br>
         {showHeadOut && (

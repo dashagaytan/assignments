@@ -7,27 +7,28 @@ export default function AuthForm(props){
         btnTxt, 
         errMsg, 
         inputs: {
-        username, password}} = props
+         username, 
+         password}} = props
 
     return (
         <>
         <form onSubmit={handleSubmit}> 
             <input
-            type="text"
-            value={username}
-            name="username"
-            onChange={handleChange}
-            placeholder="Username"
+                type="text"
+                value={username}
+                name="username"
+                onChange={handleChange}
+                placeholder="Username"
             />
             <input
-            type="text"
-            value={password}
-            name="password"
-            onChange={handleChange}
-            placeholder="Password"
+                type="text"
+                value={password}
+                name="password"
+                onChange={handleChange}
+                placeholder="Password"
             />
             <button>{ btnTxt }</button>
-            <p style={{color: "red"}}>{errMsg}</p>
+            <p style={{color: "white"}}>{errMsg}</p>
             </form>
         </>
     )

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 // Stay In Date Night Muse bluepring 
 const stayInSchema = new Schema({
-    title: {
+      title: {
         type: String,
         required: true,
       },

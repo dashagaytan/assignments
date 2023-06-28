@@ -14,9 +14,11 @@ function App() {
   return (
     <div className="App">
       {token && <Nav logout = {logout} token={token} />}
+
         <Routes>
-          <Route path="/" 
-          element={token ? <Navigate to="/"/> : <Auth/>}/>
+          <Route 
+          path="/" 
+          element={token ? <Navigate to="/home"/> : <Auth/>}/>
 
         <Route 
           path="/headOut"
@@ -33,7 +35,7 @@ function App() {
         />
         <Route 
           path="/home"
-          element={<ProtectedRoute token={token}>
+          element={<ProtectedRoute token={token} rederectTo= "/">
             <Home />
           </ProtectedRoute>}
         />

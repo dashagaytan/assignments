@@ -6,10 +6,9 @@ import MuseProvider from './context/MuseProvider.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    
     <BrowserRouter>
         <MuseProvider>
-                <App /> 
+            <App /> 
         </MuseProvider>
     </BrowserRouter>
 );

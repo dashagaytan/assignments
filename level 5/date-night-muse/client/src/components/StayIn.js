@@ -29,7 +29,7 @@ function StayIn(props){
             <br>
             </br>
             <button onClick={handleStayInMuse}>See all Stay In Dates</button> 
-            <button onClick={()=> navigate("/")}>⬅</button>
+            {/* <button onClick={()=> navigate("/")}>⬅</button> */}
             <br>
             </br>
                 {showStayIn && (

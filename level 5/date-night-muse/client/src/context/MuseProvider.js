@@ -13,7 +13,7 @@ userAxios.interceptors.request.use(config => {
 
 export default function MuseProvider({children}){
     const initState = {
-        user: {},
+        user: {} || JSON.parse(localStorage.getItem("user")),
         token: localStorage.getItem("token") || "",
         errMsg: ''
     }
@@ -133,19 +133,18 @@ export default function MuseProvider({children}){
     return(
         <MuseContext.Provider value={{
             ...userState,
-            filterStayIn,
-            getStayInDates,
-            getHeadOutDates,
-            filterHeadOut,
-            stayIn,
-            headOut,
             login,
             logout,
             signup,
+            getStayInDates,
+            getHeadOutDates,
+            filterStayIn,
+            filterHeadOut,
+            stayIn,
+            headOut,
             resetAuthErr
         }}>       
-
-        {children}
+            {children}
 
         </MuseContext.Provider>
     )

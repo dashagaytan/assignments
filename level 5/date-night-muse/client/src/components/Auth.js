@@ -43,7 +43,7 @@ export default function Auth(){
             <>
             <AuthForm
                 handleChange = {handleChange}
-                handleLogin = {handleLogin}
+                handleSubmit = {handleLogin}
                 inputs = {inputs}
                 btnTxt = "Login"
                 errMsg = {errMsg}
@@ -54,7 +54,7 @@ export default function Auth(){
             <>
             <AuthForm
                 handleChange = {handleChange}
-                handleLogin = {handleSignup}
+                handleSubmit = {handleSignup}
                 inputs = {inputs}
                 btnTxt = "Signup"
                 errMsg = {errMsg}

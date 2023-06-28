@@ -1,16 +1,20 @@
 *{
   font-family: 'Handlee', cursive;
+  
 }
 
 .home {
     display: flex;
+    color: #333;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     min-height: 100vh;
     padding: 20px;
-    background: radial-gradient(592px at 48.2% 50%, rgba(255, 255, 249, 0.6) 0%, rgb(160, 199, 254) 74.6%);
+    background-position: center;
+    background-image: url("https://plus.unsplash.com/premium_photo-1681488411178-b9d7b05239f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80");
+    /* background: radial-gradient(592px at 48.2% 50%, rgba(255, 255, 249, 0.6) 0%, rgb(160, 199, 254) 74.6%); */
     background-size: cover;
   }
   
@@ -113,4 +117,28 @@
     border-radius:  4px;
     width: 200px;
   }
+
+  .navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    background: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+  }
+
+  .navbar >a{
+    color:#fff;
+    text-decoration: none;
+    margin: 30px;
+  }
+  .navbar >a:hover{
+    background-color: #d9abf4;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+
+
+
+
   
