@@ -22,7 +22,7 @@ authRouter.post('/signup', (req, res, next)=> {
         // save new user to db
         newUser.save((err, savedUser)=> {
             if(err){
-                res.status(500)
+                res.status(500) 
                 return next(err)
             }
             // return user info and a token

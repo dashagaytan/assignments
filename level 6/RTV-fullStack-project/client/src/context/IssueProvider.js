@@ -17,7 +17,7 @@ export default function IssueProvider(props){
         description: "",
         votes: 0,
         voters: []
-    }
+    } 
 
     const commentsInput = {
         comment: '',
@@ -92,6 +92,7 @@ export default function IssueProvider(props){
                 ...prevState,
                 issue: [...prevState.issues, res.data]
             }))
+            getIssues();  
         })
         .catch(err => console.log(err.response.data.errMsg))
     }
@@ -123,21 +124,35 @@ export default function IssueProvider(props){
     }
 
     // add comment to an existing issue
-    function addComment(){
-        // console.log(comments)
-        userAxios.post('/api/comment', comments)
-        .then(res => {
-            console.log(res.data)
-            setUserState(prevState => {
-                const issues = prevState.issues.find((issue) => issue._id === res.data.issue)
-                issues.comments.push(res.data)
-                return ({
-                    ...prevState,
-                })
-            })
+// Add comment to an existing issue
+function addComment(newComment, issueId) {
+    return new Promise((resolve, reject) => {
+      userAxios
+        .post(`/api/comment/${issueId}`, newComment)
+        .then((res) => {
+          const updatedIssues = userState.issues.map((issue) => {
+            if (issue._id === issueId) {
+              return {
+                ...issue,
+                comments: [...issue.comments, res.data],
+              };
+            }
+            return issue;
+          });
+  
+          setUserState((prevState) => ({
+            ...prevState,
+            issues: updatedIssues,
+          }));
+  
+          resolve();
         })
-        .catch(err => console.log(err.response.data.errMsg))
-    }
+        .catch((error) => {
+          reject(error.response.data.errMsg);
+        });
+    });
+  }
+  
 
     // handle upvote and downvote
     function handleVoting(vote, issueId){

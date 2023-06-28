@@ -16,7 +16,7 @@ export default function Auth(){
             ...prevState, 
             [name]: value
         }))
-    }
+    } 
 
     function handleSignup(e){
         e.preventDefault()
@@ -41,6 +41,17 @@ export default function Auth(){
             <h1>ThePoliticalPost</h1>
             { !toggle ? 
                 <>
+                     <AuthForm
+                    handleChange={handleChange}
+                    handleSubmit={handleLogin}
+                    inputs={inputs}
+                    btnText="Login"
+                    errMsg= {errMsg}
+                    />
+                    <p onClick={toggleForm}>Not a memeber?</p>
+                </>
+            :
+                <>
                     <AuthForm
                     handleChange={handleChange}
                     handleSubmit={handleSignup}
@@ -49,17 +60,6 @@ export default function Auth(){
                     errMsg= {errMsg}
                     />
                     <p onClick={toggleForm}>Already a member?</p>
-                </>
-            :
-                <>
-                    <AuthForm
-                    handleChange={handleChange}
-                    handleSubmit={handleLogin}
-                    inputs={inputs}
-                    btnText="Login"
-                    errMsg= {errMsg}
-                    />
-                    <p onClick={toggleForm}>Not a memeber?</p>
                 </>
         }
            

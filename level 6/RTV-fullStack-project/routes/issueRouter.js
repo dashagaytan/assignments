@@ -82,7 +82,7 @@ issueRouter.put('/downvote/:issueId', (req, res, next)=> {
                 res.status(500)
                 return next(err)
             }
-            res.status(200).send(updatedIssue)
+            res.status(201).send(updatedIssue)
         }
     )
 }

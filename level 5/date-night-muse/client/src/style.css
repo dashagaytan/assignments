@@ -82,6 +82,35 @@
     border-radius: 15px;
   }
 
+  /* login page */
+
+  .auth-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .auth-container >p {
+    margin: 8px;
+    text-decoration: underline;
+    cursor: pointer;
+  }
   
 
+  .auth-container > form {
+    padding: 20px;
+    border: 1px solid black;;
+    border-radius: 5px;
+    background-color: #fa97d9;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .auth-container > form > input{
+    margin: 16px 8px;
+    padding: 8px;
+    border-radius:  4px;
+    width: 200px;
+  }
   

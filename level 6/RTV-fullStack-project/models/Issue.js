@@ -9,7 +9,6 @@ const issueSchema = new Schema({
     description: {
         type: String
     }, 
-    
     user: {
        type: Schema.Types.ObjectId,
        ref: 'User',

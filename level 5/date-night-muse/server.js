@@ -1,9 +1,9 @@
 const express = require("express")
-const morgan = require("morgan")
 const app = express()
+require('dotenv').config()
+const morgan = require("morgan")
 const mongoose = require("mongoose")
 const {expressjwt} = require('express-jwt')
-require('dotenv').config()
 
 
 //Middleware (for every request)
@@ -23,7 +23,7 @@ app.use("/api/stayIn", require("./routes/stayInRoutes.js"))
 
 //error handler
 app.use((err, req, res, next)=>{
-    console.log(err)
+    console.log(err) 
     if(err.name === "UnathoriedError"){
         res.status(err.status)
     }

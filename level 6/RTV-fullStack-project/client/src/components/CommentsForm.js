@@ -4,27 +4,30 @@ import { IssueContext } from "../context/IssueProvider";
 
 export default function CommentsForm(props){
 
-const { issueId } = props
-const { addComment, setComments } = useContext(IssueContext)
-const { user: {username} } = useContext(UserContext)
-const [comment, setComment] = useState("")
+    const { issueId } = props
+    const { addComment } = useContext(IssueContext)
+    const { user: {username} } = useContext(UserContext)
+    const [comment, setComment] = useState("")
+    
+    function handleChange(e){
+        const {value} = e.target
+        setComment(value)
 
-function handleChange(e){
-    const {name, value} = e.target
-    setComments(prevState => ({
-        ...prevState,
-        [name]: value,
-        commentedBy: username,
-        issue: issueId
-    }))
-    setComment(value)
-}
+    }
 
-function handleSubmit(e){
-   e.preventDefault();
-   addComment(comment)
-   setComment('') //reset textarea after comment was added
-}
+    function handleSubmit(e){
+        e.preventDefault();
+        const newComment = {
+            comment,
+            commentedBy: username, // sets the username on the server side (comment model)
+            issue: ""
+        }
+        addComment(newComment, issueId)
+        .then(() => {
+            setComment('') //reset textarea after comment was added
+        })
+        .catch(err => console.log('Error adding comment: ', err.response.data.errMsg))
+    }
 
     return(
         <form onSubmit={handleSubmit} className="comment-form">

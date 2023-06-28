@@ -1,12 +1,15 @@
 import React from "react";
-import Comment from "./Comment";
+import Comment from "./Comment.js";
 
 export default function CommentsList(props){
-    const { comments } = props
+    const { comment } = props
+
 
     return (
         <div className="comment-list">
-           { (comments) ? comments.map(post => (<Comment comment={post} issueId={post.issueId} key={post._id}>{post.comment}</Comment>)) : console.log("fail") }
-     </div>
-    )
-}
+          {(comment) && comment.map((comment) => (
+            <Comment key={comment._id} comment={comment} issueId={comment.issue}/>
+          ))}
+        </div>
+      );
+    }

@@ -15,6 +15,11 @@ const headOutSchema = new Schema({
         type: String,
         required: true,
       },
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+      }
 })
 
 module.exports = mongoose.model("HeadOut", headOutSchema)

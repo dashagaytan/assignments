@@ -5,36 +5,42 @@ const Comments = require('../models/Comments.js')
 
 // get all comments 
 commentsRouter.get('/', (req, res, next)=> {
-    Comments.find((err, comment) => {
+    Comments.find((err, comments) => {
         if(err){
             res.status(500)
             return next(err)
         }
-        return res.status(200).send(comment)
+        return res.status(200).send(comments)
     })
 })
 
 // get one comment by issue id
 commentsRouter.get('/:issueId', (req, res, next)=> {
-    Comments.find({issue: req.params.issueId}, (err, comment) => {
+    Comments.find({issue: req.params.issueId}, (err, comments) => {
         if(err){
             res.status(500)
             return next(err)
         }
-        return res.status(200).send(comment)
+        return res.status(200).send(comments)
     })
 })
 
 // Add new Comment
-commentsRouter.post('/', (req, res, next)=> {
+commentsRouter.post('/:issueId', (req, res, next)=> {
     req.body.user = req.user._id
+    const issueId = req.params.issueId
+    req.body.username = req.user.username
     const newComment = new Comment(req.body)
-    newComment.save((err, savedComment)=>{
+    Comments.findById({_id: issueId}, (err, issue) => {
         if(err){
             res.status(500)
             return next(err)
         }
-        return res.status(201).send(savedComment)
+        issue.comment.push(newComment)
+        issue.populate("comment")
+        issue.save()
+
+        return res.status(200).send(issue)
     })
 })
 

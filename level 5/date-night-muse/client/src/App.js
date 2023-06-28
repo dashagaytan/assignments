@@ -1,17 +1,42 @@
-import React from "react";
+import React, { useContext } from "react";
 import {Routes, Route, Navigate} from 'react-router-dom';
 import Home from "./components/Home.js"
+import Auth from './components/Auth'
 import HeadOut from "./components/HeadOut.js";
 import StayIn from "./components/StayIn.js"
-import {UserContext} from "./context/UserProvider"
+import Nav from "./components/Nav.js";
+import ProtectedRoute from "./components/ProtectedRoute.js"
+import { MuseContext } from "./context/MuseProvider.js";
 
 function App() {
+  const {token, logout} = useContext(MuseContext)
+
   return (
     <div className="App">
+      {token && <Nav logout = {logout} token={token} />}
         <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/headOut" element={<HeadOut/>}/>
-          <Route path="/stayIn" element={<StayIn/>}/>
+          <Route path="/" 
+          element={token ? <Navigate to="/"/> : <Auth/>}/>
+
+        <Route 
+          path="/headOut"
+          element={<ProtectedRoute token={token}>
+            <HeadOut />
+          </ProtectedRoute>}
+        />    
+
+        <Route 
+          path="/stayIn"
+          element={<ProtectedRoute token={token}>
+            <StayIn />
+          </ProtectedRoute>}
+        />
+        <Route 
+          path="/home"
+          element={<ProtectedRoute token={token}>
+            <Home />
+          </ProtectedRoute>}
+        />
         </Routes>
     </div>
   );
