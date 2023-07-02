@@ -8,41 +8,39 @@ import "../style/style.css"
 export default function Issue(props){
 
     const { issue } = props
-    const { handleVoting, deleteIssue} = useContext(IssueContext)
-    const { user } = useContext(UserContext)
-
-    function voting(vote, id, username){
-        const voted = issue.userVotes.includes(username) //.user.includes used to be votedUsers
-        // console.log(voted)
-        voted ? alert("You have already voted")
-        :
-        handleVoting(vote, id)
-        window.location.reload()
-    }
+    const { handleUpvote, handleDownvote, deleteIssue, _id} = useContext(IssueContext)
+    const { user } = useContext(UserContext)      
 
     return (
         <div className="issue-container">
             <h1 className="issue-title">{ issue.title }</h1>
+            <br/>
             <p className="issue-description">{ issue.description }</p>
-            <div className="votes">
-            <br>
-            </br>
-               <i style={{borderRadius: "25px", padding: "5px"}} onClick={() => voting("upvote", issue._id, user.username)} className="upvote">👍🏼 </i>
-               <i>{ issue.upvote }</i>
-                <i style={{borderRadius: "25px", padding: "5px"}} onClick={() => voting("down", issue._id, user.username)} className="downvote">👎🏼</i>
+                <div className="votes">
+                <br/>
+                <i 
+                    className="upvote"
+                    style={{borderRadius: "25px", padding: "5px"}} 
+                    onClick={() => handleUpvote(_id)}>
+                    👍🏼
+                 </i>
+                <i>{ issue.upvote }</i>
+                <i 
+                    className="downvote"
+                    style={{borderRadius: "25px", padding: "5px"}} 
+                    onClick={() => handleDownvote(_id)}>
+                    👎🏼
+                </i>
                 <i>{ issue.downvote }</i>
-            </div>
-            <br></br>
+                </div>
+                <br/>
             {user._id === issue.user && (<i className="delete-issue" onClick={() => deleteIssue(issue._id)}>X</i>)}
-            <>
-            <h2>Share your thoughts</h2>
-            <br>
-            </br>
-                <CommentsForm issueId={ issue._id}/>
-                <CommentsList issueId={ issue._id} comments={ issue.comments}/>
-            </>
-            <br>
-            </br>
+                <>
+                <br/>
+                    <CommentsForm issueId={ issue._id}/>
+                    <CommentsList issueId={ issue._id} comments={ issue.comments}/>
+                </>
+                <br/>
         </div>
     )
 

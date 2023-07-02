@@ -7,22 +7,23 @@ const commentsSchema = new Schema({
         required: true
    },
    commentedBy: {
-       type: String,
+       type: Schema.Types.ObjectId,
+       ref: 'User',
        required: true
-   },
-   username: {
-        type: String
-   },
-   user: {
-        type: Schema.Types.ObjectId,
-        ref:'User',
-        required: true
    },
    issue: {
        type: Schema.Types.ObjectId,
        ref: 'Issue',
        required: true
     }
+//    username: {
+//         type: String
+//    },
+//    user: {
+//         type: Schema.Types.ObjectId,
+//         ref:'User',
+//         required: true
+//    },
 })
 
 module.exports= mongoose.model("Comments", commentsSchema)

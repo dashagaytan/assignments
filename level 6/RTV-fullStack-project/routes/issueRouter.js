@@ -1,4 +1,5 @@
 const express = require('express')
+const { update } = require('../models/Issue.js')
 const issueRouter = express.Router()
 const Issue = require('../models/Issue.js')
 
@@ -50,42 +51,40 @@ issueRouter.delete('/:issueId', (req, res, next)=> {
             return res.status(200).send(`Successfully deleted issue: ${deletedIssue.title}`)
         }
     )
-})
+})  
 
-// upvote an issue 👍🏼
-issueRouter.put('/upvote/:issueId', (req, res, next)=> {
-    Issue.findOneAndUpdate({_id: req.params.issueId},
-        { $inc: {upvote: 1 },
-        $push: { userVotes: 
-            { $each: [req.user.username] }
-        }},
-        {new: true},
-        (err, updatedIssue)=> {
-            if(err){
+// upvote an issue
+issueRouter.put("/upvote/:issueId", (req, res, next) => {
+    Issue.findByIdAndUpdate(
+        { _id: req.params.issueId },
+        { $addToSet: { upvotedBy: req.auth._id }, 
+        $pull: { downvotedBy: req.auth._id } },
+        { new: true }
+    )
+        .exec((err, updatedIssue) => {
+            if (err) {
                 res.status(500)
                 return next(err)
             }
-            res.status(201).send(updatedIssue)
+            return res.status(201).send(updatedIssue)
         })
 })
 
 // downvote an issue 👎🏼
-issueRouter.put('/downvote/:issueId', (req, res, next)=> {
-    Issue.findOneAndUpdate({_id: req.params.issueId},
-        { $inc: {downvote: 1 },
-        $push: {userVotes: 
-            { $each: [req.user.username] }
-        }},
-        {new: true},
-        (err, updatedIssue)=> {
-            if(err){
+issueRouter.put("/downvote/:issueId", (req, res, next) => {
+    Issue.findByIdAndUpdate(
+        { _id: req.params.issueId },
+        { $addToSet: { downvotedBy: req.auth._id }, 
+        $pull: { upvotedBy: req.auth._id } },
+        { new: true }
+    )
+        .exec((err, updatedIssue) => {
+            if (err) {
                 res.status(500)
                 return next(err)
             }
-            res.status(201).send(updatedIssue)
-        }
-    )
-}
-)
+            return res.status(201).send(updatedIssue)
+        })
+})
 
 module.exports = issueRouter;

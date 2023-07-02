@@ -3,10 +3,15 @@ import Issue from "./Issue.js"
 
 export default function IssueList(props){
     const { issues } = props
-    console.log(issues)
+
     return (
         <div className="issue-list">
-            { issues.map(issue => { return <Issue issue = {issue} key={issue._id}/>}) }
+        {issues &&
+            issues.map((issue) => (
+              <Issue issue={issue} key={issue._id} /> // Add a unique key prop
+            ))}
         </div>
     )
 }
+
+

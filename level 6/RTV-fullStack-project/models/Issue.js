@@ -14,20 +14,18 @@ const issueSchema = new Schema({
        ref: 'User',
        required: true
     },
-    username: {
-        type: String,
-    },
-    upvote: {
-        type: Number,
-        default: 0
-    },
-    downvote: {
-        type: Number,
-        default: 0
-    },
-    userVotes: [{
-        type: String
-    }],
+    upvotedBy: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ],
+    downvotedBy: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ],
     postDate: {
         type: Date,
         default: Date.now()

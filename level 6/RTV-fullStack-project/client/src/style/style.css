@@ -70,6 +70,7 @@
     margin: 16px 8px;
     padding: 8px;
     border-radius: 4px;
+    width: 350px;
 }
 
 .auth-container > form >button {
@@ -77,6 +78,10 @@
     padding: 8px;
     border-radius: 4px;
     cursor: pointer;
+}
+.auth-container > form >button:hover {
+    background-color: #5b697a;
+    color: white;
 }
 
 .public-container{
@@ -141,6 +146,9 @@
     border-radius: 10px;
     padding: 20px;
 }
+.issue-form > input{
+    width: 500px;
+}
 
 .issue > h1{
     color: #455d7a;
@@ -158,4 +166,8 @@
 }
 .downvote:hover{
     background-color:#f93838 ;
+}
+
+.comments{
+    color:#396dac;
 }

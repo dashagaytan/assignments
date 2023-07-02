@@ -21,11 +21,12 @@ export default function IssueProvider(props){
 
     const commentsInput = {
         comment: '',
-        issue: ''
+        // issue: ''
     }
 
     const [inputs, setInputs]= useState(initInputs)
     const [comments, setComments]= useState(commentsInput)
+
 
     const initState = {
         user: JSON.parse(localStorage.getItem("user")) || {},
@@ -152,21 +153,21 @@ function addComment(newComment, issueId) {
         });
     });
   }
+
+  function handleUpvote(issueId) {
+    userAxios.put(`/api/issue/upvote/${issueId}`)
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err.response.data.errMsg))
+      getIssues();
+  }
+
+  function handleDownvote(issueId) {
+    userAxios.put(`/api/issue/downvote/${issueId}`) 
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err.response.data.errMsg))
+      getIssues();
+  }
   
-
-    // handle upvote and downvote
-    function handleVoting(vote, issueId){
-        userAxios.put(`/api/issue/${vote}/${issueId}`)
-        .then(res => {
-            setUserState(prevState => ({
-                ...prevState,
-                issues: [res.data]
-            }))
-        })
-        .catch(err => console.log(err.response.data.errMsg))
-    }
-
-
     return (
         <IssueContext.Provider value={{
             ...userState,
@@ -180,7 +181,8 @@ function addComment(newComment, issueId) {
             addIssue,
             deleteIssue,
             addComment,
-            handleVoting
+            handleUpvote,
+            handleDownvote
             
         }}>
             {props.children}
