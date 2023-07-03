@@ -155,6 +155,7 @@ function addComment(newComment, issueId) {
   }
 
   function handleUpvote(issueId) {
+    console.log(issueId)
     userAxios.put(`/api/issue/upvote/${issueId}`)
       .then(res => console.log(res.data))
       .catch(err => console.log(err.response.data.errMsg))
@@ -162,6 +163,7 @@ function addComment(newComment, issueId) {
   }
 
   function handleDownvote(issueId) {
+    console.log(issueId)
     userAxios.put(`/api/issue/downvote/${issueId}`) 
       .then(res => console.log(res.data))
       .catch(err => console.log(err.response.data.errMsg))

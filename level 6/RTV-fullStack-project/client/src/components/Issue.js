@@ -8,8 +8,10 @@ import "../style/style.css"
 export default function Issue(props){
 
     const { issue } = props
-    const { handleUpvote, handleDownvote, deleteIssue, _id} = useContext(IssueContext)
+    const { handleUpvote, handleDownvote, deleteIssue} = useContext(IssueContext)
     const { user } = useContext(UserContext)      
+
+    const issueId = issue._id ? issue._id : "";
 
     return (
         <div className="issue-container">
@@ -21,17 +23,17 @@ export default function Issue(props){
                 <i 
                     className="upvote"
                     style={{borderRadius: "25px", padding: "5px"}} 
-                    onClick={() => handleUpvote(_id)}>
+                    onClick={() => handleUpvote(issueId)}>
                     👍🏼
                  </i>
-                <i>{ issue.upvote }</i>
+                <span>{ issue.upvote }</span>
                 <i 
                     className="downvote"
                     style={{borderRadius: "25px", padding: "5px"}} 
-                    onClick={() => handleDownvote(_id)}>
+                    onClick={() => handleDownvote(issueId)}>
                     👎🏼
                 </i>
-                <i>{ issue.downvote }</i>
+                <span>{ issue.downvote }</span>
                 </div>
                 <br/>
             {user._id === issue.user && (<i className="delete-issue" onClick={() => deleteIssue(issue._id)}>X</i>)}
