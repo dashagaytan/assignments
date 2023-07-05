@@ -1,11 +1,11 @@
 import React, { useContext, useState} from "react";
 import {MuseContext} from "../context/MuseProvider.js"
-import {useNavigate} from "react-router-dom"
+// import {useNavigate} from "react-router-dom"
 import "../style.css"
 
 function HeadOut(props){
     const {headOut, filterHeadOut, getHeadOutDates} = useContext(MuseContext);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const [showHeadOut, setHeadOut] = useState(false)
 

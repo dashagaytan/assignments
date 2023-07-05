@@ -1,11 +1,11 @@
 import React, { useContext, useState} from "react";
 import {MuseContext} from "../context/MuseProvider.js"
-import {useNavigate} from "react-router-dom"
+// import {useNavigate} from "react-router-dom"
 import "../style.css"
 
 function StayIn(props){
     const {stayIn, filterStayIn, getStayInDates} = useContext(MuseContext);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     //console.log(stayIn, "Stay In ")
     const [showStayIn, setShowStayIn] = useState(false)
 
