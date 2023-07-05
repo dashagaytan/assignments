@@ -9,7 +9,7 @@ export default function Issue(props){
 
     const { issue } = props
     const { handleUpvote, handleDownvote, deleteIssue} = useContext(IssueContext)
-    const { user } = useContext(UserContext)      
+    const { user } = useContext(UserContext)  
 
     const issueId = issue._id ? issue._id : "";
 

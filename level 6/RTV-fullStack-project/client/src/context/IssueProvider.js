@@ -78,7 +78,7 @@ export default function IssueProvider(props){
             .then(res => {
                 setUserState(prevState => ({
                     ...prevState,
-                     issues: res
+                     issues: res.data
                  }))
              })
             })
@@ -169,8 +169,10 @@ function addComment(newComment, issueId) {
         })
             setUserState(prevState => ({
                 ...prevState, 
-                issue: updatedIssues}))
-    } )
+                issue: updatedIssues
+            }))
+            getIssues()
+        })
       .catch(err => console.log(err.response.data.errMsg))
   }
 
@@ -190,7 +192,9 @@ function addComment(newComment, issueId) {
         })
             setUserState(prevState => ({
                 ...prevState, 
-                issue: updatedIssues}))
+                issue: updatedIssues
+            }))
+                getIssues()
     } )
       .catch(err => console.log(err.response.data.errMsg))
   }
