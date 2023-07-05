@@ -26,14 +26,14 @@ export default function Issue(props){
                     onClick={() => handleUpvote(issueId)}>
                     👍🏼
                  </i>
-                <span>{ issue.upvote }</span>
+                <span>{ issue.issueVotes }</span>
                 <i 
                     className="downvote"
                     style={{borderRadius: "25px", padding: "5px"}} 
                     onClick={() => handleDownvote(issueId)}>
                     👎🏼
                 </i>
-                <span>{ issue.downvote }</span>
+                <span>{ issue.issueVotes }</span>
                 </div>
                 <br/>
             {user._id === issue.user && (<i className="delete-issue" onClick={() => deleteIssue(issue._id)}>X</i>)}

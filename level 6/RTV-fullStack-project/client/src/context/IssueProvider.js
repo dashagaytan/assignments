@@ -15,7 +15,7 @@ export default function IssueProvider(props){
     const initInputs={
         title: "",
         description: "",
-        votes: 0,
+        issueVotes: 0,
         voters: []
     } 
 
@@ -91,7 +91,7 @@ export default function IssueProvider(props){
         .then(res => {
             setUserState(prevState => ({
                 ...prevState,
-                issue: [...prevState.issues, res.data]
+                issue: [...prevState.issues, {...res.data, issueVotes: 0}] //init issueVotes to 0
             }))
             getIssues();  
         })
@@ -157,17 +157,23 @@ function addComment(newComment, issueId) {
   function handleUpvote(issueId) {
     console.log(issueId)
     userAxios.put(`/api/issue/upvote/${issueId}`)
-      .then(res => console.log(res.data))
+      .then(res =>{
+        console.log(res.data)
+        getIssues();
+    } )
       .catch(err => console.log(err.response.data.errMsg))
       getIssues();
   }
 
+
   function handleDownvote(issueId) {
     console.log(issueId)
     userAxios.put(`/api/issue/downvote/${issueId}`) 
-      .then(res => console.log(res.data))
+    .then(res =>{
+        console.log(res.data)
+        getIssues();
+    } )
       .catch(err => console.log(err.response.data.errMsg))
-      getIssues();
   }
   
     return (
