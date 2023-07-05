@@ -158,20 +158,39 @@ function addComment(newComment, issueId) {
     console.log(issueId)
     userAxios.put(`/api/issue/upvote/${issueId}`)
       .then(res =>{
-        console.log(res.data)
-        getIssues();
+        const updatedIssues = userState.issues.map(issue => {
+            if(issue._id === issueId){
+                return {
+                    ...issue,
+                    issueVotes: res.data.issueVotes,
+                }
+            }
+            return issue;
+        })
+            setUserState(prevState => ({
+                ...prevState, 
+                issue: updatedIssues}))
     } )
       .catch(err => console.log(err.response.data.errMsg))
-      getIssues();
   }
 
 
   function handleDownvote(issueId) {
     console.log(issueId)
-    userAxios.put(`/api/issue/downvote/${issueId}`) 
-    .then(res =>{
-        console.log(res.data)
-        getIssues();
+    userAxios.put(`/api/issue/downvote/${issueId}`)
+      .then(res =>{
+        const updatedIssues = userState.issues.map(issue => {
+            if(issue._id === issueId){
+                return {
+                    ...issue,
+                    issueVotes: res.data.issueVotes,
+                }
+            }
+            return issue;
+        })
+            setUserState(prevState => ({
+                ...prevState, 
+                issue: updatedIssues}))
     } )
       .catch(err => console.log(err.response.data.errMsg))
   }

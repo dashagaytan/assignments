@@ -26,6 +26,10 @@ const issueSchema = new Schema({
             ref: "User"
         }
     ],
+    issueVotes: {
+        type: Number,
+        default: 0
+    },
     postDate: {
         type: Date,
         default: Date.now()
