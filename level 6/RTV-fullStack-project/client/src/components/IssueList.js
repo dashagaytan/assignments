@@ -8,7 +8,7 @@ export default function IssueList(props){
         <div className="issue-list">
         {issues &&
             issues.map((issue) => (
-              <Issue issue={issue} key={issue._id} /> // Add a unique key prop
+              <Issue issue={issue} key={issue._id} /> 
             ))}
         </div>
     )

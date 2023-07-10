@@ -20,7 +20,7 @@ export default function CommentsForm(props){
         e.preventDefault();
         const newComment = {
           comment,
-          commentedBy: username, // Assuming you have the username available
+          commentedBy: username,
           issue: issueId,
         };
         addComment(newComment, issueId)

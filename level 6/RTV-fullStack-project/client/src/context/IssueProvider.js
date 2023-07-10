@@ -64,8 +64,6 @@ export default function IssueProvider(props){
     function getUserIssue(){
         userAxios.get('/api/issue/user')
         .then(res => {
-            console.log('Response:', res);
-            console.log('Response data:', res.data);
             Promise.all(res.data.map(async issue => {
                 return {
                     ...issue,
@@ -78,20 +76,21 @@ export default function IssueProvider(props){
             .then(res => {
                 setUserState(prevState => ({
                     ...prevState,
-                     issues: res.data
+                     issues: res
                  }))
              })
             })
             .catch(err => console.log(err.response.data.errMsg))
     }
-
+    console.log(userState)
     // add issue 
     function addIssue(newIssue){
         userAxios.post('/api/issue', newIssue)
         .then(res => {
+            console.log(res.data)
             setUserState(prevState => ({
                 ...prevState,
-                issue: [...prevState.issues, {...res.data, issueVotes: 0}] //init issueVotes to 0
+                issues: [...prevState.issues, {...res.data, issueVotes: 0}] //init issueVotes to 0
             }))
             getIssues();  
         })

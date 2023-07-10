@@ -44,6 +44,7 @@ userSchema.methods.checkPassword = function(passwordAttempt, callback){
   }
 
 // method to remove user's password for token/sending the response 
+// executes when user logs out of the application.
 userSchema.methods.withoutPassword = function(){
   const user = this.toObject()
   delete user.password

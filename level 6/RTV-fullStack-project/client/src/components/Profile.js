@@ -5,15 +5,16 @@ import { IssueContext } from "../context/IssueProvider";
 
 
 export default function Profile(){
-    const getData = useRef(false)  // helps store mutable values that wont be triggered on re-render 
+    const getData = useRef(false) 
     const {user: { username}, addIssue, issues, getUserIssue} = useContext(IssueContext)
 
     // gall getUserIssue() when component renders for the first time.
     useEffect(()=> {
         if(!getData.current)
         getUserIssue();
-        getData.current = true  // to ensure that getUserIssue function is called once during the component's lifecycle
-    }, [getUserIssue])  // dependency array that triggers useEffect only when getUserIssue function changes
+        getData.current = true 
+    }, [getUserIssue])  // dependency array trigger useEffect only when getUserIssue function changes
+    console.log(issues)
 
     return (
         <div className="profile">

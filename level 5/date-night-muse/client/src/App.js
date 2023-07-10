@@ -22,14 +22,14 @@ function App() {
 
         <Route 
           path="/headOut"
-          element={<ProtectedRoute token={token}>
+          element={<ProtectedRoute token={token} rederectTo = "/">
             <HeadOut />
           </ProtectedRoute>}
         />    
 
         <Route 
           path="/stayIn"
-          element={<ProtectedRoute token={token}>
+          element={<ProtectedRoute token={token} rederectTo = "/">
             <StayIn />
           </ProtectedRoute>}
         />

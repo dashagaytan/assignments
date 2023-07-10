@@ -54,40 +54,6 @@ issueRouter.delete('/:issueId', (req, res, next)=> {
 })  
 
 // upvote an issue
-// issueRouter.put("/upvote/:issueId", (req, res, next) => {
-//     Issue.findByIdAndUpdate(
-//         { _id: req.params.issueId },
-//         { $addToSet: { upvotedBy: req.auth._id }, 
-//         $pull: { downvotedBy: req.auth._id } },
-//         { new: true }
-//     )
-//         .exec((err, updatedIssue) => {
-//             if (err) {
-//                 res.status(500)
-//                 return next(err)
-//             }
-//             return res.status(201).send(updatedIssue)
-//         })
-// })
-
-// downvote an issue 👎🏼
-// issueRouter.put("/downvote/:issueId", (req, res, next) => {
-//     Issue.findByIdAndUpdate(
-//         { _id: req.params.issueId },
-//         { $addToSet: { downvotedBy: req.auth._id }, 
-//         $pull: { upvotedBy: req.auth._id } },
-//         { new: true }
-//     )
-//         .exec((err, updatedIssue) => {
-//             if (err) {
-//                 res.status(500)
-//                 return next(err)
-//             }
-//             return res.status(201).send(updatedIssue)
-//         })
-// })
-
-// upvote an issue
 issueRouter.put("/upvote/:issueId", (req, res, next) => {
     const userId = req.auth._id;
     const issueId = req.params.issueId;
